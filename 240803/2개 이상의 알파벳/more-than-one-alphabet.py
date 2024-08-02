@@ -5,7 +5,7 @@ def has_two_unique(string):
     set_string = set(list_string)
     return len(set_string) >= 2
 
-if has_two_unique(string):
+if has_two_unique(str_A):
     print("Yes")
 else:
     print("No")
