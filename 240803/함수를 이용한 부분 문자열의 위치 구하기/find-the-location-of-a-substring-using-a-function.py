@@ -13,6 +13,6 @@ def find_goal(A, B):
             
             if match:
                 return i
-
+    return -1
 
 print(find_goal(str_A, str_B))
