@@ -27,7 +27,7 @@ def kmp_search(text, pattern):
         
         if j == len(pattern):
             return i - j  + 1
-
+    return -1
 
 text = input()
 pattern = input()
