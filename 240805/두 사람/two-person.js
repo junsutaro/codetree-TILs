@@ -1,14 +1,9 @@
 const fs = require('fs');
 const input = fs.readFileSync(0).toString().trim().split('\n');
 
-const A = input[0];
-const B = input[1];
+const [age1, gender1] = input[0].split(' ');
+const [age2, gender2] = input[1].split(' ');
 
-const [ Aage, Agender ] = A.split(' ')
-const [ Bage, Bgender ] = B.split(' ')
+const isEligible = (parseInt(age1) >= 19 && gender1 === 'M') || (parseInt(age2) >= 19 && gender2 === 'M');
 
-if (( Aage >= 19 && Agender == 'M' ) || ( Bage >= 19 && Bgender == 'M' )) {
-    console.log(1)
-} else {
-    console.log(0)
-}
+console.log(isEligible ? 1 : 0);
