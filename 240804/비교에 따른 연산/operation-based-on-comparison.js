@@ -6,5 +6,5 @@ const [a, b] = input.split(' ').map(Number);
 if (a > b) {
     console.log(a * b)
 } else {
-    console.log(b % a)
+    console.log(parseInt(b / a))
 }
