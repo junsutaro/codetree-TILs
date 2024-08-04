@@ -7,9 +7,9 @@ let scholarship = 0;
 
 if (midterm >= 90 ) {
     if ( final >= 95) {
-        scholarship = 10;
+        scholarship = 100000;
     } else if ( final >= 90 ) {
-        scholarship = 5;
+        scholarship = 50000;
     }
 }
 
