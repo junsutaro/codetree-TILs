@@ -13,11 +13,13 @@ while(true) {
         break; 
     }
     
-    if (ages[index] < 20 || ages[index] >= 30) {
+    const age = ages[index]
+
+    if (age < 20 || age >= 30) {
         break;
     }
 
-    sum += ages[index]
+    sum += age
     count += 1
     
     index += 1
