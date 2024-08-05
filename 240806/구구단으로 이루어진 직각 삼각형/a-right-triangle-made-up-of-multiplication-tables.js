@@ -8,10 +8,7 @@ for ( let i = 0; i < n ; i ++ ) {
     arr = ''
     for ( let j = 0; j <= n - 1 - i ; j ++ ) {
         arr += `${i+1} * ${j+1} = ${(i+1)*(j+1)}`
-        if ( j == n - 1 - i ) {
-            arr += '\n'
-        }
-        else {
+        if ( j !== n - 1 - i ) {
             arr += ' / '
         }
     }
