@@ -1,9 +1,9 @@
 const fs = require('fs');
 const input = fs.readFileSync(0).toString().trim();
 
-// const n = Number(input);
+const n = Number(input);
 
-const n = 7;
+// const n = 7;
 let stars;
 
 for (let i = 0; i < n ; i ++ ) {
