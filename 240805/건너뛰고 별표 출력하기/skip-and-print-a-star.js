@@ -3,22 +3,22 @@ const input = fs.readFileSync(0).toString().trim();
 
 const n = Number(input);
 
-for ( let i = 0 ; i < 2 * n ; i++ ) {
+// 점점 증가하는 별 패턴 출력
+for (let i = 1; i <= n; i++) {
     let stars = '';
-    for ( let j = 0 ; j < 2 + i ; j += 2 ) {
-        if ( i % 2 === 0 ) {
-            stars += '*'
-        }
+    for (let j = 0; j < i; j++) {
+        stars += '*';
     }
-    console.log(stars)
+    console.log(stars);
+    console.log();  // 각 줄 사이에 빈 줄 추가
 }
 
-for ( let i = 2 * n - 2 ; i > 0 ; i-- ) {
+// 점점 감소하는 별 패턴 출력
+for (let i = n - 1; i >= 1; i--) {
     let stars = '';
-    for ( let j = i ; j > 0 ; j -= 2 ) {
-        if ( i % 2 === 0 ) {
-            stars += '*'
-        }
+    for (let j = 0; j < i; j++) {
+        stars += '*';
     }
-    console.log(stars)
+    console.log(stars);
+    console.log();  // 각 줄 사이에 빈 줄 추가
 }
