@@ -12,7 +12,7 @@ while ( currentValue < 1000 ) {
     if ( currentValue % 2 === 0 ) {
         currentValue = currentValue * 3 + 1;
     } else {
-        currentValue = currentValue * 2 + 1;
+        currentValue = currentValue * 2 + 2;
     }
 }
 
