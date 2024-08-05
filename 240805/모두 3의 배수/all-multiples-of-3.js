@@ -6,9 +6,10 @@ const numbers = input.split('\n').map(Number);
 let ans = 1
 
 for ( let i = 0 ; i < numbers.length ; i++ ) {
-    number = numbers[i];
+    const number = numbers[i];
     if ( number % 3 !== 0 ) { 
         ans = 0;
+        break;
     }
 }
 
