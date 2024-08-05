@@ -23,5 +23,5 @@ for (let i = 0; i < n; i++) {
             }
         }
     }
-    console.log(stars.trim());
+    console.log(stars);
 }
