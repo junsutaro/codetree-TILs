@@ -3,7 +3,7 @@ const input = fs.readFileSync(0).toString().trim().split('\n');
 
 const m = Number(input[0]);
 for ( let i = 0; i < m ; i ++ ) {
-    let n = input[i+1];
+    let n =  Number(input[i+1]);
     // let n = 1
 
     let cnt = 0;
