@@ -10,7 +10,6 @@ for ( let i = 0; i < m ; i ++ ) {
     let cnt = 0;
     while ( n !== 1 ) {
         if ( n === 1 ) {
-            console.log(0);
             break
         }
         if ( n % 2 === 0 ) {
