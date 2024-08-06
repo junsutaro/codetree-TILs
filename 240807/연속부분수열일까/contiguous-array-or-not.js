@@ -21,5 +21,5 @@ function isSubsequence ( A, B ) {
     return false;
 }
 
-const result = isSubsequence(A, B);
-console.log(result ? 'Yes' : 'No')
+const result = isSubsequence(A, B) ? 'Yes' : 'No';
+console.log(result)
