@@ -3,7 +3,7 @@ function quiz ( arr ) {
         console.log(numbers[arr[1] - 1]);
     }
     else if ( arr[0] === 2 ) {
-        let index = 0;
+        let index = -1;
         for ( let i = 0 ; i < n ; i ++ ) {
             if (numbers[i] === arr[1]) {
                 index = i;
