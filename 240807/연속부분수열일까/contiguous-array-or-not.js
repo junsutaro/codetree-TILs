@@ -16,7 +16,9 @@ function isSubsequence ( A, B ) {
             }
         }
 
-        return isMatch;
+        if (isMatch == true) {
+            return true
+        }
     }
     return false;
 }
