@@ -7,9 +7,13 @@ const inputArr = input.split(' ').map(Number);
 let countArr = Array(10).fill(0);
 
 for ( elem of inputArr ) {
+    if ( elem === 0 ) {
+        break
+    }
     countArr[parseInt(elem/10)] += 1
+
 }
 
-for ( let i = 1 ; i < countArr.length ; i ++ ) {
+for ( let i = 1 ; i < 10 ; i ++ ) {
     console.log(`${i} - ${countArr[i]}`)
 }
