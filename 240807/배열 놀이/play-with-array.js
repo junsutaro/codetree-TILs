@@ -1,6 +1,6 @@
 function quiz ( arr ) {
     if ( arr[0] === 1 ) {
-        console.log(numbers[arr[0] - 1]);
+        console.log(numbers[arr[1] - 1]);
     }
     else if ( arr[0] === 2 ) {
         let index = 0;
