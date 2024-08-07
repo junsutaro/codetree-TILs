@@ -10,9 +10,6 @@ for ( let i = 0 ; i < n ; i ++ ) {
 }
 
 for ( let i = 0 ; i < n ; i ++ ) {
-    let sumValue = 0;
-    for ( let j = 0 ; j < n ; j ++ ) {
-        sumValue += arr2d[i][j];
-    }
+    let sumValue = arr2d[i].reduce((acc, curr) => acc + curr, 0)
     console.log(sumValue);
 }
