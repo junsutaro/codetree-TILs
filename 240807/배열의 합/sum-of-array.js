@@ -3,7 +3,8 @@ const input = fs.readFileSync(0).toString().trim().split('\n');
 
 let arr2d = [];
 
-let n = 4;
+let n = input.length;
+
 for ( let i = 0 ; i < n ; i ++ ) {
     arr2d.push(input[i].split(' ').map(Number))
 }
