@@ -17,7 +17,7 @@ for ( let k = 0 ; k < n + m - 1 ; k ++ ) {
     } 
     else {
         for ( let i = k - m + 1 ; i < n ; i ++ ) {
-            if ( 0 <= i < n && 0 <= k-i < m ) {
+            if (i >= 0 && i < n && (k - i) >= 0 && (k - i) < m) {
                 arr2d[i][k-i] = temp;
                 temp += 1
             }
