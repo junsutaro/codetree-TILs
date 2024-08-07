@@ -2,7 +2,7 @@ const fs = require('fs');
 const input = fs.readFileSync(0).toString().trim();
 const [n, m] = input.split(' ').map(Number);
 
-let arr2d = Array(n).fill(0).map(() => Array(m).fill(0));
+let arr2d = Array.from({ length: n }, () => Array(m).fill(0));
 let temp = 1;
 
 for (let k = 0; k < n + m - 1; k++) {
