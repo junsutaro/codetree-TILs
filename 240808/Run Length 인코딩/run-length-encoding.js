@@ -12,13 +12,11 @@ for ( let i = 1 ; i < string.length ; i ++ ) {
         cnt += 1
     } else {
         afterEncoding += string[i-1] + cnt;
-        resultLength += ( 1 + cnt.toString().length );
         cnt = 1;
     }
 }
 
 afterEncoding += string[string.length-1] + cnt;
-resultLength += ( 1 + cnt.toString().length );
 
-console.log(resultLength);
+console.log(afterEncoding.length);
 console.log(afterEncoding);
