@@ -1,22 +1,26 @@
 const fs = require("fs");
-const input = fs.readFileSync(0).toString().trim();
+let input = fs.readFileSync(0).toString().trim();
 
-const string = input;
+let currChar = input[0];
+let numChar = 1;
 
-let resultLength = 0;
-let afterEncoding = '';
-let cnt = 1;
+let ans = '';
 
-for ( let i = 1 ; i < string.length ; i ++ ) {
-    if ( string[i] === string[i-1] ) {
-        cnt += 1
+for ( let i = 1 ; i < input.length ; i ++ ) {
+    let targetChar = input[i];
+    if ( targetChar === currChar ) {
+        numChar += 1;
     } else {
-        afterEncoding += string[i-1] + cnt;
-        cnt = 1;
+        ans += currChar;
+        ans += numChar
+
+        currChar = targetChar;
+        numChar = 1;
     }
 }
 
-afterEncoding += string[string.length-1] + cnt;
+ans += currChar;
+ans += numChar;
 
-console.log(afterEncoding.length);
-console.log(afterEncoding);
+console.log(ans.length);
+console.log(ans);
