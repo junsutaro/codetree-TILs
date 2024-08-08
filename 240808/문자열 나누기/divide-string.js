@@ -4,12 +4,15 @@ const input = fs.readFileSync(0).toString().trim().split('\n');
 const n = Number(input[0])
 const string = input[1].split(' ').join('');
 
-for ( let i = 0 ; i < string.length ; i += 5 ) {
-    strPart = ''
-    for ( let j = 0 ; j < 5 ; j ++ ) {
-        if ( i + j < string.length ) { 
-            strPart += string[i + j];
-        }
+
+let strPart = ''
+
+for ( let i = 0 ; i < string.length ; i ++ ) {
+    strPart += string[i];
+    if ( ( i + 1 ) % 5 === 0 ) {
+        console.log(strPart)
+        strPart = ''
     }
-    console.log(strPart)
 }
+
+console.log(strPart)
