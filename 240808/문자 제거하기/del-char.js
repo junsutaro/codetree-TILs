@@ -6,8 +6,7 @@ let str = input[0];
 const indices = input.slice(1).map(Number);
 
 for (const index of indices) {
-    if (str.length <= 1) break;
-
+    // if (str.length <= 1) break;
 
     if (index >= str.length) {
         str = str.slice(0, -1);
