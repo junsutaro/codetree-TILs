@@ -6,7 +6,7 @@ const subString = input[1];
 
 let index = -1;
 
-for ( let i = 0; i < mainString.length - subString.length ; i ++ ) {
+for ( let i = 0; i <= mainString.length - subString.length ; i ++ ) {
     let match = true;
     for ( let j = 0 ; j < subString.length ; j ++ ) {
         if ( mainString[i + j] !== subString[j] ) {
