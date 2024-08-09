@@ -14,7 +14,7 @@ function isLunarYear(year) {
 }
 
 
-if ( isLunarYear(200) === true ) {
+if ( isLunarYear(year) === true ) {
     console.log("true")
 } else {
     console.log("false")
