@@ -13,11 +13,11 @@ function isLunarYear(year) {
         return true
     }
 
-    if ( year % 400 !== 0 ) {
-        return false
+    if ( year % 400 === 0 ) {
+        return true
     }
 
-    return true
+    return false
 
 }
 
