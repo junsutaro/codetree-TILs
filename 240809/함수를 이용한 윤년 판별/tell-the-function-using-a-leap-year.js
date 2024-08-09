@@ -5,12 +5,20 @@ const year = Number(input);
 
 
 function isLunarYear(year) {
-    if ( year % 100 === 0 && year % 400 !== 0 ) { 
+    if ( year % 4 !== 0 ) {
         return false
     } 
-    if ( year % 4 === 0 ) { 
+
+    if ( year % 100 !== 0) { 
         return true
     }
+
+    if ( year % 400 !== 0 ) {
+        return false
+    }
+
+    return true
+
 }
 
 
