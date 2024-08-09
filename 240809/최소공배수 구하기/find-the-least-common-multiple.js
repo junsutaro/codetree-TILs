@@ -9,4 +9,4 @@ while ( m > 1 ) {
     [ n, m ] = [ m, n % m ]
 }
 
-console.log(a * b / m)
+console.log(a * b / n)
