@@ -5,7 +5,7 @@ const year = Number(input);
 
 
 function isLunarYear(year) {
-    if ( year % 100 === 0 && year % 400 === 0 ) { 
+    if ( year % 100 === 0 && year % 400 !== 0 ) { 
         return false
     } 
     if ( year % 4 === 0 ) { 
@@ -14,7 +14,7 @@ function isLunarYear(year) {
 }
 
 
-if ( isLunarYear(year) === true ) {
+if ( isLunarYear(200) === true ) {
     console.log("true")
 } else {
     console.log("false")
