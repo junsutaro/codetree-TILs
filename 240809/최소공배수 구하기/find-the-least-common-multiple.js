@@ -5,7 +5,7 @@ const [a, b] = input.split(' ').map(Number);
 
 let [n, m] = [a, b]
 
-while ( m > 1 ) {
+while ( m > 0 ) {
     [ n, m ] = [ m, n % m ]
 }
 
