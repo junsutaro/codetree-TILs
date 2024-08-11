@@ -20,6 +20,6 @@ function findAns(n) {
     return findAns(n-1) + findAns(parseInt(n / 3))
 }
 
-const ans = findAns(n)
+const ans = findAns(N)
 
 console.log(ans)
