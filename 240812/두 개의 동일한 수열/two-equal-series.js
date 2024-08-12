@@ -6,8 +6,8 @@ console.log("Raw Input A:", input[1]);
 
 
 const n = Number(input[0]);
-let A = input[1].split(' ').map(Number)
-let B = input[2].split(' ').map(Number)
+let A = input[1].split(' ')
+let B = input[2].split(' ')
 
 A.sort((prev, cur) => {
     return prev - cur;
@@ -17,8 +17,8 @@ B.sort((prev, cur) => {
 })
 
 
-console.log("Sorted A:", A.join(' '));
-console.log("Sorted B:", B.join(' '));
+// console.log("Sorted A:", A.join(' '));
+// console.log("Sorted B:", B.join(' '));
 
 let isEqual = true;
 for (let i = 0; i < n; i++) {
