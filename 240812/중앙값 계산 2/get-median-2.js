@@ -7,15 +7,14 @@ const numbers = input[1].split(' ').map(Number);
 
 let numbersForNow = [];
 
+let ans = ''
 for ( let i = 0 ; i < n ; i ++ ) {
-    let ans = ''
     numbersForNow.push(numbers[i]);
-    
     if ( i % 2 === 0 ) {
         numbersForNow.sort((prev, cur) => {
             return prev - cur;
         })
         ans += numbersForNow[ i / 2 ] + ' ';
     }
-    console.log(ans)
 }
+console.log(ans)
