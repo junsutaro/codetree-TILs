@@ -12,16 +12,12 @@ B.sort((prev, cur) => {
     return prev - cur;
 })
 
+let isEqual = true;
+for (let i = 0; i < n; i++) {
+    if (A[i] !== B[i]) {
+        isEqual = false;
+        break;
+    }
+}
 
-// let ans = 'Yes'
-// for ( let i = 0 ; i < n ; i ++ ) {
-//     console.log(`A = ${A[i]}`)
-//     console.log(`B = ${B[i]}`)
-//     if (A[i] !== B[i]) {
-//         ans = 'No';
-//         break;
-//     }
-// }
-
-const ans = A.join(' ') === B.join(' ') ? 'Yes' : 'No';
-console.log(ans);
+console.log(isEqual ? 'Yes' : 'No');
