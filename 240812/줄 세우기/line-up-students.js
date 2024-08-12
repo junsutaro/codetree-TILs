@@ -19,11 +19,11 @@ for (let i = 1; i <= n; i++) {
 }
 
 // 정렬: 키 내림차순, 몸무게 내림차순, 입력된 순서 오름차순
-students.sort((a, b) => {
-    b.height - a.height || 
-    b.weight - a.weight || 
-    a.index - b.index
-});
+students.sort((a, b) => 
+    b.height - a.height || // 키 내림차순
+    b.weight - a.weight || // 몸무게 내림차순
+    a.index - b.index      // 입력된 순서 오름차순
+);
 
 // 출력
 for (let student of students) {
