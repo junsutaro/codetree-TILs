@@ -6,8 +6,8 @@ console.log("Raw Input A:", input[1]);
 
 
 const n = Number(input[0]);
-let A = input[1].split(' ')
-let B = input[2].split(' ')
+let A = input[1].split(' ').trim()
+let B = input[2].split(' ').trim()
 
 A.sort((prev, cur) => {
     return prev - cur;
