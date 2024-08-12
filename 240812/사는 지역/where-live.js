@@ -6,23 +6,28 @@ class Person  {
     }
 
     toString() {
-        return `name ${this.name}\naddr ${this.addr}\ncity ${this.city}\n`;
+        return `name ${this.name}\naddr ${this.addr}\ncity ${this.city}`;
     }
 }
-
 
 const fs = require('fs');
 const input = fs.readFileSync(0).toString().trim().split('\n');
 
 const n = Number(input[0]);
 
-let people = Array(n).fill(new Person())
+let people = [];
 
 for ( let i = 0 ; i < n ; i ++ ) {
     const [name, addr, city] = input[i+1].split(' ');
-    people[i] = new Person (name, addr, city);
+    people.push(new Person (name, addr, city));
 }
 
-people.sort((a, b) => b.name.localeCompare(a.name));
+let targetIdx = 0;
+for ( let i = 0 ; i < people.length ; i ++ ) {
+    if (people[i].name > people[targetIdx].name) {
+        targetIdx = i;
+    }   
+}
 
-console.log(people[0].toString())
+
+console.log(people[targetIdx].toString())
