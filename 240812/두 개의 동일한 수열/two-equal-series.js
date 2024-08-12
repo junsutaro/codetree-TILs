@@ -15,7 +15,7 @@ B.sort((prev, cur) => {
 let ans = 'Yes'
 
 for ( let i = 0 ; i < n ; i ++ ) {
-    if (A[i] !== B[i]) {
+    if (A[i] != B[i]) {
         ans = 'No';
         break;
     }
