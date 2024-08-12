@@ -2,7 +2,7 @@ const fs = require('fs');
 const input = fs.readFileSync(0).toString().trim().split('\n');
 
 
-console.log("Raw Input A:", input[1]);
+// console.log("Raw Input A:", input[1]);
 
 
 const n = Number(input[0]);
