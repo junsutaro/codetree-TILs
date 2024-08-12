@@ -13,11 +13,12 @@ let filteredWords = [];
 // }  
 
 for ( let i = 1; i <= n ; i ++ ) {
-    if ( input[i].StartWith(T) ) {
+    if ( input[i].startsWith(T) ) {
         filteredWords.push(input[i])
     }
 }
 
+// console.log(filteredWords)
 
 function isStartWithT(str, pattern) {
     for ( let i = 0; i < pattern.length ; i ++ ) {
