@@ -1,8 +1,8 @@
 class Person {
     constructor(name, height, weight) {
         this.name = name;
-        this.height = height;
-        this.weight = weight;
+        this.height = parseInt(height);
+        this.weight = parseInt(weight);
     }
 
     toString() {
