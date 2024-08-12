@@ -12,6 +12,10 @@ arr2.sort();
 
 let ans = 'Yes';
 
+if ( arr1.length !== arr2.length ) {
+    ans = 'No'
+}
+
 for ( let i = 0; i < arr1.length ; i ++ ) {
     if ( arr1[i] !== arr2[i] ) {
         ans = 'No';
