@@ -13,8 +13,8 @@ let B = input[2].split(' ').map(Number); // 문자열을 숫자로 변환
 // 디버깅 출력: 원본 데이터와 변환된 데이터 확인
 console.log("Raw Input A:", input[1]);
 console.log("Raw Input B:", input[2]);
-console.log("Parsed A:", A);
-console.log("Parsed B:", B);
+console.log(input[1].length)
+console.log(input[2].length)
 
 // 배열 정렬
 A.sort((prev, cur) => prev - cur);
