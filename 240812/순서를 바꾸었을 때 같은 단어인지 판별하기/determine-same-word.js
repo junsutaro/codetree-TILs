@@ -8,21 +8,23 @@ let arr1 = [...str1];
 let arr2 = [...str2];
 
 
-
-let ans = 'Yes';
-
 if ( arr1.length !== arr2.length ) {
-    ans = 'No'
+    console.log('No')
 } else {
+
+    let isEqual = true;
     arr1.sort();
     arr2.sort();
 
     for ( let i = 0; i < arr1.length ; i ++ ) {
         if ( arr1[i] !== arr2[i] ) {
-            ans = 'No';
+            isEqual = false;
             break;
         } 
-}
+    }
+
+    console.log( isEqual ? 'Yes' : 'No' )
+
 }
 
 
