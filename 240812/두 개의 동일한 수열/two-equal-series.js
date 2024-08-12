@@ -13,8 +13,8 @@ B.sort((prev, cur) => {
 })
 
 
-console.log("Sorted A:", A.join(' '));
-console.log("Sorted B:", B.join(' '));
+// console.log("Sorted A:", A.join(' '));
+// console.log("Sorted B:", B.join(' '));
 
 let isEqual = true;
 for (let i = 0; i < n; i++) {
