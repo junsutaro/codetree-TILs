@@ -6,11 +6,17 @@ const [n, k, T] = input[0].split(' ');
 
 let filteredWords = [];
 
+// for ( let i = 1; i <= n ; i ++ ) {
+//     if (isStartWithT(input[i], T)) {
+//         filteredWords.push(input[i])
+//     }
+// }  
+
 for ( let i = 1; i <= n ; i ++ ) {
-    if (isStartWithT(input[i], T)) {
+    if ( input[i].StartWith(T) ) {
         filteredWords.push(input[i])
     }
-}  
+}
 
 
 function isStartWithT(str, pattern) {
