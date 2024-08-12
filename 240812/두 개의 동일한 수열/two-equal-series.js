@@ -1,5 +1,9 @@
 const fs = require('fs');
-const input = fs.readFileSync('/dev/stdin').toString().trim(' ').split('\n');
+const input = fs.readFileSync(0).toString().trim().split('\n');
+
+
+console.log("Raw Input A:", input[1]);
+
 
 const n = Number(input[0]);
 let A = input[1].split(' ').map(Number)
@@ -13,8 +17,8 @@ B.sort((prev, cur) => {
 })
 
 
-// console.log("Sorted A:", A.join(' '));
-// console.log("Sorted B:", B.join(' '));
+console.log("Sorted A:", A.join(' '));
+console.log("Sorted B:", B.join(' '));
 
 let isEqual = true;
 for (let i = 0; i < n; i++) {
