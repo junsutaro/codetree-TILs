@@ -26,7 +26,3 @@ if ( arr1.length !== arr2.length ) {
     console.log( isEqual ? 'Yes' : 'No' )
 
 }
-
-
-
-console.log(ans)
