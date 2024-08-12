@@ -1,0 +1,1 @@
+function cmp(a, b)
