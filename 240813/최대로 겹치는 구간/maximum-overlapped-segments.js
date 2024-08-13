@@ -18,7 +18,7 @@ for ( let i = 1 ; i <= n ; i ++ ) {
 
 let ans = 0;
 for ( let elem of arr ) {
-    if ( elem === 2 ) {
+    if ( elem >= 2 ) {
         ans += 1
     }
 }
