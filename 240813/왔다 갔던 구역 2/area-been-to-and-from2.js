@@ -2,8 +2,8 @@ const fs = require('fs');
 const input = fs.readFileSync(0).toString().trim().split('\n');
 
 const n = Number(input[0]);
-const OFFSET = 20;
-const arr = Array(41).fill(0);
+const OFFSET = 100;
+const arr = Array(201).fill(0);
 
 let index = OFFSET;
 
