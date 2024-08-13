@@ -8,17 +8,18 @@ const [ a, b, c, d ] = input.split(' ').map(Number);
 
 function calculateDates( a, b, c, d ) {
 
-    let elapsedDate = num_of_days[a] - b + 1;
 
-    if ( a != c ) {
+    if ( a !== c ) {
+        let elapsedDate = num_of_days[a] - b + 1;
         for ( let i = a + 1 ; i < c ; i ++ ) {
             elapsedDate += num_of_days[i]
         }
+        elapsedDate += d
+        return elapsedDate
+    } else {
+        return d - b + 1
     }
 
-    elapsedDate += d
-    
-    return elapsedDate
     
 }
 
