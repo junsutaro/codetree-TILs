@@ -5,8 +5,8 @@ const input = fs.readFileSync(0).toString().trim();
 const [ a, b, c, d ] = input.split(' ').map(Number);
 
 function calculateMinutes(a, b, c, d) {
-    const startTotalMinutes = 2 * 60 + 5;
-    const endTotalMinutes = 4 * 60 + 1;
+    const startTotalMinutes = a * 60 + b;
+    const endTotalMinutes = c * 60 + d;
 
     const elapsedTime = endTotalMinutes - startTotalMinutes;
     return elapsedTime;
