@@ -46,7 +46,7 @@ let gray = 0;
 
 for (let key in trace) {
     let elem = trace[key];
-    if (elem.white + elem.black >= 4) {
+    if (elem.white >= 2 && elem.black >= 2) {
         gray += 1;
     } else {
         if (elem.temp === 'white') {
