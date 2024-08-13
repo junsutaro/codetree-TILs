@@ -19,7 +19,7 @@ for (let i = 1; i <= n; i++) {
     }
 
     index = end;
-    console.log(visited)
+    // console.log(visited)
 }
 
 let cnt = 0;
