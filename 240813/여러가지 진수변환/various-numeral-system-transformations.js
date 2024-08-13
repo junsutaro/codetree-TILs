@@ -10,8 +10,8 @@ while (true) {
         break;
     }
 
-    digit.push(N % 4);
-    N = parseInt(N / 4)
+    digit.push(N % B);
+    N = parseInt(N / B)
 
 }
 
