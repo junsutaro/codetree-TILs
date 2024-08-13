@@ -2,35 +2,30 @@ const fs = require('fs');
 const input = fs.readFileSync(0).toString().trim().split('\n');
 
 const n = Number(input[0]);
-const arr = Array(201).fill(0);
+const visited = {};
 
-let index = 100;
+let index = 0; 
 
-for ( let i = 1; i <= n ; i ++ ) {
+for (let i = 1; i <= n; i++) {
+
     const [x, dir] = input[i].split(' ');
     const dist = Number(x);
 
-    let start = index;
-    let end = ( dir === 'R' ) ? index + dist : index - dist
+    const start = index;
+    const end = dir === 'R' ? index + dist : index - dist;
 
-    if ( start > end ) {
-        [start, end] = [end, start] 
+    for (let j = Math.min(start, end); j < Math.max(start, end); j++) {
+        visited[j] = (visited[j] || 0) + 1;
     }
 
-    for ( let j = start ; j < end ; j ++ ) {
-        arr[j] += 1;
-    }
-
-    index = ( dir === 'R' ) ? index + dist : index - dist;
-
+    index = end;
+    console.log(visited)
 }
 
 let cnt = 0;
 
-for ( let elem of arr ) {   
-    if ( elem > 1 ) {
-        cnt += 1
-    }
+for (let key in visited) {
+    if (visited[key] > 1) cnt++;
 }
 
-console.log(cnt)
+console.log(cnt);
