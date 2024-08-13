@@ -14,10 +14,10 @@ for ( let i = 1; i <= n ; i ++ ) {
 
     if (dir === 'R') {
         let start = index;
-        let end = start + distance;
-        index = end - 1;
+        let end = start + distance - 1;
+        index = end;
 
-        for ( let j = start; j < end ; j ++ ) {
+        for ( let j = start; j <= end ; j ++ ) {
             if ( !trace[j] ){
                 trace[j] = { white : 0, black : 0, temp : 'black' } 
             }
@@ -28,10 +28,10 @@ for ( let i = 1; i <= n ; i ++ ) {
 
     if (dir === 'L') {
         let start = index;
-        let end = start - distance;
-        index = end + 1; // 움직일 때 자기 위치를 포함해야함
+        let end = start - distance + 1;
+        index = end; // 움직일 때 자기 위치를 포함해야함
 
-        for ( let j = start; j > end ; j -- ) {
+        for ( let j = start; j >= end ; j -- ) {
             if ( !trace[j] ){
                 trace[j] = { white : 0, black : 0, temp : 'white' } 
             }
@@ -39,7 +39,7 @@ for ( let i = 1; i <= n ; i ++ ) {
             trace[j].temp = 'white'
         }
     }
-    
+    // console.log(index)
     // console.log(trace)
 }
 
