@@ -1,67 +1,62 @@
 const fs = require('fs');
-    const input = fs.readFileSync(0).toString().trim().split('\n');
+const input = fs.readFileSync(0).toString().trim().split('\n');
 
-    const n = Number(input[0]);
-    const visited = {};
+const n = Number(input[0]);
 
-    let index = 0; 
-    for (let i = 1; i <= n; i++) {
+let trace = {};
+let index = 0
 
-        const [x, dir] = input[i].split(' ');
-        const dist = Number(x);
+for ( let i = 1; i <= n ; i ++ ) {
+    let dist = Number(input[i].split(' ')[0])
+    let dir = input[i].split(' ')[1]
 
-        const start = index;
-        const end = dir === 'R' ? index + dist : index - dist;
+    if (dir === 'R') {
+        let start = index;
+        let end = index + dist - 1;
+        index = index + dist - 1;
 
-        for (let j = Math.min(start, end); j < Math.max(start, end); j++) {
-            visited[j] = (visited[j] || 0) + 1;
-        }
-
-        index = end;
-        
-        // console.log(visited)
-    }
-
-    let black = 0;
-    let white = 0;
-    let gray = 0;
-
-    for (let key in visited) {
-        if (visited[key] > 3) {
-            gray += 1;
-        }
-        else {
-            if ( key === '0' ) {
-                if ( input[1].split(' ')[1] === 'R') {
-                    if ( visited[key] % 2 === 0 ) {
-                        white += 1
-                    } else {
-                        black += 1;
-                    }
-                } else {
-                    if ( visited[key] % 2 === 0 ) {
-                        black += 1
-                    } else {
-                        white += 1;
-                    }                
-                }
-            } else if ( Number(key) > 0 ) {
-                if (visited[key] % 2 === 0) {
-                    white += 1;
-                } else {
-                    black += 1;
-                }
-            } else {
-                if (visited[key] % 2 === 0) {
-                    black += 1;
-                } else {
-                    white += 1;
-                }
-
+        for ( let j = start ; j <= end ; j ++ ) {
+            if (!trace[j]) {
+                trace[j] = { white: 0, black: 0, temp : 'black' }; // trace[j] 초기화
             }
+            trace[j].black += 1
+            trace[j].temp = 'black'
+
         }
-        // console.log(white, black, gray);
+    } if ( dir === 'L' ) {
+        let start = index - dist + 1
+        let end = index
+        index = index - dist + 1;
 
+
+        for ( let j = start ; j <= end ; j ++ ) {
+            if (!trace[j]) {
+                trace[j] = { white: 0, black: 0, temp : 'white' }; // trace[j] 초기화
+            }
+            trace[j].white += 1
+            trace[j].temp = 'white'
+        }
+        
     }
+}
 
-    console.log(white, black, gray);
+let black = 0;
+let white = 0;
+let gray = 0; 
+
+for (let key in trace) {
+    let elem = trace[key];
+    if (elem.white + elem.black >= 4) {
+        gray += 1;
+    } else {
+        if (elem.temp === 'white') {
+            white += 1;
+        } else {
+            black += 1;
+        }
+    }
+}
+
+
+
+console.log(white, black, gray)
