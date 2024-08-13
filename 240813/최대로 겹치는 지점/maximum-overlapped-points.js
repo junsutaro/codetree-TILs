@@ -3,7 +3,7 @@ const input = fs.readFileSync(0).toString().trim().split('\n');
 
 const n = Number(input[0]);
 
-const arr = Array(100).fill(0);
+const arr = Array(101).fill(0);
 
 for ( let i = 1; i <= n ; i ++ ) {
     const [start, end] = input[i].split(' ').map(Number);
