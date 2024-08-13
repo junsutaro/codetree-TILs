@@ -1,26 +1,20 @@
 const fs = require('fs');
 const input = fs.readFileSync(0).toString().trim().split('\n');
 
-// 첫 번째 줄에서 N과 K를 읽어옵니다.
 const n = Number(input[0]);
-const arr = []
 
-for ( let i = 1 ; i <= n ; i ++ ) {
+// 범위를 충분히 넓게 설정합니다. (-100~100)
+const OFFSET = 100;
+const arr = Array(201).fill(0); // 배열을 초기화합니다.
+
+for (let i = 1; i <= n; i++) {
     const [start, end] = input[i].split(' ').map(Number);
-    for ( j = start ; j < end ; j ++ ) {
-        if ( arr[j] ) {
-            arr[j] += 1
-        } else {
-            arr[j] = 1;
-        }
+
+    for (let j = start + OFFSET; j < end + OFFSET; j++) {
+        arr[j]++;
     }
 }
 
-let ans = 0;
-for ( let elem of arr ) {
-    if ( elem >= 2 ) {
-        ans += 1
-    }
-}
-
-console.log(ans)
+// 배열의 최대값을 찾습니다.
+const maxBlocks = Math.max(...arr);
+console.log(maxBlocks);
