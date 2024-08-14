@@ -26,7 +26,6 @@ for (let i = 0; i < n; i++) {
 
 let timeB = 0;
 let positionB = 0;
-
 let count = 0;
 
 for (let i = n; i < n + m; i++) {
@@ -42,7 +41,7 @@ for (let i = n; i < n + m; i++) {
         }
         moveB[timeB] = positionB;
 
-        if (moveA[timeB] !== undefined && moveA[timeB] === moveB[timeB]) {
+        if (moveA[timeB] === moveB[timeB]) {
             if (moveA[timeB - 1] !== moveB[timeB - 1]) {
                 count += 1;
             }
