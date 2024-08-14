@@ -53,9 +53,11 @@ for ( let i = n; i < n + m ; i ++ ) {
 }
 
 
+
 if ( timeA < timeB ) {
+    const lastPositionOfA = moveA[timeA]
     for ( let i = timeA + 1 ; i <= timeB ; i ++ ) {
-        if ( moveB[i] === moveA[timeA] ) { 
+        if ( moveB[i] === lastPositionOfA ) { 
             count += 1
         }
     }
