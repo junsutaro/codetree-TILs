@@ -43,7 +43,12 @@ for ( let i = N + 1 ; i <= N + M ; i ++ ) {
             firstMeetTime = timeB;
             break;
         }
+        
     }
+    
+    if (firstMeetTime !== -1) break;
+
+
 }
 
 console.log(firstMeetTime)
