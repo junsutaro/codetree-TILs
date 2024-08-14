@@ -5,7 +5,7 @@ const [n , t] = input[0].split(' ').map(Number);
 const numbers = input[1].split(' ').map(Number);
 
 
-let maxVal = 1;
+let maxVal = 0;
 let count = 1;
 
 for ( let i = 0 ; i < n-1 ; i ++ ) {
