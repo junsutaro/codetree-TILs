@@ -5,7 +5,7 @@ const n = Number(input[0]);
 let maxVal = 1;
 let count = 1;
 for ( let i = 1 ; i <= n-1 ; i ++) {
-    if (input[i] < input[i+1]) {
+    if ( Number(input[i]) < Number(input[i+1])) {
         count += 1;
         if ( count > maxVal ) {
             maxVal = count;
