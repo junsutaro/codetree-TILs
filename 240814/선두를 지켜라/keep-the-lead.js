@@ -45,6 +45,10 @@ let flag = null;
 
 for ( let key in diffMoveAandB ) {
     let currentDiff = diffMoveAandB[key];
+    
+    if ( currentDiff === 0 ) {
+        continue;
+    }
 
     if (flag === null) {
         flag = currentDiff > 0;
