@@ -9,18 +9,18 @@ const moveB = {};
 
 let timeA = 0;
 let positionA = 0;
-for ( let i = 0; i < n ; i ++ ) {
+for (let i = 0; i < n; i++) {
     const t = Number(moves[i][0]);
     const dir = moves[i][1];
 
-    for ( let j = 0 ; j < t ; j ++ ) {
-        timeA += 1
-        if ( dir === 'R') {
+    for (let j = 0; j < t; j++) {
+        timeA += 1;
+        if (dir === 'R') {
             positionA += 1;
         } else {
             positionA -= 1;
         }
-        moveA[timeA] = positionA
+        moveA[timeA] = positionA;
     }
 }
 
@@ -29,40 +29,37 @@ let positionB = 0;
 
 let count = 0;
 
-for ( let i = n; i < n + m ; i ++ ) {
+for (let i = n; i < n + m; i++) {
     const t = Number(moves[i][0]);
     const dir = moves[i][1];
 
-    for ( let j = 0 ; j < t ; j ++ ) {
-        timeB += 1
-        if ( dir === 'R') {
+    for (let j = 0; j < t; j++) {
+        timeB += 1;
+        if (dir === 'R') {
             positionB += 1;
         } else {
             positionB -= 1;
         }
-        moveB[timeB] = positionB
+        moveB[timeB] = positionB;
 
-        if ( moveA[timeB] === moveB[timeB] ) {
-            // console.log(timeB, moveA[timeB], moveB[timeB])
-            // console.log(timeB-1, moveA[timeB-1], moveB[timeB-1])
+        if (moveA[timeB] !== undefined && moveA[timeB] === moveB[timeB]) {
             if (moveA[timeB - 1] !== moveB[timeB - 1]) {
-                count += 1
-            } 
+                count += 1;
+            }
         }
     }
 }
 
+if (timeA < timeB) {
+    const lastPositionOfA = moveA[timeA];
+    let lastCheckedPosition = null;
 
-
-if ( timeA < timeB ) {
-    const lastPositionOfA = moveA[timeA]
-    for ( let i = timeA + 1 ; i <= timeB ; i ++ ) {
-        if ( moveB[i] === lastPositionOfA ) { 
-            count += 1
+    for (let i = timeA + 1; i <= timeB; i++) {
+        if (moveB[i] === lastPositionOfA && moveB[i] !== lastCheckedPosition) {
+            count += 1;
+            lastCheckedPosition = moveB[i];
         }
     }
 }
 
-// console.log(moveA)
-// console.log(moveB)
-console.log(count)
+console.log(count);
