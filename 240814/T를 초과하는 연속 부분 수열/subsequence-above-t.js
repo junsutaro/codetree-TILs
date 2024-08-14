@@ -13,12 +13,10 @@ for ( let i = 0 ; i < n-1 ; i ++ ) {
         count = 1;
         continue;
     }
-    if ( numbers[i] < numbers[i + 1] ) {
         count += 1;
         if ( count > maxVal ) {
             maxVal = count;
         }
-    }
 }
 
 console.log(maxVal)
