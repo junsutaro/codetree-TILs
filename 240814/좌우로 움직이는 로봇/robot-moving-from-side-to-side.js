@@ -52,8 +52,9 @@ for ( let i = n; i < n + m ; i ++ ) {
     }
 }
 
+
 if ( timeA < timeB ) {
-    for ( let i = timeA + 1 ; i < timeB ; i ++ ) {
+    for ( let i = timeA + 1 ; i <= timeB ; i ++ ) {
         if ( moveB[i] === moveA[timeA] ) { 
             count += 1
         }
