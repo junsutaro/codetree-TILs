@@ -6,17 +6,18 @@ const numbers = input[1].split(' ').map(Number);
 
 
 let maxVal = 0;
-let count = 1;
+let count = 0;
 
-for ( let i = 0 ; i < n-1 ; i ++ ) {
+for ( let i = 0 ; i < n ; i ++ ) {
     if ( numbers[i] <= t ) {
-        count = 1;
+        count = 0;
         continue;
     }
-        count += 1;
-        if ( count > maxVal ) {
-            maxVal = count;
-        }
+    count += 1;
+    if ( count > maxVal ) {
+        maxVal = count;
+    }
+
 }
 
 console.log(maxVal)
