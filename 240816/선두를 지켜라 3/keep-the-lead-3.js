@@ -33,7 +33,7 @@ let maxTime = timeA > timeB ? timeA : timeB;
 count = 0;
 
 for ( let i = 1 ; i <= maxTime ; i ++ ) {
-    if ( posA[i] - posB[i] ) {
+    if ( posA[i] - posB[i] > 0 ) {
         temp = 'A';
     } else if ( posA[i] === posB[i] ) {
         temp = 'AB';
