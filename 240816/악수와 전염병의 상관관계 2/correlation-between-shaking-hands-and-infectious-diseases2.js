@@ -2,45 +2,54 @@ const fs = require('fs');
 const input = fs.readFileSync(0).toString().trim().split('\n');
 
 // N 개발자 수, 숙주가 K번 악수 까지만 전염, P첫 숙주, T번 악수
-const [N, K, P, T] = input[0].split(' ').map(Number);
-const handShakes = input.slice(1).map((line) => line.trim().split(' ').map(Number));
+const [n, k, p, t] = input[0].split(' ').map(Number);
+// const handShakes = input.slice(1).map((line) => line.trim().split(' ').map(Number));
 
-// sort by time
-function cmp (a, b) {
-    return a[0] - b[0];
-}
-handShakes.sort(cmp)
-
-// Check virus , if virusPoint > K => can't infect
-const virusCheck = Array(N+1).fill(0);
-virusCheck[P] = 1;
-
-// Count virus infect
-count = 0;
-
-function infectFunction(x, y) {
-    if ( virusCheck[x] > 0 && virusCheck[y] > 0 ) {
-        virusCheck[x] += 1;
-        virusCheck[y] += 1
-    }
-
-    else if ( (0 < virusCheck[x] && virusCheck[x] < K + 1) && (virusCheck[y] === 0) ) {
-        virusCheck[x] += 1;
-        virusCheck[y] += 1
-
-    }
-
-    else if ( (virusCheck[x] === 0) && (0 < virusCheck[y] && virusCheck[y] < K + 1) ) {
-        virusCheck[x] += 1;
-        virusCheck[y] += 1
+class Shake {
+    constructor(time, person1, person2) {
+        this.time = time;
+        this.person1 = person1;
+        this.person2 = person2;
     }
 }
+const shakes = [];
 
-for ( let i = 0 ; i < T ; i ++ ) {
-    const [t, x, y] = handShakes[i];
-    infectFunction(x, y); // use VirusCheck array
+for ( let i = 1 ; i <= t ; i ++ ) {
+    const [time, person1, person2] = input[i].split(' ').map(Number);
+    shakes.push(new Shake(time, person1, person2)) ;
 }
 
-const ans = virusCheck.map((value) => (value !== 0 ? 1 : 0 ))
+const infected = Array(n + 1).fill(false);
+const shakeNum = Array(n + 1).fill(0);
 
-console.log(ans.slice(1).join(''))
+infected[p] = true;
+
+shakes.sort((a, b) => a.time - b.time)
+
+// console.log(shakes)
+
+shakes.forEach(shake => {
+    const target1 = shake.person1;
+    const target2 = shake.person2;
+
+    if ( infected[target1]) {
+        shakeNum[target1] += 1
+    }
+    if ( infected[target2]) {
+        shakeNum[target2] += 1
+    }
+
+    if (shakeNum[target1] <= k && infected[target1]) {
+        infected[target2] = true;
+    }
+    if (shakeNum[target2] <= k && infected[target2]) {
+        infected[target1] = true;
+    }
+})
+
+let output = "";
+for ( let i = 1; i <= n; i ++ ) {
+    output += infected[i] ? 1 : 0;
+}
+
+console.log(output)
