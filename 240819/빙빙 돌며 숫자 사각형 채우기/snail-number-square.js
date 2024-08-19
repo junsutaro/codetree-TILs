@@ -24,15 +24,14 @@ for ( let i = 0 ; i < n * m - 1; i ++ ) {
 
     if (!isRange(nx, ny) || grid[nx][ny] !== 0) {
         curDir = (curDir + 1) % 4;
+        nx = x + dx[curDir];
+        ny = y + dy[curDir];
     }
-
-
     
-    x += dx[curDir];
-    y += dy[curDir];
-    
-    grid[x][y] = temp
 
+    x = nx;
+    y = ny;
+    grid[x][y] = temp;
 }
 
 for ( let i = 0; i < m ; i ++ ) {
