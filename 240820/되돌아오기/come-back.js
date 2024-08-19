@@ -32,7 +32,7 @@ for ( let i = 1; i <= n ; i ++ ) {
             break
         }
     }
-    if (findAns === false) {
+    if (findAns === true) {
         break
     }
 } 
