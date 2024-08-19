@@ -17,8 +17,7 @@ let x = 0, y = 0;
 let charCode = 'A'.charCodeAt(0); 
 
 for ( let i = 1 ; i <= n * m ; i ++ ) {
-    grid[x][y] = String.fromCharCode(charCode);
-    charCode = charCode === 'Z'.charCodeAt(0) ? 'A'.charCodeAt(0) : charCode + 1;
+    grid[x][y] = String.fromCharCode((i-1 % 26) + 'A'.charCodeAt(0));
 
     const nx = x + dx[dir];
     const ny = y + dy[dir];
