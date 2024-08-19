@@ -15,28 +15,20 @@ let x = 0, y = 0;
 let time = 0;
 
 
-let findAns = false;
-
-for ( let i = 1; i <= n ; i ++ ) {
-    const dir = input[i].split(' ')[0];
+for (let i = 1; i <= n; i++) {
+    const [dir, dist] = input[i].split(' ');
     const curDir = dirMapping[dir];
-    const dist = Number(input[i].split(' ')[1]);
+    const distance = Number(dist);
     
-    for ( let j = 0 ; j < dist ; j ++ ) {
+    for ( let j = 0 ; j < distance ; j ++ ) {
         time += 1;
         x += dx[curDir];
         y += dy[curDir];
         if ( x === 0 && y === 0) {
             console.log(time);
-            findAns = true;
-            break
+            return;
         }
-    }
-    if (findAns === true) {
-        break
     }
 } 
 
-if (!findAns) {
-    console.log(-1)
-    }
+console.log(-1)
