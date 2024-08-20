@@ -12,9 +12,6 @@ for ( let i = 1; i <= n ; i ++ ) {
     }
 }
 
-//       down right up left
-const dx = [1, 0, -1, 0];
-const dy = [0, 1, 0, -1];
 
 let curDir = parseInt(startPoint / n);
 
@@ -34,10 +31,14 @@ if (curDir === 0) {
     curY = 1;
 }
 
-// console.log(curX, curY)
+//       down right up left
+const dx = [1, 0, -1, 0];
+const dy = [0, 1, 0, -1];
 
 let count = 0;
 let x = curX, y = curY;
+
+// console.log(curDir)
 while (x > 0 && x <= n && y > 0 && y <= n) {
     const curMirror = mirror[x][y] 
     count += 1;
@@ -47,7 +48,7 @@ while (x > 0 && x <= n && y > 0 && y <= n) {
         } else {
             curDir = ( curDir + 3 )% 4;
         }
-    } else {
+    } else if ( curMirror === '/') {
         if ( curDir === 0 || curDir === 2 ) {
             curDir = ( curDir + 3 ) % 4;
         } else {
@@ -56,7 +57,7 @@ while (x > 0 && x <= n && y > 0 && y <= n) {
     }
     x += dx[curDir];
     y += dy[curDir];
-
+    // console.log(curDir)
 }
 
 console.log(count)
