@@ -33,5 +33,5 @@ for (let i = 0 ; i < commands.length ; i ++ ) {
             sum += grid[curX][curY];
         }
     }
-    console.log(sum)
 }
+    console.log(sum)
