@@ -2,7 +2,9 @@ const fs = require('fs');
 const input = fs.readFileSync(0).toString().trim().split('\n');
 
 const n = Number(input[0]);
+// const startPoint = 6;
 const startPoint = Number(input[n+1])
+
 
 const mirror = [...Array(n+2)].map(() => Array(n+2).fill(0));
 
@@ -13,7 +15,7 @@ for ( let i = 1; i <= n ; i ++ ) {
 }
 
 
-let curDir = parseInt(startPoint / n);
+let curDir = parseInt((startPoint - 1) / n);
 
 let curX;
 let curY;
@@ -31,32 +33,34 @@ if (curDir === 0) {
     curY = 1;
 }
 
-//       down right up left
+//       down left up right
 const dx = [1, 0, -1, 0];
-const dy = [0, 1, 0, -1];
+const dy = [0, -1, 0, 1];
 
 let count = 0;
 let x = curX, y = curY;
 
+// console.log(x, y)
 // console.log(curDir)
 while (x > 0 && x <= n && y > 0 && y <= n) {
     const curMirror = mirror[x][y] 
     count += 1;
     if ( curMirror === '\\') {
         if ( curDir === 0 || curDir === 2 ) {
-            curDir = ( curDir + 1 ) % 4;
+            curDir = ( curDir + 3 ) % 4;
         } else {
-            curDir = ( curDir + 3 )% 4;
+            curDir = ( curDir + 1 )% 4;
         }
     } else if ( curMirror === '/') {
         if ( curDir === 0 || curDir === 2 ) {
-            curDir = ( curDir + 3 ) % 4;
-        } else {
             curDir = ( curDir + 1 ) % 4;
+        } else {
+            curDir = ( curDir + 3 ) % 4;
         }
     }
     x += dx[curDir];
     y += dy[curDir];
+    // console.log(x, y)
     // console.log(curDir)
 }
 
