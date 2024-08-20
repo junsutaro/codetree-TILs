@@ -2,66 +2,50 @@ const fs = require('fs');
 const input = fs.readFileSync(0).toString().trim().split('\n');
 
 const n = Number(input[0]);
-// const startPoint = 6;
-const startPoint = Number(input[n+1])
+const startPoint = Number(input[n+1]);
 
+const mirror = Array.from({ length: n + 2 }, () => Array(n + 2).fill(0));
 
-const mirror = [...Array(n+2)].map(() => Array(n+2).fill(0));
-
-for ( let i = 1; i <= n ; i ++ ) {
-    for ( let j = 0; j < n ; j ++ ) {
-        mirror[i][j+1] = input[i][j]
+for (let i = 1; i <= n; i++) {
+    for (let j = 0; j < n; j++) {
+        mirror[i][j + 1] = input[i][j];
     }
 }
 
+let curDir = Math.floor((startPoint - 1) / n);
+let curX, curY;
 
-let curDir = parseInt((startPoint - 1) / n);
-
-let curX;
-let curY;
 if (curDir === 0) {
     curX = 1;
-    curY = startPoint % n === 0 ? n : startPoint % n; 
-} else if ( curDir === 1 ) {
-    curX = startPoint % n === 0 ? n : startPoint % n; 
+    curY = startPoint % n || n;
+} else if (curDir === 1) {
+    curX = startPoint % n || n;
     curY = n;
-} else if ( curDir === 2 ) {
+} else if (curDir === 2) {
     curX = n;
-    curY = startPoint % n === 0 ? 1 : n + 1 - (startPoint % n) 
+    curY = n + 1 - (startPoint % n || n);
 } else {
-    curX = startPoint % n === 0 ? 1 : n + 1 - (startPoint % n) 
+    curX = n + 1 - (startPoint % n || n);
     curY = 1;
 }
 
-//       down left up right
+// Directions: down, left, up, right
 const dx = [1, 0, -1, 0];
 const dy = [0, -1, 0, 1];
 
 let count = 0;
 let x = curX, y = curY;
 
-// console.log(x, y)
-// console.log(curDir)
 while (x > 0 && x <= n && y > 0 && y <= n) {
-    const curMirror = mirror[x][y] 
-    count += 1;
-    if ( curMirror === '\\') {
-        if ( curDir === 0 || curDir === 2 ) {
-            curDir = ( curDir + 3 ) % 4;
-        } else {
-            curDir = ( curDir + 1 )% 4;
-        }
-    } else if ( curMirror === '/') {
-        if ( curDir === 0 || curDir === 2 ) {
-            curDir = ( curDir + 1 ) % 4;
-        } else {
-            curDir = ( curDir + 3 ) % 4;
-        }
+    count++;
+    const curMirror = mirror[x][y];
+    if (curMirror === '\\') {
+        curDir = curDir ^ 1; // toggle between horizontal (0,2) and vertical (1,3)
+    } else if (curMirror === '/') {
+        curDir = (curDir + 3) % 4; // toggle in the opposite way
     }
     x += dx[curDir];
     y += dy[curDir];
-    // console.log(x, y)
-    // console.log(curDir)
 }
 
-console.log(count)
+console.log(count);
