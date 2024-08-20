@@ -13,25 +13,35 @@ const startY = parseInt(n / 2);
 let curX = startX;
 let curY = startY;
 
-const dx = [-1, 0, 1, 0];
-const dy = [0, 1, 0, -1];
-
 let sum = grid[curX][curY];
 let curDir = 0;
 
-for (let i = 0 ; i < commands.length ; i ++ ) {
-    if ( commands[i] === 'R') {
-        curDir = ( curDir + 1 ) % 4;
-    } else if ( commands[i] === 'L' ) {
-        curDir = ( curDir + 3 ) % 4;
-    } else {
-        const nx = curX + dx[curDir];
-        const ny = curY + dy[curDir];
-        if ( 0 <= nx && nx < n && 0 <= ny && ny < n ) {
-            curX = nx;
-            curY = ny;
-            sum += grid[curX][curY];
+function isRange(x, y) {
+    return 0 <= x && x < n && 0 <= y && y < n;
+}
+
+
+function simulate() {
+    const dx = [-1, 0, 1, 0];
+    const dy = [0, 1, 0, -1]
+
+    for (let command of commands) {
+        if ( command === 'R' ) {
+            curDir = ( curDir + 1) % 4;
+        } else if ( command === 'L' ) {
+            curDir = ( curDir + 3 ) % 4;
+        } else { 
+            const nx = curX + dx[curDir];
+            const ny = curY + dy[curDir];
+            if ( isRange(nx,ny) ) {
+                curX = nx;
+                curY = ny;
+                sum += grid[curX][curY];
+            }
         }
     }
 }
-    console.log(sum)
+
+simulate();
+
+console.log(sum)
