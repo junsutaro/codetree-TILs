@@ -15,7 +15,7 @@ for ( let i = 1 ; i < r - 2 ; i ++ ) {
         if ( arr[i][j] !== arr[0][0] ) ;
         for ( let k = i + 1 ; k < r - 1 ; k ++ ) {
             for ( let m = j + 1 ; m < c - 1 ; m ++ ) {
-                if ( arr[k][m] !== arr[i][j]) {
+                if ( arr[k][m] === arr[0][0]) {
                     count += 1;
                     continue;
                 }
