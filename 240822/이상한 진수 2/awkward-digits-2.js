@@ -27,6 +27,13 @@ for ( let i = 0; i < numbers.length ; i ++ ) {
             maxVal = tempVal
         }
         numbers[i] = 0;
+    } else {
+        numbers[i] = 0;
+        const tempVal = calDigit(numbers);
+        if ( tempVal > maxVal ) {
+            maxVal = tempVal
+        }
+        numbers[i] = 1;
     }
 }
 
