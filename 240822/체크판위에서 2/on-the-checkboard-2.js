@@ -4,6 +4,10 @@ const input = fs.readFileSync(0).toString().trim().split('\n');
 const [r, c] = input[0].split(' ').map(Number);
 const arr = input.slice(1).map((line) => line.trim().split(' '));
 
+if ( arr[r-1][c-1] === arr[0][0] ) {
+    console.log(0);
+    return;
+}
 let count = 0;
 for ( let i = 1 ; i < r - 2 ; i ++ ) {
     for ( let j = 1 ; j < c - 2 ; j ++ ) {
