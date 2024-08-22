@@ -1,7 +1,7 @@
 const fs = require('fs');
 const input = fs.readFileSync(0).toString().trim();
 
-let maxVal = parseInt(input, 2);
+let maxVal = 0;
 const numbers = input.split('').map(Number);
 
 
