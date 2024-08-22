@@ -4,20 +4,22 @@ const input = fs.readFileSync(0).toString().trim().split('\n');
 const [r, c] = input[0].split(' ').map(Number);
 const arr = input.slice(1).map((line) => line.trim().split(' '));
 
-if ( arr[0][0] === arr[r-1][c-1] ) {
-    console.log(0);
-    return;
-}
-
 let count = 0;
 for ( let i = 1 ; i < r - 2 ; i ++ ) {
     for ( let j = 1 ; j < c - 2 ; j ++ ) {
-        if ( arr[i][j] !== arr[0][0] ) ;
-        for ( let k = i + 1 ; k < r - 1 ; k ++ ) {
-            for ( let m = j + 1 ; m < c - 1 ; m ++ ) {
-                if ( arr[k][m] === arr[0][0]) {
-                    count += 1;
-                    continue;
+        if ( arr[i][j] !== arr[0][0] ) {
+            for ( let k = i + 1 ; k < r - 1 ; k ++ ) {
+                for ( let l = j + 1 ; l < c - 1 ; l ++ ) {
+                    if ( arr[k][l] !== arr[i][j] ) {
+                        for ( let m = k + 1; m < r ; m ++ ) {
+                            for ( let n = l + 1 ; n < c ; n ++ ) {
+                                if ( arr[m][n] !== arr[k][l] ) {
+                                    count += 1;
+                                    continue;
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
