@@ -5,7 +5,7 @@ let maxVal = parseInt(input, 2);
 const numbers = input.split('').map(Number);
 
 
-if (numbers === '1') {
+if (input === '1') {
     console.log(0);
     return;
 }
