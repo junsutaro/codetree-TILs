@@ -11,14 +11,8 @@ for ( let i = 1 ; i < r - 2 ; i ++ ) {
             for ( let k = i + 1 ; k < r - 1 ; k ++ ) {
                 for ( let l = j + 1 ; l < c - 1 ; l ++ ) {
                     if ( arr[k][l] !== arr[i][j] ) {
-                        for ( let m = k + 1; m < r ; m ++ ) {
-                            for ( let n = l + 1 ; n < c ; n ++ ) {
-                                if ( arr[m][n] !== arr[k][l] ) {
-                                    count += 1;
-                                    continue;
-                                }
-                            }
-                        }
+                        count += 1;
+                        continue
                     }
                 }
             }
