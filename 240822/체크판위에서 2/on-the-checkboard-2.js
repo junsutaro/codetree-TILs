@@ -2,7 +2,7 @@ const fs = require('fs');
 const input = fs.readFileSync(0).toString().trim().split('\n');
 
 const [r, c] = input[0].split(' ').map(Number);
-const arr = input.slice(1).map((line) => line.split(' '));
+const arr = input.slice(1).map((line) => line.trim().split(' '));
 
 if ( arr[0][0] === arr[r-1][c-1] ) {
     console.log(0);
