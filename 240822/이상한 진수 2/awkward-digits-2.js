@@ -16,9 +16,7 @@ function calDigit(numbers) {
 for ( let i = 0; i < numbers.length ; i ++ ) {
         numbers[i] = 1 - numbers[i];
         const tempVal = calDigit(numbers);
-        if ( tempVal > maxVal ) {
-            maxVal = tempVal
-        }
+        maxVal = Math.max(maxVal, tempVal)
         numbers[i] = 1 - numbers[i];
 }
 
