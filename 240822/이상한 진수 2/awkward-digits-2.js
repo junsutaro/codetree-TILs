@@ -4,6 +4,12 @@ const input = fs.readFileSync(0).toString().trim();
 let maxVal = parseInt(input, 2);
 const numbers = input.split('').map(Number);
 
+
+if (numbers === '1') {
+    console.log(0);
+    return;
+}
+
 function calDigit(numbers) {
     let val = 0;
     for ( let i = 0 ; i < numbers.length ; i ++ ) {
