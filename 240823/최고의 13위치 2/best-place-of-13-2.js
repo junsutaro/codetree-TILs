@@ -26,6 +26,18 @@ for ( let i = 0; i < N - 1 ; i ++ ) {
             }
         }
 
+        if ( j < N - 5 ) {
+            for ( let newJ = j + 3 ; newJ < N - 2 ; newJ ++ ) {
+                let totalCount = count;
+                for ( let count = 0; count < 3 ; count ++ ) {
+                    if ( arr[i][newJ] === 1 ) {
+                        totalCount += 1;
+                    }
+                }
+                ans = Math.max(totalCount, ans)
+            }
+        }
+
         // console.log(count)
 
         for ( let m = i + 1 ; m < N ; m ++ ) {
