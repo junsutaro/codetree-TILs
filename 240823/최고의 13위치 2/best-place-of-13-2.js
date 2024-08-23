@@ -4,31 +4,26 @@ const input = fs.readFileSync(0).toString().trim().split('\n');
 const N = Number(input[0]);
 const arr = input.slice(1).map((line) => line.split(' ').map(Number));
 
+function isRange(x, y) {
+    return 0 <= x && x < N && 0 <= y && y < N ;
+}
+
+function isNotOverlap(x1, y1, x2, y2) {
+    return x1 === x2 && y1 + 3 < y2 && y2 < N;
+}
+
 // console.log(arr)
 const MIN_NUM = Number.MIN_SAFE_INTEGER
 let ans = MIN_NUM;
 
 for ( let i = 0; i < N - 1 ; i ++ ) {
-    for ( let j = 0 ; j < N - 2 ; j ++ ) {
+    for ( let j = 0 ; j < N ; j ++ ) {
 
         let count = 0;
         for ( let k1 = 0 ; k1 < 3 ; k1 ++ ) {
             if (arr[i][j+k1] === 1) {
                 count += 1;
             }
-        }
-
-        if ( j < N - 5 ) {
-            let totalCount = count;
-            for ( let newJ = j + 3 ; j < N - 2 ; k ++) {
-                for ( let k = 0; k < 3 ; k ++ ) {
-                    
-                    if ( arr[i][newJ+k ] === 1) {
-                        totalCount += 1;
-                    }
-                }
-            }
-            ans = Math.max(totalCount, ans)
         }
 
         // console.log(count)
