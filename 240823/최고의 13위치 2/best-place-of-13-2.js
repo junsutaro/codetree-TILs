@@ -30,7 +30,7 @@ for ( let i = 0; i < N - 1 ; i ++ ) {
             for ( let newJ = j + 3 ; newJ < N - 2 ; newJ ++ ) {
                 let totalCount = count;
                 for ( let count = 0; count < 3 ; count ++ ) {
-                    if ( arr[i][newJ] === 1 ) {
+                    if ( arr[i][newJ + count] === 1 ) {
                         totalCount += 1;
                     }
                 }
