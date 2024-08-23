@@ -11,7 +11,9 @@ let ans = MAX_NUM;
 
 for ( let i = 0 ; i < n - 1 ; i ++ ) {
     for ( let j = i + 1 ; j < n ; j ++ ) {
-        ans = Math.min(ans, Math.abs((sumOfNumbers - numbers[i] - numbers[j]) - s ))
+        const newSum = sumOfNumbers - numbers[i] - numbers[j]
+        const diff = Math.abs(newSum - s)
+        ans = Math.min(ans, diff)
     }
 }
 
