@@ -18,6 +18,16 @@ for ( let i = 0; i < N - 1 ; i ++ ) {
             }
         }
 
+        for ( m = j + 3 ; j < N - 2 ; j ++ ) {
+            let totalCount = count;
+            for ( let k2 = 0 ; k2 < 3 ; k2 ++ ) {
+                if (arr[i][m+k2] === 1 ) {
+                    totalCount += 1;
+                }
+            }
+            ans = Math.max(totalCount, ans)
+        }
+
         // console.log(count)
 
         for ( let m = i + 1 ; m < N ; m ++ ) {
@@ -34,6 +44,7 @@ for ( let i = 0; i < N - 1 ; i ++ ) {
 
             }
         }
+
 
 
     }
