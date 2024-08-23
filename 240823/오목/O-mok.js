@@ -35,6 +35,18 @@ for ( let i = 0 ; i < 19 ; i ++ ) {
     }
 }
 
+// Is exist that Diagonal-axis direction Winner ?
 
+for ( let i = 0 ; i < 15 ; i ++ ) {
+    for ( let j = 0 ; j < 15 ; j ++ ) {
+        if ( arr[i][j] !== '0' ) {
+            if (arr[i][j] === arr[i+1][j+1] && arr[i+1][j+1] === arr[i+2][j+2] && arr[i+2][j+2] === arr[i+3][j+3] && arr[i+3][j+3] === arr[i+4][j+4]) {
+                console.log(Number(arr[i][j]));
+                console.log(i+3, j+3)
+                return;
+            }
+        }
+    }
+}
 
 console.log(ans)
