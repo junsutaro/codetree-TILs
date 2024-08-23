@@ -14,7 +14,7 @@ for ( let i = 0 ; i < 15 ; i ++ ) {
         if ( arr[i][j] !== '0' ) {
             if (arr[i][j] === arr[i+1][j] && arr[i+1][j] === arr[i+2][j] && arr[i+2][j] === arr[i+3][j] && arr[i+3][j] === arr[i+4][j]) {
                 console.log(Number(arr[i][j]));
-                console.log(i+1, j+3)
+                console.log(i+3, j+1)
                 return;
             }
         }
