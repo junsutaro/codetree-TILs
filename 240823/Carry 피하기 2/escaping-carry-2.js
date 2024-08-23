@@ -16,7 +16,8 @@ for ( let i = 0 ; i < n - 2 ; i ++ ) {
             let sumVal = 0;
             let isValid = true;
             for ( let m = 0 ; m < 5 ; m ++ ) {
-                if (((revNumbers[i][m] || 0) + (revNumbers[j][m] || 0) + (revNumbers[k][m]) || 0 ) >= 10 ) {
+                const sumOfDigits = ( revNumbers[i][m] || 0 ) + ( revNumbers[j][m] || 0 ) + ( revNumbers[k][m] || 0 )
+                if (sumOfDigits >= 10 ) {
                     isValid = false
                     break;
                 }
