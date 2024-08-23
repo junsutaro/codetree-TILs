@@ -7,7 +7,7 @@ const numbers = input[1].split(' ').map(Number)
 
 let ans = 0;
 
-for ( let i = 0 ; i < n - k ; i ++ ) {
+for ( let i = 0 ; i <= n - k ; i ++ ) {
     let tempSum = 0;
     for ( let j = 0; j < k ; j ++ ) {
         tempSum += numbers[i + j]
