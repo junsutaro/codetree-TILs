@@ -18,11 +18,14 @@ for ( let i = 0; i < N - 1 ; i ++ ) {
             }
         }
 
-        for ( m = j + 3 ; j < N - 2 ; j ++ ) {
+        if ( j < N - 5 ) {
             let totalCount = count;
-            for ( let k2 = 0 ; k2 < 3 ; k2 ++ ) {
-                if (arr[i][m+k2] === 1 ) {
-                    totalCount += 1;
+            for ( let newJ = j + 3 ; j < N - 2 ; k ++) {
+                for ( let k = 0; k < 3 ; k ++ ) {
+                    
+                    if ( arr[i][newJ+k ] === 1) {
+                        totalCount += 1;
+                    }
                 }
             }
             ans = Math.max(totalCount, ans)
