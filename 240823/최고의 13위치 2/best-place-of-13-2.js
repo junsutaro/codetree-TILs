@@ -16,7 +16,7 @@ function isNotOverlap(x1, y1, x2, y2) {
 const MIN_NUM = Number.MIN_SAFE_INTEGER
 let ans = MIN_NUM;
 
-for ( let i = 0; i < N - 1 ; i ++ ) {
+for ( let i = 0; i < N ; i ++ ) {
     for ( let j = 0 ; j < N ; j ++ ) {
 
         let count = 0;
