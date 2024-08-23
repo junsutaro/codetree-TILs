@@ -8,30 +8,33 @@ const arr = input.slice(1).map((line) => line.split(' ').map(Number));
 const MIN_NUM = Number.MIN_SAFE_INTEGER
 let ans = MIN_NUM;
 
-for ( let i = 0; i < N ; i ++ ) {
+for ( let i = 0; i < N - 1 ; i ++ ) {
     for ( let j = 0 ; j < N - 2 ; j ++ ) {
 
         let count = 0;
-        for ( let k1 = 0 ; k1 < 2 ; k1 ++ ) {
+        for ( let k1 = 0 ; k1 < 3 ; k1 ++ ) {
             if (arr[i][j+k1] === 1) {
                 count += 1;
             }
         }
 
+        // console.log(count)
 
         for ( let m = i + 1 ; m < N ; m ++ ) {
-            for ( let n = 0 ; n < N ; n ++ ) {
-                
-                for ( let k2 = 0; k2 < 2 ; k2 ++ ) {
+            for ( let n = 0 ; n < N - 2 ; n ++ ) {
+                let totalCount = count;
+                // console.log(totalCount)
+                for ( let k2 = 0; k2 < 3 ; k2 ++ ) {
                     if ( arr[m][n+k2] === 1 ) {
-                        count += 1;
-                        // console.log('땡그랑')
+                        totalCount += 1;
+                        // console.log('땡그랑', i, j ,m, n+k2)
                     }
                 }
+                ans = Math.max(totalCount, ans)
+
             }
         }
 
-        ans = Math.max(count, ans)
 
     }
 }
