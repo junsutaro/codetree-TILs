@@ -5,27 +5,25 @@ const [n, m] = input[0].split(' ').map(Number);
 const arrA = input[1].split(' ').map(Number);
 const arrB = input[2].split(' ').map(Number);
 
-// 배열을 비교하는 함수
-function arraysEqual(arr1, arr2) {
-    if (arr1.length !== arr2.length) return false; // 길이가 다르면 다름
-    for (let i = 0; i < arr1.length; i++) {
-        if (arr1[i] !== arr2[i]) return false; // 하나라도 다르면 다름
+function isEqualArray(a, b) {
+    for ( let i = 0 ; i < a.length ; i ++ ) {
+        if ( a[i] !== b[i] ) {
+            return false;
+        }
     }
-    return true; // 모두 같으면 true 반환
+    return true;
 }
 
 let cnt = 0;
 
-for (let i = 0; i < n - m + 1; i++) {
-    const newArr = [];
-    for (let j = i; j < i + m; j++) {
+for ( let i = 0 ; i < n - m + 1 ; i ++ ) {
+    const newArr = []; // m개 연속하는 A 부분배열
+    for ( let j = i ; j < i + m ; j ++ ) {
         newArr.push(arrA[j]);
     }
-
-    // 두 배열을 정렬한 후 비교
-    if (arraysEqual(newArr.sort((a, b) => a - b), arrB.sort((a, b) => a - b))) {
+    if (isEqualArray(newArr.sort(), arrB.sort()) ) {
         cnt += 1;
     }
 }
 
-console.log(cnt);
+console.log(cnt)
