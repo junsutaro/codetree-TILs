@@ -20,12 +20,15 @@ for ( let i = 0 ; i < n ; i ++ ) {
         let avgVal = sumVal / newArr.length
         // console.log(avgVal)
 
+        let exists = false;
+
         for ( let elem of newArr ) {
             if ( elem === avgVal ) {
-                cnt += 1
+                exists = true;
                 break;
             }
         }
+        if (exists) {cnt += 1}
     }
 
 }
