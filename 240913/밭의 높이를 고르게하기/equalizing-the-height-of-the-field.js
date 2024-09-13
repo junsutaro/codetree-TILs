@@ -9,7 +9,7 @@ let ans = Number.MAX_SAFE_INTEGER;
 
 for ( let i = 0 ; i < n - t + 1 ; i ++ ) {
     let diffSum = 0;
-    for ( let j = i ; j < i + 3 ; j ++ ) {
+    for ( let j = i ; j < i + t ; j ++ ) {
         diffSum += Math.abs(fields[j] - h)
     }
     ans = Math.min(ans, diffSum)
