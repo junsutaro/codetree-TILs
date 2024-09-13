@@ -10,7 +10,9 @@ let possible = [];
 for (let i = 1; i <= 9; i++) { 
     for (let j = 1; j <= 9; j++) {
         for (let k = 1; k <= 9; k++) {
-            possible.push([i, j, k]);
+            if (i !== j && j !== k && i !== k) {
+                possible.push([i, j, k]);
+            }
         }
     }
 }
@@ -20,9 +22,6 @@ for (let trying of tries) {
     const numArr = number.split('').map(Number);
 
     possible = possible.filter((elem) => {
-        if ( elem[0] === elem[1] || elem[1] === elem[2] || elem[0] === elem[2] ) {
-            return;
-        }
 
         let cnt1 = 0;
         let cnt2 = 0;
