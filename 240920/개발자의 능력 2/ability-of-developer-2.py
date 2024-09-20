@@ -1,8 +1,9 @@
 import sys
 arr = list(map(int, input().split()))
 
+INT_MAX = sys.maxsize
 
-ans = 1000000000
+ans = INT_MAX
 
 def getdiff(a, b, c):
     A = abs(a + b)
