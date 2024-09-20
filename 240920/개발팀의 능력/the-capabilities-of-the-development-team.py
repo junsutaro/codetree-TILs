@@ -32,4 +32,7 @@ for i in range(5):
 
             ans = min(ans, get_diff(sum1, sum2, sum3))
 
+if ans == MAX_VALUE:
+    ans = -1
+
 print(ans)
