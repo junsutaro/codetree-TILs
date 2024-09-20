@@ -2,13 +2,13 @@ import sys
 arr = list(map(int, input().split()))
 
 
-ans = 100000
+ans = 1000000000
 
 def getdiff(a, b, c):
     A = abs(a + b)
     B = abs(b + c)
     C = abs(a + c)
-    
+
     MAX = max(A, B, C)
     MIN = min(A, B, C)
 
