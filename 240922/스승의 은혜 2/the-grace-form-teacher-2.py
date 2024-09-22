@@ -1,7 +1,7 @@
 n, b = map(int, input().split())
 arr = [int(input()) for _ in range(n)]
 
-arr.sort()
+# arr.sort()
 
 ans = 0;
 # print(arr)
