@@ -3,7 +3,7 @@ arr = [tuple(map(int, input().split())) for _ in range(n)]
 ans = 0
 
 for i in range(n):
-    count = [0] * (50)
+    count = [0] * (1000)
     for j in range(n):
         if i == j:
             continue
