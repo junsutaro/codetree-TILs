@@ -13,7 +13,7 @@ for i in range(n):
     for j in range(n):
         cnt += 1
         if j == i:
-            temp_sum += arr[j] / 2;
+            temp_sum += int(arr[j] / 2);
         else: 
             temp_sum += arr[j]
 
