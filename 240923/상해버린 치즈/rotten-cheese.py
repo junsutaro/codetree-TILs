@@ -30,7 +30,7 @@ for i in range(1, m+1):
     flag = True
 
     for [ p, t ] in sick_when:
-        if infested_terran[p] > t or infested_terran[p] == 0:
+        if infested_terran[p] >= t or infested_terran[p] == 0:
             flag = False # 구라야!
 
     # 구라가 아니라면 상한치즈로 인정
