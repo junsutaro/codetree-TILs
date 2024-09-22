@@ -22,16 +22,15 @@ for i in range(1, m+1):
     infested_terran = [0] * ( n + 1 )
     for [ p, m, t ] in eat_when:
         if m == i:
-            infested_terran[p] = t # 먹고 1초뒤부터 아픔
+            infested_terran[p] = t + 1 # 먹고 1초뒤부터 아픔
     
     # print(infested_terran)
     
     # p가 t초일 때 아팠대요. 감염된 후 아파야함
     flag = True
     for [ p, t ] in sick_when:
-        if infested_terran[p] > t:
+        if infested_terran[p] >= t:
             flag = False # 구라야!
-            break
 
     # 구라가 아니라면 상한치즈로 인정
     if flag == True:
