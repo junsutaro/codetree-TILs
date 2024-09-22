@@ -29,7 +29,7 @@ for i in range(1, m+1):
     # p가 t초일 때 아팠대요. 감염된 후 아파야함
     flag = True
     for [ p, t ] in sick_when:
-        if infested_terran[p] >= t:
+        if infested_terran[p] > t:
             flag = False # 구라야!
 
     # 구라가 아니라면 상한치즈로 인정
