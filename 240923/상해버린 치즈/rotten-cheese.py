@@ -22,7 +22,7 @@ for i in range(1, m+1):
     infested_terran = [0] * ( n + 1 )
     for [ p, m, t ] in eat_when:
         if m == i:
-            infested_terran[p] = t+1 # 먹고 1초뒤부터 아픔
+            infested_terran[p] = t # 먹고 1초뒤부터 아픔
     
     # print(infested_terran)
     
