@@ -12,14 +12,13 @@ for i in range(n):
 
     temp_sum = 0
     cnt = 0
-    for j in range(n):
-        cnt += 1
-        temp_sum += temp_costs[j]
-
-        if temp_sum > b:
-            ans = max(ans, cnt - 1)
+    for cost in temp_costs:
+        if temp_sum + cost > b:
             break
-        
 
+        temp_sum += cost
+        cnt += 1
+
+        ans = max(cnt, ans)
 
 print(ans)
