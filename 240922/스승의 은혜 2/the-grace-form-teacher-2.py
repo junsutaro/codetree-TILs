@@ -13,6 +13,8 @@ for i in range(n):
     temp_sum = 0
     cnt = 0
     for cost in temp_costs:
+        # temp_sum 더해서 적용 전애 미리 체크해라... 더하고 체크하지 말고 헷갈리게 !!!!!
+        # 돌다리쓰 두들겨쓰 건너스
         if temp_sum + cost > b:
             break
 
