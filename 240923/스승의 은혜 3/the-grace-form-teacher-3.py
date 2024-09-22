@@ -9,7 +9,8 @@ for i in range(n):
     for j in range(n):
         if j == i:
             costs.append(presents[j][0] // 2 + presents[j][1])
-        costs.append(presents[j][0] + presents[j][1])
+        else:
+            costs.append(presents[j][0] + presents[j][1])
 
     costs.sort()
 
