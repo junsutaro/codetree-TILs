@@ -19,10 +19,10 @@ polluted_cheese = [False] * ( m + 1 )
 for i in range(1, m+1):
     # i번째 치즈가 감염이라고 치자
     # i번째 사람이 t초에 먹었다는거 기록해야함
-    infested_terran = [0] * ( n + 1 )
+    infested_terran = [float('inf')] * (n + 1)
     for [ p, m, t ] in eat_when:
-        if m == i and infested_terran[p] == 0:
-            infested_terran[p] = t + 1 # 먹고 1초뒤부터 아픔
+        if m == i:
+            infested_terran[p] = min(t + 1, infested_terran[p]) # 먹고 1초뒤부터 아픔
     
     # print(infested_terran)
     
@@ -30,14 +30,14 @@ for i in range(1, m+1):
     flag = True
 
     for [ p, t ] in sick_when:
-        if infested_terran[p] >= t or infested_terran[p] == 0:
+        if infested_terran[p] > t or infested_terran[p] == float('inf'):
             flag = False # 구라야!
 
     # 구라가 아니라면 상한치즈로 인정
     if flag == True:
         polluted_cheese[i] = True
         
-        infested_cnt = sum(1 for x in infested_terran if x != 0 )
+        infested_cnt = sum(1 for x in infested_terran if x != float('inf') )
         ans = max(ans, infested_cnt)
 
 # print(polluted_cheese) # [False, True, True, False, True]
