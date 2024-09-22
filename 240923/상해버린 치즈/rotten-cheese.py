@@ -21,15 +21,15 @@ for i in range(1, m+1):
     # i번째 사람이 t초에 먹었다는거 기록해야함
     infested_terran = [0] * ( n + 1 )
     for [ p, m, t ] in eat_when:
-        if m == i:
-            infested_terran[p] = t # 먹고 1초뒤부터 아픔
+        if m == i and infested_terran[p] == 0:
+            infested_terran[p] = t + 1 # 먹고 1초뒤부터 아픔
     
     # print(infested_terran)
     
-    # p가 t초일 때 아팠대요. 감염된 후 아파야함
+    # p가 t초일 때 아팠대요. 감염된 후 아파야함, 감염안됐는데 아파도 False
     flag = True
     for [ p, t ] in sick_when:
-        if infested_terran[p] > t:
+        if infested_terran[p] > t or infested_terran[p] == 0:
             flag = False # 구라야!
 
     # 구라가 아니라면 상한치즈로 인정
