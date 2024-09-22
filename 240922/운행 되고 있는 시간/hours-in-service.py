@@ -1,9 +1,13 @@
 n = int(input())
 arr = [tuple(map(int, input().split())) for _ in range(n)]
 ans = 0
+max_number = 0
+for i in range(n):
+    max_number = max(max_number, arr[i][1]);
+
 
 for i in range(n):
-    count = [0] * (1000)
+    count = [0] * (max_number)
     for j in range(n):
         if i == j:
             continue
