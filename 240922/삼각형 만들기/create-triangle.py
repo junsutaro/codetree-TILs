@@ -19,7 +19,7 @@ for i in range(n - 2):
             if (A[0] - B[0] == 0 and ( B[1] - C[1] == 0 or A[1] - C[1] == 0 )) or \
                 (A[0] - C[0] == 0 and ( B[1] - C[1] == 0 or A[1] - B[1] == 0 )) or \
                 (B[0] - C[0] == 0 and ( A[1] - C[1] == 0 or A[1] - B[1] == 0 )):
-                temp = (A[0]*B[1] + B[0]*C[1] + C[0]*A[1]) - (B[0]*A[1] + C[0]*B[1] + A[0]*C[1])
+                temp = abs(A[0]*B[1] + B[0]*C[1] + C[0]*A[1]) - abs(B[0]*A[1] + C[0]*B[1] + A[0]*C[1])
                 ans = max(temp, ans)
 
 print(ans)
