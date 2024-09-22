@@ -14,7 +14,7 @@ ans = 0
 # 최대? 그럼 치즈별로 다 체크해서 말 되는놈 중 가장 많이 전염시킨놈 찾기
 
 # 상한 치즈 판별하자
-polluted_cheese = [False] * ( m + 1 )
+# polluted_cheese = [False] * ( m + 1 )
 
 for i in range(1, m+1):
     # i번째 치즈가 감염이라고 치자
@@ -30,12 +30,13 @@ for i in range(1, m+1):
     flag = True
 
     for [ p, t ] in sick_when:
-        if infested_terran[p] > t or infested_terran[p] == float('inf'):
+        if infested_terran[p] > t:
             flag = False # 구라야!
+            break
 
     # 구라가 아니라면 상한치즈로 인정
     if flag == True:
-        polluted_cheese[i] = True
+        # polluted_cheese[i] = True
         
         infested_cnt = sum(1 for x in infested_terran if x != float('inf') )
         ans = max(ans, infested_cnt)
