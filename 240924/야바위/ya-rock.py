@@ -18,7 +18,7 @@ for i in range(1, 4):
         if cups[c] == True:
             cnt += 1
 
-    if cnt > max_val:
+    if cnt >= max_val:
         cnt = max_val
         ans = i
         
