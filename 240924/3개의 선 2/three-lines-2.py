@@ -12,21 +12,21 @@ flag = True
 import itertools
 
 for combo in itertools.combinations(all_lines, 3):
-    all_covered = True
-
     for x, y in points:
+        inner_flag = False
+        
         for line_type, coord in combo:
             if line_type == "V":
                 if y == coord:
-                    continue
+                    inner_flag = True
             elif line_type == "H":
                 if x == coord:
-                    continue
-            else:
-                all_covered = False
+                    inner_flag = True
 
-    if all_covered == False:
-        flag = False
+        if inner_flag:
+            continue
+        else:
+            flag = False
 
 if flag:
     print(1)
