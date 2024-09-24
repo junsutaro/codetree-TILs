@@ -4,8 +4,8 @@ points = [tuple(map(int, input().split())) for _ in range(n)]
 
 ans = float('inf')
 
-for x in range(1, 101):
-    for y in range(1, 101):
+for x in range(0, 101, 2):
+    for y in range(0, 101, 2):
         LU = 0
         RU = 0
         LD = 0
