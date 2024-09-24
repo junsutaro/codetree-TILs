@@ -7,31 +7,30 @@ vertical_lines = [("V", x) for x in range(11)]
 horizontal_lines = [("H", y) for y in range(11)]
 all_lines = vertical_lines + horizontal_lines
 
-flag = True
+flag = False
 
 import itertools
 
 for combo in itertools.combinations(all_lines, 3):
-    all_covered = False
+    all_covered = True
 
     for x, y in points:
         # 다 돌았는데 inner_flag가 True이면? flag가 True가 된다~
-        inner_flag = False
-        cnt = 0
+        covered = False
+
         for line_type, coord in combo:
 
-            if line_type == "V":
-                if y == coord:
-                    cnt += 1
-            elif line_type == "H":
-                if x == coord:
-                    cnt += 1
-        if cnt >= 1:
-            inner_flag = True
-
-        if inner_flag == False:
-            flag = False
-    
+            if line_type == "V" and x == coord:
+                covered = True  
+                break;
+            elif line_type == "H" and y == coord:
+                covered = True  
+                break;
+        if not covered:
+            all_covered = False
+            break;
+    if all_covered:
+        flag = True
 
 if flag:
     print(1)
