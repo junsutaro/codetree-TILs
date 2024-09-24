@@ -19,7 +19,7 @@ for i in range(1, 4):
 
     # print(cnt)
 
-    if cnt >= max_val:
+    if cnt > max_val:
         max_val = cnt
         ans = i
         
