@@ -2,7 +2,6 @@ n = int(input())
 inputs = [tuple(map(int, input().split())) for _ in range(n)]
 
 max_val = 0
-ans = 0
 
 for i in range(1, 4):
     cups = [False] * 4
@@ -24,4 +23,4 @@ for i in range(1, 4):
         max_val = cnt
         ans = i
         
-print(ans)
+print(max_val)
