@@ -4,7 +4,7 @@ n = int(input())
 arr = list(map(int, input().split()))
 
 
-count_k = Counter()
+count_k = [0] * 101
 
 for i in range(n-1):
     for j in range(i + 1 , n):
@@ -12,7 +12,8 @@ for i in range(n-1):
         if (total)% 2 == 0:
             count_k[total // 2] += 1
 
-# print(count_k.items())
+max_count = 0;
+for i in range(100):
+    max_count = max(max_count, count_k[i])
 
-most_common = count_k.most_common(1)
-print(most_common[0][1])
+print(max_count)
