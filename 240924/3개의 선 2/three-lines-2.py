@@ -7,7 +7,7 @@ vertical_lines = [("V", x) for x in range(11)]
 horizontal_lines = [("H", y) for y in range(11)]
 all_lines = vertical_lines + horizontal_lines
 
-flag = False
+flag = True
 
 import itertools
 
@@ -25,8 +25,8 @@ for combo in itertools.combinations(all_lines, 3):
             else:
                 all_covered = False
 
-    if all_covered:
-        flag = True
+    if all_covered == False:
+        flag = False
 
 if flag:
     print(1)
