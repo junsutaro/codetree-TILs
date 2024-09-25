@@ -20,5 +20,3 @@ if p == 1:
     print('')
 else:
     print(' '.join(sorted(potential_unreaders)))
-
-if i ==
