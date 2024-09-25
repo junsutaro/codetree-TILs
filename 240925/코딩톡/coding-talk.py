@@ -14,7 +14,7 @@ for i in range(p-1, -1, -1):
 
 
 for i in range(m):
-    if i >= new_p-1:
+    if i >= new_p:
         if msgs[i][0] in ans_lst:
             ans_lst.remove(msgs[i][0])
 
