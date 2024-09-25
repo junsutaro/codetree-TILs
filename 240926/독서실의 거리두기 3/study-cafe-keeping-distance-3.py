@@ -5,7 +5,7 @@ def find_min_dist(arr):
 
     before_idx = 0
     now_idx = 0
-    temp_dist = 100
+    temp_dist = 1000
 
     while now_idx < len(arr) - 1:
         now_idx += 1
