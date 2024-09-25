@@ -24,4 +24,7 @@ for i in range(new_p - 1, m):
         ans_lst.remove(c)
 
 ans_lst.sort()
-print(' '.join(ans_lst))
+if m == 1:
+    print('')
+else:
+    print(' '.join(ans_lst))
