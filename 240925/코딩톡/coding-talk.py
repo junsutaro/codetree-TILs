@@ -1,30 +1,24 @@
-n, m, p = map(int, input().split())
-msgs = [input().split() for _ in range(m)]
+n, m, p = map(int,(input().split()))
+msgs = [tuple(input().split()) for _ in range(m)]
 
-# Convert unread counts to integers
-msgs = [(c, int(u)) for c, u in msgs]
+ans_lst = []
+for i in range(n):
+    ans_lst.append(chr(65+i))
 
-# Initialize the list of all people
-ans_lst = [chr(65 + i) for i in range(n)]
-
-u_p = msgs[p - 1][1]
 new_p = p
 
-# Find the earliest message where the unread count matches that of message p
-for i in range(p - 2, -1, -1):
-    if msgs[i][1] == u_p:
+for i in range(p-2, -1, -1):
+    if msgs[i][1] == msgs[p-1][1]:
         new_p = i + 1
     else:
         break
 
-# Remove senders from new_p onward
 for i in range(new_p - 1, m):
-    c = msgs[i][0]
-    if c in ans_lst:
-        ans_lst.remove(c)
+    if msgs[i][0] in ans_lst:
+        ans_lst.remove(msgs[i][0])
 
 ans_lst.sort()
+
 if p == 1:
-    print('')
-else:
-    print(' '.join(ans_lst))
+    ans_lst = []
+print(*ans_lst)
