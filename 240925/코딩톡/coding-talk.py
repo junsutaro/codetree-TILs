@@ -1,22 +1,23 @@
-n, m, p = map(int, input().split())
-msgs = [input().split() for _ in range(m)]
+n, m, p = map(int,(input().split()))
+msgs = [tuple(input().split()) for _ in range(m)]
 
-# Set of people who definitely read message p
-readers = set()
-readers.add(msgs[p - 1][0])  # The sender of message p
+ans_lst = []
+for i in range(n):
+    ans_lst.append(chr(65+i))
 
-# Add all senders after message p
-for i in range(p, m):
-    readers.add(msgs[i][0])
+new_p = p
 
-# All people in the chat
-all_people = set(chr(65 + i) for i in range(n))
+for i in range(p-2, -1, -1):
+    if msgs[i][1] == msgs[p - 1][1]:
+        new_p = min(new_p, i)
 
-# People who might not have read message p
-potential_unreaders = all_people - readers
+for i in range(m):
+    if i >= new_p - 1:
+        if msgs[i][0] in ans_lst:
+            ans_lst.remove(msgs[i][0])
 
-# Output the names sorted lexicographically
+ans_lst.sort()
+
 if p == 1:
-    print('')
-else:
-    print(' '.join(sorted(potential_unreaders)))
+    ans_lst = []
+print(*ans_lst)
