@@ -16,4 +16,9 @@ all_people = set(chr(65 + i) for i in range(n))
 potential_unreaders = all_people - readers
 
 # Output the names sorted lexicographically
-print(' '.join(sorted(potential_unreaders)))
+if p == 1:
+    print('')
+else:
+    print(' '.join(sorted(potential_unreaders)))
+
+if i ==
