@@ -9,5 +9,5 @@ for i in range(m):
     if i >= p-1:
         if msgs[i][0] in ans_lst:
             ans_lst.remove(msgs[i][0])
-
+ans_lst.sort()
 print(*ans_lst)
