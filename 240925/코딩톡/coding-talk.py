@@ -7,11 +7,11 @@ for i in range(n):
 
 new_p = p
 
-# for i in range(p-1, -1, -1):
-#     if msgs[i][1] == msgs[p][1]:
-#         new_p = i
-        
-
+for i in range(p-1, -1, -1):
+    if msgs[i][1] == msgs[p][1]:
+        new_p = min(new_p, i)
+    # print(msgs[i][1], msgs[p][1])
+    # print(new_p)
 
 for i in range(m):
     if i >= new_p - 1:
