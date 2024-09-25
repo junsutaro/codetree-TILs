@@ -10,4 +10,7 @@ for i in range(m):
         if msgs[i][0] in ans_lst:
             ans_lst.remove(msgs[i][0])
 ans_lst.sort()
+
+if p == 1:
+    ans_lst = []
 print(*ans_lst)
