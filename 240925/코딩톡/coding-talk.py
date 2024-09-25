@@ -9,7 +9,7 @@ new_p = p
 
 for i in range(p-1, -1, -1):
     if msgs[i][1] == msgs[p][1]:
-        new_p = min(new_p, i)
+        new_p = min(new_p, i+1)
     # print(msgs[i][1], msgs[p][1])
     # print(new_p)
 
