@@ -13,8 +13,6 @@ for i in range(p-2, -1, -1):
     else:
         break
 
-print(new_p)
-
 for i in range(new_p - 1, m): # p는 번째, i는 idx라서 -1
     if msgs[i][0] in ans_lst:
         ans_lst.remove(msgs[i][0])
