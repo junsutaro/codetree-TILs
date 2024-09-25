@@ -1,47 +1,45 @@
-def reconstruct_sequence(N, sums):
-    from itertools import combinations
+n = int(input())
+nums = list(map(int, input().split()))
 
-    # 가능한 (A1, A2) 쌍을 찾습니다.
-    possible_pairs = []
-    S1 = sums[0]
-    for A1 in range(1, N + 1):
-        A2 = S1 - A1
-        if 1 <= A2 <= N and A1 != A2:
-            possible_pairs.append((A1, A2))
+ 
 
-    # 사전순으로 정렬하여 먼저 발견되는 유효한 수열을 반환합니다.
-    for pair in sorted(possible_pairs):
-        A = list(pair)
-        used = set(A)
-        valid = True
+def find_ans(start):
+    cnt_list = [0] * (n + 1)
+    ans_list = []
 
-        for i in range(1, N - 1):
-            next_val = sums[i] - A[-1]
-            if not (1 <= next_val <= N) or next_val in used:
-                valid = False
+    cnt_list[start] = 1
+    ans_list.append(start)
+
+    idx = 0
+    num = start
+
+
+    while True:
+        found = False
+        for i in range(1, n+1):
+            if cnt_list[i]:
+                continue
+            if num + i == nums[idx]:
+                ans_list.append(i)
+                cnt_list[i] = 1
+                idx += 1
+                num = i
+                found = True
                 break
-            A.append(next_val)
-            used.add(next_val)
 
-        if valid:
-            return A
+        if not found:
+            break;
+        
+        if idx >= len(nums):
+            break
+    
 
-    # 문제의 조건상 항상 가능한 답이 존재한다고 가정하므로, 여기 도달하지 않습니다.
-    return []
+    if len(ans_list) == n:
+        return ans_list
 
-# 입력 받기
-import sys
 
-def main():
-    import sys
-
-    input = sys.stdin.read
-    data = input().split()
-    N = int(data[0])
-    sums = list(map(int, data[1:N]))
-
-    sequence = reconstruct_sequence(N, sums)
-    print(' '.join(map(str, sequence)))
-
-if __name__ == "__main__":
-    main()
+for i in range(1, n+1):
+    ans = find_ans(i)
+    if ans:
+        print(' '.join(map(str, ans)))
+        break
