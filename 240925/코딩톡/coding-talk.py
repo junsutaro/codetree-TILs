@@ -7,14 +7,14 @@ for i in range(n):
 
 new_p = p
 
-for i in range(p-1, -1, -1):
-    if msgs[i][1] == msgs[p][1]:
-        new_p = i
+# for i in range(p-1, -1, -1):
+#     if msgs[i][1] == msgs[p][1]:
+#         new_p = i
         
 
 
 for i in range(m):
-    if i >= new_p:
+    if i >= new_p - 1:
         if msgs[i][0] in ans_lst:
             ans_lst.remove(msgs[i][0])
 
