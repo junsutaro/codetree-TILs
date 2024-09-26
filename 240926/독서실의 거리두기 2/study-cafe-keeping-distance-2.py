@@ -13,6 +13,11 @@ for empty in empties:
     dist = float('inf')
     for i in range(1, len(occs)):
         dist = min(dist, occs[i] - occs[i-1])
-    ans = max(ans, dist, new_occs[0], n - new_occs[-1])
+    ans = max(ans, dist)
+
+    if 0 in empties:
+        ans = max(occs[1] - 0)
+    if n-1 in empties:
+        ans = max(n-1 - occs[-1])
 
 print(ans)
