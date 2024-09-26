@@ -13,7 +13,7 @@ for i in range(10):
 ans = 0
 
 if L[0] == B[0] == R[0] or L[1] == B[1] == R[1]:
-    ans = abs(B[1] - L[1]) + abs(B[0] - L[0]) + 4
+    ans = abs(B[1] - L[1]) + abs(B[0] - L[0]) + 2
 else:
     ans = abs(B[1] - L[1]) + abs(B[0] - L[0]) - 1
 
