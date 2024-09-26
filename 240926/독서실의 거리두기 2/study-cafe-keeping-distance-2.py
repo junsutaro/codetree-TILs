@@ -1,23 +1,19 @@
 n = int(input())
 seats = list(map(int, input()))
 
+occs = [i for i, seat in enumerate(seats) if seat == 1]
+empties = [i for i, seat in enumerate(seats) if seat == 0]
+
 ans = 0
 
-def find_ans(arr):    
+for empty in empties:
+    occs.append(empty)
+    occs.sort()
     dist = float('inf')
+    for i in range(1, len(occs)):
+        dist = min(dist, occs[i] - occs[i-1])
+    ans = max(ans, dist)
+    occs.remove(empty)
 
-    for i in range(n-1):
-        if arr[i] == 1:
-            for j in range(i + 1, n):
-                if arr[j] == 1:
-                    dist = min(j - i, dist)
-                    break
-    return dist
-
-for i in range(n):
-    if seats[i] == 0:
-        seats[i] = 1
-        ans = max(ans, find_ans(seats))
-        seats[i] = 0
 
 print(ans)
