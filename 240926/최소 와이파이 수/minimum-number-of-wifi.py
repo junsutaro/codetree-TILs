@@ -5,11 +5,12 @@ idx = 0
 ans = 0
 
 while idx < n:
-    if arr[idx] == 1:
-        ans += 1
-        idx += 2*m + 1
-    
+    if arr[idx] == 0:
+        if idx + m < n:
+            ans += 1
+            idx = idx + 2*m + 1
     else:
         idx += 1
-
+        continue
+    
 print(ans)
