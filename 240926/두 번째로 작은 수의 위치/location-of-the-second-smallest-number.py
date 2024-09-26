@@ -25,6 +25,8 @@ else:
             cnt_2 += 1
             if cnt_2 > 1:
                 ans = -1
+                break
+
                 
 
 print(ans)
