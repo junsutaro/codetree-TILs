@@ -2,8 +2,6 @@ n = int(input())
 
 scores = [tuple(input().split()) for _ in range(n)]
 
-print(scores)
-
 sc_board = {}
 sc_board['A'] = 0
 sc_board['B'] = 0
