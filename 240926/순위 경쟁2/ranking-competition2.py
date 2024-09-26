@@ -2,26 +2,32 @@ n = int(input())
 
 scores = [tuple(input().split()) for _ in range(n)]
 
-sc_board = {}
-sc_board['A'] = 0
-sc_board['B'] = 0
+sc_a = 0
+sc_b = 0 
 
 
-honor = [0] * (n+1)
-
-for idx in range(len(scores)):
-    name, score = scores[idx]
-    sc_board[name] += int(score)
-
-    if sc_board['A'] - sc_board['B'] > 0:
-        honor[idx + 1] = 1
-    elif sc_board['A'] - sc_board['B'] < 0:
-        honor[idx + 1] = -1
+def get_status(sc1, sc2):
+    if sc1 > sc2:
+        return 1
+    elif sc2 > sc1:
+        return 2
+    else:
+        return 3
 
 
 ans = 0
-for i in range(0, n):
-    if honor[i] != honor[i+1]:
-        ans += 1
+
+for name, score in scores:
+    score = int(score)
+
+    if name == 'A':
+        sc_a += score
+        if get_status(sc_a - score, sc_b) != get_status(sc_a, sc_b):
+            ans += 1
+    
+    else:
+        sc_b += score
+        if get_status(sc_a, sc_b - score) != get_status(sc_a, sc_b):
+            ans += 1
 
 print(ans)
