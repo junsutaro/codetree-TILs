@@ -1,5 +1,5 @@
 n = int(input())
-nums = list(map(int, input().split()))
+arr = list(map(int, input().split()))
 
 
 # 3개 골라 나올 곱중 최대
@@ -14,33 +14,29 @@ nums = list(map(int, input().split()))
 
 # 양수 0개 : 작은거 3개 ( 0 있으면 0 )
 
-pls = []
-mns = []
-zeros = []
-for num in nums:
-    if num > 0: pls.append(num)
-    if num < 0: mns.append(num)
-    else: zeros.append(num)
+arr.sort()
 
-pls.sort()
-mns.sort()
+negative, zero, positive = 0, 0, 0
+for num in arr:
+    if num > 0: positive += 1
+    if num < 0: negative += 1
+    else: zero += 1
 
 ans = None
 
-if n == 3:
-    ans = nums[0] * nums[1] * nums[2]
-elif len(pls) >= 3:
-    ans = max(pls[-1] * pls[-2] * pls[-3], mns[0] * mns[1] * pls[-1])
-elif len(pls) == 1 and len(mns) >= 2:
-    ans = mns[0] * mns[1] * pls[-1]
-
-else:
-    if zeros:
-        ans = 0
+if positive >= 3:
+    ans = max(arr[0] * arr[1] * arr[-1], arr[-1] * arr[-2] * arr[-3])
+elif positive == 1:
+    if negative >= 2:
+        ans = arr[-1] * arr[1] * arr[2]
     else:
-        if len(pls) == 2:
-            ans = pls[0] * pls[1] * mns[-1]
-        if len(pls) == 0:
-            ans = mns[-1] * mns[-2] * mns[-3]
-    
+        ans = 0
+elif positive == 2:
+    if negative >= 1:
+        ans = max(arr[-1] * arr[-2] * arr[0], arr[0] * arr[1] * arr[2])
+    else:
+        ans = 0
+else:
+    ans = 0
+
 print(ans)
