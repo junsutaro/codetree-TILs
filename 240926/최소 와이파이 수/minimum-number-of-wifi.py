@@ -3,7 +3,8 @@ arr = list(map(int, input().split()))
 
 idx = 0
 ans = 0
-while True:
+
+while idx < n:
     if arr[idx] == 0:
         idx += 1
         continue
@@ -12,7 +13,4 @@ while True:
             ans += 1
             idx = idx + 2*m + 1
     
-    if idx >= n:
-        break
-
 print(ans)
