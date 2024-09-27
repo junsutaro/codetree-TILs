@@ -1,17 +1,18 @@
-def min_moves_to_sort(N, seq):
-    max_sorted_len = 1  # 이미 정렬된 최대 길이
-    for i in range(1, N):
-        if seq[i] > seq[i - 1]:
-            max_sorted_len += 1
-        else:
-            break
+n = int(input())
+arr = list(map(int, input().split()))
 
-    # 이미 정렬된 부분은 그대로 두고, 나머지만 이동해야 함
-    return N - max_sorted_len
 
-# 입력
-N = int(input())
-seq = list(map(int, input().split()))
 
-# 결과 출력
-print(min_moves_to_sort(N, seq))
+# 1 7 3 4 5 6 2
+# 1 2 3 4 5 6 7
+ans = 0
+# 1부터 순서대로 i+1이 어디있냐... 찾다가? 찾았다! 근데 i가 i+1보다 작으면 
+# (5인덱스가 4보다 작으면) 그인덱스+1만큼 보내 
+
+for i in range(n-2, 1, -1):
+    # 4찾을차례 -> j가 돌면서 i위치가 4인곳을 찾음. 근데 걔(i)가 4보다 작잖아
+    if arr[i] > arr[i+1]:
+        ans = i + 1
+
+
+print(ans)
