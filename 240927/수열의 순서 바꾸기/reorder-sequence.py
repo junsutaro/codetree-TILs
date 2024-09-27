@@ -33,8 +33,7 @@ while True:
             moved = True
             # print("블록 이동:", new_arr)
             break
-        else:
-            break
+
 
     # 만약 적절한 위치를 찾지 못했다면 맨 뒤에 추가
     if not inserted:
@@ -51,4 +50,6 @@ while True:
 # print("최종 정렬:", new_arr)
 # print("이동 횟수:", ans)
 
+if ans == n:
+    ans = 0
 print(ans)
