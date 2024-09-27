@@ -11,16 +11,16 @@ while True:
         if even_count:
             even_count -= 1
             group_num += 1
-        elif odd >= 2:
-            odd -= 2
+        elif odd_count >= 2:
+            odd_count -= 2
             group_num += 1
         else:
             if even_count > 0 or odd_count > 0:
                 group_num -= 1
             break
     else:
-        if odd:
-            odd -= 1
+        if odd_count:
+            odd_count -= 1
             group_num += 1
         else:
             break
