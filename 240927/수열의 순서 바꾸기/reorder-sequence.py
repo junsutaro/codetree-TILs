@@ -1,14 +1,13 @@
 def min_moves_to_sort(N, seq):
-    sorted_seq = sorted(seq)  # 정렬된 수열
-    count = 0  # 이동 횟수
+    max_sorted_len = 1  # 이미 정렬된 최대 길이
+    for i in range(1, N):
+        if seq[i] > seq[i - 1]:
+            max_sorted_len += 1
+        else:
+            break
 
-    # 현재 수열이 정렬될 때까지 반복
-    while seq != sorted_seq:
-        # 맨 앞의 원소를 뒤로 보내는 작업
-        seq.append(seq.pop(0))
-        count += 1  # 이동 횟수 증가
-
-    return count
+    # 이미 정렬된 부분은 그대로 두고, 나머지만 이동해야 함
+    return N - max_sorted_len
 
 # 입력
 N = int(input())
