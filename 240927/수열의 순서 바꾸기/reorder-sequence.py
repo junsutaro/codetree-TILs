@@ -13,7 +13,7 @@ for i in range(n-1):
 temp_arr.append(arr[n-1])  # 마지막 요소 처리
 new_arr.append(temp_arr)
 
-print("초기 블록:", new_arr)
+# print("초기 블록:", new_arr)
 
 ans = 0
 
