@@ -52,6 +52,9 @@ for _ in range(n):
                     ans += 1
                     now = 'even'
                     sum_val = 0
+                else:
+                    ans += 1
+                    break
 
             else:
                 ans += 1
