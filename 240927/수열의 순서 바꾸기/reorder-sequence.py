@@ -1,13 +1,13 @@
 n = int(input())
 arr = list(map(int, input().split()))
 
-count = 0
 expected = n
+cnt = 0
+
 for i in range(n - 1, -1, -1):
     if arr[i] == expected:
-        count += 1
+        cnt += 1
         expected -= 1
-    else:
-        break
 
-print(n - count)
+answer = n - cnt
+print(answer)
