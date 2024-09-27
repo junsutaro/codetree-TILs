@@ -3,7 +3,7 @@ arr = list(map(int, input().split()))
 
 arr.sort()
 
-arr = [num - arr[0] for num in arr]
+# arr = [num - arr[0] for num in arr]
 
 # print(arr)
 
