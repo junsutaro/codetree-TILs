@@ -54,7 +54,6 @@ for _ in range(n):
                     sum_val = 0
                 else:
                     ans += 1
-                    break
 
             else:
                 ans += 1
