@@ -1,64 +1,41 @@
 n = int(input())
 arr = list(map(int, input().split()))
 
-rest = arr
-odd_cnt = sum(1 for num in rest if num % 2 == 1)
+# 홀수와 짝수의 개수 계산
+odd_count = sum(1 for num in arr if num % 2 == 1)
+even_count = n - odd_count
 
-# 합이 홀수 -> 남은 홀수 갯수가 홀수
-# 합이 짝수 -> 남은 홀수 갯수가 짝수 or 없다
+ans = 0  # 그룹의 수
+parity = 0  # 현재 필요한 합의 패리티 (0: 짝수, 1: 홀수)
 
-ans = 0
-now = 'even' # 나머지가 0이면 짝으로 보게 if temp // 2 == now:
+while True:
+    if parity == 0:
+        # 짝수 합을 만들어야 함
+        if even_count > 0:
+            even_count -= 1
+            ans += 1
+            parity = 1
+        elif odd_count >= 2:
+            odd_count -= 2
+            ans += 1
+            parity = 1
+        else:
+            break
+    else:
+        # 홀수 합을 만들어야 함
+        if odd_count > 0:
+            odd_count -= 1
+            ans += 1
+            parity = 0
+        else:
+            break
 
-sum_val = 0
-for _ in range(n):
-    temp = rest.pop(0)
-    if temp % 2 == 1:
-        odd_cnt -= 1
-    sum_val += temp
-
-    if now == 'even':
-        # 지금까지 더한게 다 짝수라면
-        if sum_val % 2 == 0:
-            # REST가 0이거나 뒤에 나온것들로 홀이 만들어지는가 판단해야 함
-            if len(rest) <= 2:
-                if odd_cnt == 1:
-                    ans += 1
-                    now = 'odd'
-                    sum_val = 0
-                else:
-                    ans += 1
-                    break
-            elif len(rest) == 3:
-                if odd_cnt:
-                    ans += 1
-                    now = 'odd'
-                    sum_val = 0
-                else:
-                    ans += 1
-                    break
-            else:
-                ans += 1
-                now = 'odd'
-                sum_val = 0
-
-
-    if now == 'odd':
-        # 지금까지 더한게 다 홀수라면
-        if sum_val % 2 == 1:
-            # 1개 남았으면?? odd가 없어야 함
-            if len(rest) == 1:
-                if odd_cnt == 1:
-                    ans += 1
-                    now = 'even'
-                    sum_val = 0
-                else:
-                    ans += 1
-
-            else:
-                ans += 1
-                now = 'even'
-                sum_val = 0
-
+# 남은 숫자가 있다면 그룹 수를 조정하여 모든 숫자를 사용
+remaining_numbers = odd_count + even_count
+if remaining_numbers > 0:
+    if ans > 0:
+        ans -= 1  # 마지막 그룹에 남은 숫자를 포함
+    else:
+        ans = 1  # 모든 숫자를 한 그룹으로 묶음
 
 print(ans)
