@@ -16,9 +16,9 @@ ans = 0
 def find_max(i, j, block):
     temp = 0
     for x, y in block:
+        nx, ny = i+x, j+y
         if nx >= n or ny >= m or nx < 0 or ny < 0:
             return 0
-        nx, ny = i+x, j+y
         temp += arr[nx][ny]
     return temp
         
