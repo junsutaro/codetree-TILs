@@ -28,4 +28,4 @@ for si in range(n):
     for sj in range(n):
         marummo(si, sj, 0, arr[si][sj], 0)
 
-print(ans)
+print(ans - 1)
