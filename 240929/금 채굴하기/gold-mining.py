@@ -4,8 +4,8 @@ arr = [list(map(int, input().split())) for _ in range(n)]
 def return_mine(i, j):
     for K in range(n):
         cnt = 0
-        for ni in range(i+K):
-            for nj in range(j+K):
+        for ni in range(i-K, i+K + 1):
+            for nj in range(j-Km j+K+1):
                 if ni < n and nj < n:
                     if abs(ni - i) + abs(nj - j) <= K and arr[ni][nj] == 1:
                         cnt +=1
