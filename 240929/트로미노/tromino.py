@@ -17,7 +17,7 @@ def find_max(i, j, block):
     temp = 0
     for x, y in block:
         if i + x >= n or j + y >= m:
-            break
+            return 0
         nx, ny = i+x, j+y
         temp += arr[nx][ny]
     return temp
