@@ -1,7 +1,6 @@
 n, m = map(int, input().split())
 arr = [list(map(int, input().split())) for _ in range(n)]
 
-
 ans = 0
 
 # i 고정하고 세로로 봅시다
@@ -27,5 +26,8 @@ for j in range(n):
         if cnt == m:
             ans += 1
             break
+
+if n == 1:
+    ans = 2
 
 print(ans)
