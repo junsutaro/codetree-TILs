@@ -15,9 +15,7 @@ def is_happy_sequence(arr, m):
 
 ans = 0
 
-if n == 1:
-    print(2)
-    return
+
 
 # 가로
 for i in range(n):
@@ -28,5 +26,8 @@ for j in range(n):
     col_arr = [arr[i][j] for i in range(n)]
     if is_happy_sequence(col_arr, m):
         ans += 1
+
+if n == 1:
+    ans = 2
 
 print(ans)
