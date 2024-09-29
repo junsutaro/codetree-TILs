@@ -19,7 +19,7 @@ for i in range(n):
 for j in range(n):
     cnt = 1
     for i in range(n-1):
-        if arr[j][i] == arr[j][i+1]:
+        if arr[i][j] == arr[i+1][j]:
             cnt += 1
         else:
             cnt = 1
