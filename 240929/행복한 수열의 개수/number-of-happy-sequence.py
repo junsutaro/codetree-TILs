@@ -17,7 +17,7 @@ ans = 0
 
 if n == 1:
     print(2)
-    break
+    return
 
 # 가로
 for i in range(n):
