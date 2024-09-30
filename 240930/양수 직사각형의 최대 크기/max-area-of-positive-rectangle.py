@@ -1,28 +1,38 @@
+def largest_rectangle_in_histogram(heights):
+    stack = []
+    max_area = 0
+    heights.append(0)  # 마지막 처리용으로 0을 추가합니다.
+    
+    for i in range(len(heights)):
+        while stack and heights[stack[-1]] >= heights[i]:
+            h = heights[stack.pop()]
+            w = i if not stack else i - stack[-1] - 1
+            max_area = max(max_area, h * w)
+        stack.append(i)
+    
+    heights.pop()  # 다시 제거
+    return max_area
+
 n, m = map(int, input().split())
-
 arr = [list(map(int, input().split())) for _ in range(n)]
-# arr = [[6, -2, 4, -3, 1,], [3, 6, 7, -4, 1],[6, 1, 8, 15, -5],[3, -5, 1, 16, 3]]
 
-def all_plus(arr, a1, b1, a2, b2):
-    for i in range(a1, a2+1):
-        for j in range(b1, b2+1):
-            if arr[i][j] <= 0:
-                return False
-    return True
+# 높이 누적 배열
+heights = [0] * m
+max_rectangle = 0
 
-import itertools
-combs = itertools.product(range(n), range(m), range(n), range(m));
+# 각 행을 차례대로 처리
+for i in range(n):
+    for j in range(m):
+        # 양수라면 높이를 누적, 아니면 0으로 리셋
+        if arr[i][j] > 0:
+            heights[j] += 1
+        else:
+            heights[j] = 0
+    
+    # 현재 행의 높이 배열을 히스토그램으로 간주하고 최대 직사각형 계산
+    max_rectangle = max(max_rectangle, largest_rectangle_in_histogram(heights))
 
-ans = -1
-
-for a1, b1, a2, b2 in combs:
-    if a1 > a2 or b1 > b2:
-        continue
-
-    if all_plus(arr, a1, b1, a2, b2):
-        # print(a1, b1, ',', a2, b2)
-        temp = (b2 + 1 - b1) * (a2 + 1 - a1)
-
-        ans = max(ans, temp)
-
-print(ans)
+if max_rectangle == 0:
+    print(-1)
+else:
+    print(max_rectangle)
