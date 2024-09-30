@@ -24,7 +24,7 @@ def blowing(arr, i, direction):
 #     print(*elem)
 
 def is_up_spread(i): # i가 3이면 2행 3행 봐야함. i가 1이면 0행 1행 봐야함
-    if i == 0:
+    if i == 1:
         return False
 
     for j in range(m):
