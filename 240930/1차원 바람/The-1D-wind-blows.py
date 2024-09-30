@@ -15,13 +15,13 @@ def blowing(arr, i, direction):
         for j in range(m):
             arr[i-1][j] = target_arr[(j+1+m) % m]
 
-    print()
-    for elem in arr:
-        print(*elem)
+    # print()
+    # for elem in arr:
+    #     print(*elem)
 
     
-for elem in arr:
-    print(*elem)
+# for elem in arr:
+#     print(*elem)
 
 def is_up_spread(i): # i가 3이면 2행 3행 봐야함. i가 1이면 0행 1행 봐야함
     if i == 0:
@@ -29,7 +29,7 @@ def is_up_spread(i): # i가 3이면 2행 3행 봐야함. i가 1이면 0행 1행 
 
     for j in range(m):
         if arr[i-1][j] == arr[i-2][j]:
-            print('위로간다!')
+            # print('위로간다!')
             return True
             
     return False
@@ -40,7 +40,7 @@ def is_down_spread(i): # i가 3이면 2랑 3이랑 비교 -> i가 6이면 5랑 6
 
     for j in range(m):
         if arr[i-1][j] == arr[i][j]:
-            print('아래로간다!!')
+            # print('아래로간다!!')
             return True
 
     return False
@@ -66,7 +66,7 @@ for move in moves:
                 up_dir = 'L'
             blowing(arr, up_index, up_dir)
         else:
-            print('위로 끝')
+            # print('위로 끝')
             break
             
 
@@ -82,5 +82,8 @@ for move in moves:
                 down_dir = 'L'
             blowing(arr, down_index, down_dir)
         else:
-            print('아래로 끝')
+            # print('아래로 끝')
             break
+            
+for elem in arr:
+    print(*elem)
