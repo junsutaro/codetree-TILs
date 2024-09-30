@@ -13,7 +13,7 @@ import copy
 # 바람아~ 불어라~
 for wind in winds:
     r1, c1, r2, c2 = wind # 2 2 4 6
-    origin_arr = copy.deepcopy(arr)
+    origin_arr = [lst[:] for lst in arr]
 
     for i in range(r1 - 1, r2):
         for j in range(c1 - 1, c2):
@@ -29,7 +29,7 @@ for wind in winds:
     # for elem in arr:
     #     print(*elem)
 
-    changed_arr = copy.deepcopy(arr)
+    changed_arr = [lst[:] for lst in arr]
     
     for i in range(r1 - 1, r2):
         for j in range(c1 - 1, c2):
