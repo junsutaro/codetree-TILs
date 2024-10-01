@@ -1,56 +1,70 @@
-def rotate_90_clockwise(arr):
-    return [[arr[3-j][i] for j in range(4)] for i in range(4)]
-
-def rotate_90_counterclockwise(arr):
-    return [[arr[j][3-i] for j in range(4)] for i in range(4)]
-
-def rotate_180(arr):
-    return [[arr[3-i][3-j] for j in range(4)] for i in range(4)]
-
-def move_left(arr):
-    new_arr = [[0] * 4 for _ in range(4)]
-    for i in range(4):
-        temp = []
-        for j in range(4):
-            if arr[i][j] != 0:
-                temp.append(arr[i][j])
-        
-        # 숫자 합치기
-        k = 0
-        while k < len(temp) - 1:
-            if temp[k] == temp[k + 1]:
-                temp[k] *= 2
-                del temp[k + 1]
-            k += 1
-        
-        # 합친 숫자 왼쪽으로 이동
-        for j in range(len(temp)):
-            new_arr[i][j] = temp[j]
-    
-    return new_arr
-
 arr = [list(map(int, input().split())) for _ in range(4)]
 dir = input()
 
-# 방향에 따라 회전
+# 싹 다 왼쪽으로 갖다붙인다고 가정하고, 
+# U면 90도, R이면 180도, D면 270도 왼쪽으로 돌림
+# 돌리고 풀고나서 다시 오른쪽으로 돌려
+
+new_arr = [elem[:] for elem in arr]
 if dir == 'U':
-    arr = rotate_90_clockwise(arr)
+    for i in range(4):
+        for j in range(4):
+            new_arr[i][j] = arr[j][3-i]
 elif dir == 'R':
-    arr = rotate_180(arr)
+    for i in range(4):
+        for j in range(4):
+            new_arr[i][j] = arr[3-i][3-j]
 elif dir == 'D':
-    arr = rotate_90_counterclockwise(arr)
+    for i in range(4):
+        for j in range(4):
+            new_arr[i][j] = arr[3-j][i]
 
-# 왼쪽으로 이동하는 함수 호출
-arr = move_left(arr)
 
-# 다시 원래 방향으로 되돌림
-if dir == 'U':
-    arr = rotate_90_counterclockwise(arr)
+ans = [[0] * 4 for _ in range(4)]
+for i in range(4):
+    cnt = 0
+    temp = []
+    for j in range(4):
+
+        if new_arr[i][j] == 0:
+            continue
+
+        cnt += 1
+
+        if j == 3:
+            if cnt == 1:
+                temp.append(new_arr[i][j])
+            else:
+                temp.append(new_arr[i][j] * 2)
+
+        elif cnt == 2:
+            cnt = 0
+            temp.append(new_arr[i][j] * 2)
+
+        elif new_arr[i][j] != new_arr[i][j+1]:
+            cnt = 0
+            temp.append(new_arr[i][j])
+
+
+    for j in range(len(temp)):
+        ans[i][j] = temp[j]
+
+
+ANS = [elem[:] for elem in ans]
+
+if dir == 'D':
+    for i in range(4):
+        for j in range(4):
+            ANS[i][j] = ans[j][3-i]
 elif dir == 'R':
-    arr = rotate_180(arr)
-elif dir == 'D':
-    arr = rotate_90_clockwise(arr)
+    for i in range(4):
+        for j in range(4):
+            ANS[i][j] = ans[3-i][3-j]
+elif dir == 'U':
+    for i in range(4):
+        for j in range(4):
+            ANS[i][j] = ans[3-j][i]
 
-# 결과 출력
-for elem in arr:
+
+for elem in ANS:
     print(*elem)
