@@ -21,7 +21,8 @@ def find_len(A):
             cnt = 1
         else:
             cnt += 1
-    # print(temp)
+    print(A)
+    print(temp)
     ans = min(ans, len(temp))
 
 for _ in range(length):
