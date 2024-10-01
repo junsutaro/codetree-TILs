@@ -14,8 +14,9 @@ c -= 1
 # dir = 0 반시계, dir = 1 시계
 
 cur_dir = 0
+
 di = [-1, -1, 1, 1]
-if cur_dir == 0:
+if dir == 0:
     dj = [1, -1, -1, 1]
 else:
     dj = [-1, 1, 1, -1]
