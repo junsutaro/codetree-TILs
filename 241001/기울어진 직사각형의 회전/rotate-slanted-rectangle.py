@@ -25,15 +25,13 @@ i = r; j = c
 
 while cur_dir < 4:
 
-    dist = 0
-
     if cur_dir == 0:
         dist = m1
     elif cur_dir == 1:
         dist = m2
     elif cur_dir == 2:
         dist = m3
-    else:
+    elif cur_dir == 3:
         dist = m4
 
     for _ in range(dist):
