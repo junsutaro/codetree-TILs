@@ -15,11 +15,14 @@ c -= 1
 
 cur_dir = 0
 di = [-1, -1, 1, 1]
-dj = [1, -1, -1, 1]
+if cur_dir == 0:
+    dj = [1, -1, -1, 1]
+else:
+    dj = [-1, 1, 1, -1]
 
 i = r; j = c
-cnt = 0
-while cnt < 4:
+
+while cur_dir < 4:
 
     dist = 0
 
@@ -41,12 +44,7 @@ while cnt < 4:
         i = ni
         j = nj
     
-    if dir == 0:
-        cur_dir += 1
-    else:
-        cur_dir = (cur_dir + 3) % 4
-    
-    cnt += 1
+    cur_dir += 1
 
 for lst in arr:
     print(*lst)
