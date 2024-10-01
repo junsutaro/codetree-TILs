@@ -18,7 +18,7 @@ def find_len(A):
         else:
             cnt += 1
 
-    temp += now
+    temp += A[-1]
     temp += str(cnt)
     # print(A)
     # print(temp)
