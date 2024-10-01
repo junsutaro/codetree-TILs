@@ -50,20 +50,20 @@ for i in range(4):
 
 
 ANS = [[0] * 4 for _ in range(4)]
-
-
-if dir == 'D':
+if dir == 'U':
     for i in range(4):
         for j in range(4):
-            ANS[i][j] = ans[3-j][3-i]
+            ANS[i][j] = ans[j][3-i]  # 다시 시계 방향 90도 돌림
 elif dir == 'R':
     for i in range(4):
         for j in range(4):
-            ANS[i][j] = ans[3-i][3-j]
-elif dir == 'U':
+            ANS[i][j] = ans[3-i][3-j]  # 180도 회전
+elif dir == 'D':
     for i in range(4):
         for j in range(4):
-            ANS[i][j] = ans[3-j][i]
+            ANS[i][j] = ans[3-j][i]  # 시계 반대 방향 90도 돌림
+else:
+    ANS = ans  # L인 경우는 그대로
 
 
 for elem in ANS:
