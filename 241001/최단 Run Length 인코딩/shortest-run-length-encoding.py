@@ -1,33 +1,19 @@
 A = list(input().strip())
 length = len(A)
 
-ans = float('inf')
-
 def find_len(A):
-    global ans
-
     temp = ''
-    
     cnt = 1
     for i in range(1, len(A)):
-        now = A[i-1]
         if A[i] != A[i-1]:
-            temp += now
-            temp += str(cnt)
+            temp += A[i-1] + str(cnt)
             cnt = 1
         else:
             cnt += 1
 
-    temp += A[-1]
-    temp += str(cnt)
-    # print(A)
-    # print(temp)
-    ans = min(ans, len(temp))
+    temp += A[-1] + str(cnt)
+    return len(temp)
 
-for _ in range(length):
-    last = A.pop(0)
-    A.append(last)
-
-    find_len(A)
+ans = min(find_len(A[i:] + A[:i]) for i in range(length))
 
 print(ans)
