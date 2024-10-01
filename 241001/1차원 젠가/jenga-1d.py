@@ -1,16 +1,30 @@
 n = int(input())
-blocks = []
-for _ in range(n):
-    blocks.append(int(input()))
+blocks = [int(input()) for _ in range(n)]
 
-s1, e1 = map(int, input().split())
-s2, e2 = map(int, input().split())
+end_index = n
 
-for _ in range(s1-1, e1):
-    blocks.pop(s1-1)
-for _ in range(s2-1, e2):
-    blocks.pop(s2-1)
 
-print(len(blocks))
-for elem in blocks:
-    print(elem)
+def delete_block(s, e):
+    global end_index
+
+    temp_arr = []
+
+    for i in range(end_index):
+        if i < s or i > e:
+            temp_arr.append(blocks[i])
+        
+        end_index = len(temp_arr)
+
+        for i in range(end_index):
+            blocks[i] = temp_arr[i]
+
+
+for _ in range(2):
+    s, e = map(int, input().split()) 
+    s -= 1
+    e -= 1
+    delete_block(s, e)
+
+print(end_index)
+for i in range(end_index):
+    print(blocks[i])
