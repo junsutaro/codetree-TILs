@@ -11,16 +11,15 @@ def find_len(A):
     cnt = 1
     for i in range(1, len(A)):
         now = A[i-1]
-        if i == len(A) - 1:
-            cnt += 1
-            temp += now
-            temp += str(cnt)
         if A[i] != A[i-1]:
             temp += now
             temp += str(cnt)
             cnt = 1
         else:
             cnt += 1
+
+    temp += now
+    temp += str(cnt)
     # print(A)
     # print(temp)
     ans = min(ans, len(temp))
