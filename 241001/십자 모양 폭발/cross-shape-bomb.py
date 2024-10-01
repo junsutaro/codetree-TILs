@@ -13,9 +13,9 @@ bomb_size = arr[r][c]
 def bomb(si, sj): # 인덱스입니다
     arr[r][c] = 0
     for k in range(4):
-        for _ in range(bomb_size):
-            ni = si + di[k]
-            nj = sj + dj[k]
+        for size in range(bomb_size):
+            ni = si + di[k]*size
+            nj = sj + dj[k]*size
 
             if 0 > ni or ni >= n or 0 > nj or nj >= n:
                 continue
