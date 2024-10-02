@@ -55,8 +55,19 @@ for _ in range(k):
     explode(arr)
     turn(arr)
     gravity(arr)
-    
-explode(arr)
+
+
+before = sum(1 for elem in arr for num in elem if num != 0)
+while True:
+    explode(arr)
+    after = sum(1 for elem in arr for num in elem if num != 0)
+
+    if before == after:
+        break
+    else:
+        before = after
+
+
 
 ans = sum(1 for elem in arr for num in elem if num != 0)
 print(ans)
