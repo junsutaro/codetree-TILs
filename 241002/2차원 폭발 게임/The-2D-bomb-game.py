@@ -56,6 +56,7 @@ for _ in range(k):
     turn(arr)
     gravity(arr)
     
+explode(arr)
 
 ans = sum(1 for elem in arr for num in elem if num != 0)
 print(ans)
