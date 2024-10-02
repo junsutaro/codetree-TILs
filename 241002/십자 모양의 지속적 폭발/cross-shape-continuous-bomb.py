@@ -22,7 +22,7 @@ def meso_explosion(si, sj):
 def gravity(array):
     for j in range(len(array)):
         temp = []
-        index = 3
+        index = len(array)-1
 
         # 아래에서부터 차곡차곡 
         for i in range(len(array)-1, -1, -1):
