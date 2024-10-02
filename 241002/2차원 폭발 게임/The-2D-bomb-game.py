@@ -60,6 +60,7 @@ for _ in range(k):
 before = sum(1 for elem in arr for num in elem if num != 0)
 while True:
     explode(arr)
+    gravity(arr)
     after = sum(1 for elem in arr for num in elem if num != 0)
 
     if before == after:
