@@ -53,6 +53,7 @@ def turn(arr):
 
 for _ in range(k):
     explode(arr)
+    gravity
     turn(arr)
     gravity(arr)
 
