@@ -1,5 +1,5 @@
 n, m = map(int, input().split())
-arr = [list(map(int, input().split())) for _ in range(4)]
+arr = [list(map(int, input().split())) for _ in range(n)]
 
 di = [-1, 0, 1, 0]
 dj = [0, 1, 0, -1]
