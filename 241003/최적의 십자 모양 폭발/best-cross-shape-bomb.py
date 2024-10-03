@@ -90,8 +90,6 @@ def find_ans(arr):
             
             i += 1
 
-
-
     return cnt
 
 
