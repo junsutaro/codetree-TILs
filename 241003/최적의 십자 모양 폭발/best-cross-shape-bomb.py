@@ -28,7 +28,7 @@ def gravity(arr):
                 arr[index][j] = arr[i][j]
                 index -= 1
             
-        for i in range(index):
+        for i in range(index, -1, -1):
             arr[i][j] = 0
 
 def find_ans(arr):
