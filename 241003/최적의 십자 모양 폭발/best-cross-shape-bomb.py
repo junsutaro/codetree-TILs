@@ -7,6 +7,9 @@ def explode(arr, i, j): # 인덱스로 사용
     dj = [0, 1, 0, -1]
     size = arr[i][j] - 1
     
+    if size < 0:
+        return
+    
     arr[i][j] = 0
 
     for dir in range(4):
@@ -101,6 +104,6 @@ for i in range(n):
         if arr[i][j] != 0:
             explode(new_arr, i, j)
             gravity(new_arr)
-        ans = max(ans, find_ans(new_arr))
+            ans = max(ans, find_ans(new_arr))
 
 print(ans)
