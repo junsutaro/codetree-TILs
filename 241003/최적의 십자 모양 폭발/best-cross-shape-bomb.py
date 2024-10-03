@@ -5,13 +5,12 @@ arr = [list(map(int, input().split())) for _ in range(n)]
 def explode(arr, i, j): # 인덱스로 사용
     di = [-1, 0, 1, 0]
     dj = [0, 1, 0, -1]
-    size = arr[i][j] - 1
+
+    size = arr[i][j]
     
     if size < 0:
         return
     
-    arr[i][j] = 0
-
     for dir in range(4):
         for damage in range(size):
             ni = i + di[dir]*damage;
@@ -102,8 +101,19 @@ for i in range(n):
     for j in range(n):
         new_arr = [elem[:] for elem in arr]
         if arr[i][j] != 0:
+
+            for elem in new_arr:
+                print(elem)
+            print()
             explode(new_arr, i, j)
+            for elem in new_arr:
+                print(elem)
+            print()
+            
             gravity(new_arr)
+            for elem in new_arr:
+                print(elem)
+            print()
             ans = max(ans, find_ans(new_arr))
 
 print(ans)
