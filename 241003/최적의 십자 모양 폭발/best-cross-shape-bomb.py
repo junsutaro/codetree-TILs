@@ -14,8 +14,8 @@ def explode(arr, i, j): # 인덱스로 사용
 
     for dir in range(4):
         for damage in range(size):
-            ni = i + di[dir];
-            nj = j + dj[dir]
+            ni = i + di[dir]*damage;
+            nj = j + dj[dir]*damage
 
             if ni >= n or ni < 0 or nj >= n or nj < 0:
                 continue
