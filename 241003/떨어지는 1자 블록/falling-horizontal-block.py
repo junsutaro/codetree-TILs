@@ -5,8 +5,8 @@ arr = [list(map(int, input().split())) for _ in range(n)]
 
 # block : for j in range(k, k+m) i가 n-1 -1 -1 로 돌면서 True? 빢! break
 
+can = False
 for i in range(1, n):
-    can = False
     for j in range(k, k+m):
 
         # 내려가면서 처음 걸리면?
@@ -18,8 +18,9 @@ for i in range(1, n):
     if can:
         break
 
-if n == 1:
-    print(1)
-else:
-    for elem in arr:
-        print(*elem)
+if can == False:
+    for j in range(n):
+        arr[-1][j] = 1
+
+for elem in arr:
+    print(*elem)
