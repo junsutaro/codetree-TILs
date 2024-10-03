@@ -5,22 +5,26 @@ arr = [list(map(int, input().split())) for _ in range(n)]
 
 # block : for j in range(k, k+m) i가 n-1 -1 -1 로 돌면서 True? 빢! break
 
-can = False
-for i in range(1, n):
-    for j in range(k, k+m):
+# 전부 비었니?
+def all_blank(row, col_s, col_e):
+    for col in range(col_s, col_e):
+        if arr[row][col] != 0:
+            return False
+    return True
 
-        # 내려가면서 처음 걸리면?
-        if arr[i][j] == 1:
-            can = True
-            for l in range(k, k+m):
-                arr[i-1][l] = 1
-            
-    if can:
-        break
+def get_target_row():
+    for row in range(n - 1):
+        # 안빈놈이 나왔니?
+        if not all_blank(row + 1, k, k+m):
+            return row
+    
+    # 끝까지 안빈놈 없니?
+    return n - 1
 
-if can == False:
-    for j in range(k, k+m):
-        arr[-1][j] = 1
+target_row = get_target_row()
+
+for col in range(k, k + m):
+    arr[target_row][col] = 1
 
 for elem in arr:
     print(*elem)
