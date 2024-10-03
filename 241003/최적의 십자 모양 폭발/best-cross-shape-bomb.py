@@ -101,19 +101,8 @@ for i in range(n):
     for j in range(n):
         new_arr = [elem[:] for elem in arr]
         if arr[i][j] != 0:
-
-            for elem in new_arr:
-                print(elem)
-            print()
             explode(new_arr, i, j)
-            for elem in new_arr:
-                print(elem)
-            print()
-            
             gravity(new_arr)
-            for elem in new_arr:
-                print(elem)
-            print()
             ans = max(ans, find_ans(new_arr))
 
 print(ans)
