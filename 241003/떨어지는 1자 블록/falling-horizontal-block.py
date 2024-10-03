@@ -19,7 +19,7 @@ for i in range(1, n):
         break
 
 if can == False:
-    for j in range(n):
+    for j in range(k, k+m):
         arr[-1][j] = 1
 
 for elem in arr:
