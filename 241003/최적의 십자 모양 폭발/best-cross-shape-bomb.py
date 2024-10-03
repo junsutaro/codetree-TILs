@@ -15,8 +15,10 @@ def explode(arr, i, j): # 인덱스로 사용
             ni = i + di[dir]*damage
             nj = j + dj[dir]*damage
 
-            if 0 <= ni < n and 0 <= nj < n:
-                arr[ni][nj] = 0
+            if ni >= n or ni < 0 or nj >= n or nj < 0:
+                continue
+
+            arr[ni][nj] = 0
 
 def gravity(arr):
     for j in range(n):
@@ -88,12 +90,15 @@ def find_ans(arr):
 
 ans = 0
 
-for i in range(n):
-    for j in range(n):
-        new_arr = [elem[:] for elem in arr]
-        if arr[i][j] != 0:
-            explode(new_arr, i, j)
-            gravity(new_arr)
-            ans = max(ans, find_ans(new_arr))
+def simulate_explosion(arr, n):
+    ans = 0
+    for i in range(n):
+        for j in range(n):
+            new_arr = [row[:] for row in arr]
+            if new_arr[i][j] != 0:
+                explode(new_arr, i, j)
+                gravity(new_arr)
+                ans = max(ans, find_ans(new_arr))
+    return ans
 
-print(ans)
+print(simulate_explosion(arr, n))
