@@ -33,72 +33,28 @@ def gravity(arr):
 
 def find_ans(arr):
     cnt = 0
-
+    # Check for pairs in rows
     for i in range(n):
-        j = 0
-        temp_cnt = 1
-        while True:
-            if j == n-1:
-                if temp_cnt == 2:
-                    cnt += 1
+        for j in range(n - 1):
+            if arr[i][j] != 0 and arr[i][j] == arr[i][j + 1]:
+                cnt += 1
 
-                break
-
-            if arr[i][j] == 0:
-                j += 1
-                continue
-
-
-            if arr[i][j] == arr[i][j+1]:
-                temp_cnt += 1
-            
-            else:
-                if temp_cnt == 2:
-                    cnt += 1
-
-                temp_cnt = 1
-            
-            j += 1
-
+    # Check for pairs in columns
     for j in range(n):
-        i = 0
-        temp_cnt = 1
-        while True:
-            if i == n-1:
-                if temp_cnt == 2:
-                    cnt += 1
-
-                break
-
-            if arr[i][j] == 0:
-                i += 1
-                continue
-
-
-            if arr[i][j] == arr[i+1][j]:
-                temp_cnt += 1
-            
-            else:
-                if temp_cnt == 2:
-                    cnt += 1
-
-                temp_cnt = 1
-            
-            i += 1
+        for i in range(n - 1):
+            if arr[i][j] != 0 and arr[i][j] == arr[i + 1][j]:
+                cnt += 1
 
     return cnt
 
 ans = 0
 
-def simulate_explosion(arr, n):
-    ans = 0
-    for i in range(n):
-        for j in range(n):
-            new_arr = [row[:] for row in arr]
-            if new_arr[i][j] != 0:
-                explode(new_arr, i, j)
-                gravity(new_arr)
-                ans = max(ans, find_ans(new_arr))
-    return ans
+for i in range(n):
+    for j in range(n):
+        new_arr = [elem[:] for elem in arr]
+        if arr[i][j] != 0:
+            explode(new_arr, i, j)
+            gravity(new_arr)
+            ans = max(ans, find_ans(new_arr))
 
-print(simulate_explosion(arr, n))
+print(ans)
