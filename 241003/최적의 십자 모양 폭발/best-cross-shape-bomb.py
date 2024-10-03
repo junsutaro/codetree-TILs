@@ -15,22 +15,19 @@ def explode(arr, i, j): # 인덱스로 사용
             ni = i + di[dir]*damage
             nj = j + dj[dir]*damage
 
-            if ni >= n or ni < 0 or nj >= n or nj < 0:
-                continue
-
-            arr[ni][nj] = 0
+            if 0 <= ni < n and 0 <= nj < n:
+                arr[ni][nj] = 0
 
 def gravity(arr):
     for j in range(n):
-        non_zero_elements = []
-        for i in range(n):
+        index = n-1
+        for i in range(n-1, -1, -1):
             if arr[i][j] != 0:
-                non_zero_elements.append(arr[i][j])
-        # Apply gravity: fill column with non-zero elements from the bottom
-        for i in range(n - len(non_zero_elements)):
+                arr[index][j] = arr[i][j]
+                index -= 1
+            
+        for i in range(index, -1, -1):
             arr[i][j] = 0
-        for i in range(n - len(non_zero_elements), n):
-            arr[i][j] = non_zero_elements[i - (n - len(non_zero_elements))]
 
 def find_ans(arr):
     cnt = 0
