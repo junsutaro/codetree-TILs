@@ -18,6 +18,8 @@ for i in range(1, n):
     if can:
         break
 
-
-for elem in arr:
-    print(*elem)
+if n == 1:
+    print(1)
+else:
+    for elem in arr:
+        print(*elem)
