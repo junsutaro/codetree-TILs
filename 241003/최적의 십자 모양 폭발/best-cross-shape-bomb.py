@@ -20,39 +20,29 @@ def explode(arr, i, j):
 
 def gravity(arr):
     for j in range(n):
-        index = n - 1
-        for i in range(n - 1, -1, -1):
+        non_zero_elements = []
+        for i in range(n):
             if arr[i][j] != 0:
-                arr[index][j] = arr[i][j]
-                if index != i:
-                    arr[i][j] = 0
-                index -= 1
+                non_zero_elements.append(arr[i][j])
+        # Apply gravity: fill column with non-zero elements from the bottom
+        for i in range(n - len(non_zero_elements)):
+            arr[i][j] = 0
+        for i in range(n - len(non_zero_elements), n):
+            arr[i][j] = non_zero_elements[i - (n - len(non_zero_elements))]
 
 def find_ans(arr):
     cnt = 0
+    # Check for pairs in rows
     for i in range(n):
-        temp_cnt = 1
         for j in range(n - 1):
-            if arr[i][j] == arr[i][j + 1] and arr[i][j] != 0:
-                temp_cnt += 1
-            else:
-                if temp_cnt == 2:
-                    cnt += 1
-                temp_cnt = 1
-        if temp_cnt == 2:
-            cnt += 1
+            if arr[i][j] != 0 and arr[i][j] == arr[i][j + 1]:
+                cnt += 1
 
+    # Check for pairs in columns
     for j in range(n):
-        temp_cnt = 1
         for i in range(n - 1):
-            if arr[i][j] == arr[i + 1][j] and arr[i][j] != 0:
-                temp_cnt += 1
-            else:
-                if temp_cnt == 2:
-                    cnt += 1
-                temp_cnt = 1
-        if temp_cnt == 2:
-            cnt += 1
+            if arr[i][j] != 0 and arr[i][j] == arr[i + 1][j]:
+                cnt += 1
 
     return cnt
 
