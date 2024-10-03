@@ -92,14 +92,15 @@ def find_ans(arr):
 
     return cnt
 
-ans = 0
 
+ans = 0
 
 for i in range(n):
     for j in range(n):
         new_arr = [elem[:] for elem in arr]
-        explode(new_arr, i, j)
-        gravity(new_arr)
+        if arr[i][j] != 0:
+            explode(new_arr, i, j)
+            gravity(new_arr)
         ans = max(ans, find_ans(new_arr))
-        
+
 print(ans)
