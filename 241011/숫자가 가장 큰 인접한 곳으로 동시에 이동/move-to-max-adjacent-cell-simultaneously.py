@@ -7,20 +7,23 @@ di = [-1, 1, 0, 0]
 dj = [0, 0, -1, 1]
 
 def get_bigger(i, j):
-    temp_max = 0
+    temp_max = -1
     temp_pos = None
     for k in range(4):
         ni = i + di[k]
         nj = j + dj[k]
 
-        if not ( 0 <= ni < n and 0 <= nj < n ):
-            continue
+        if 0 <= ni < n and 0 <= nj < n:
+            if grid[ni][nj] > temp_max:
+                temp_max = grid[ni][nj]
+                temp_pos = (ni, nj)
+            elif grid[ni][nj] == temp_max:
+                # 우선순위 방향 적용
+                if temp_pos is None or (ni, nj) < temp_pos:
+                    temp_pos = (ni, nj)
 
-        if grid[ni][nj] > temp_max:
-            temp_max = grid[ni][nj]
-            temp_pos = (ni, nj)
-    
     return temp_pos
+
 
 
 for _ in range(t):
