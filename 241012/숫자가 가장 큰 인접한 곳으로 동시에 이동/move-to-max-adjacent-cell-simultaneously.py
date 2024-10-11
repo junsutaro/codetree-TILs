@@ -25,17 +25,19 @@ def get_bigger(i, j):
     return temp_pos
 
 for _ in range(t):
-    new_balls = set()
+    new_balls = []  # 리스트로 새로운 위치를 저장
     for ball in balls:
         bi = ball[0]
         bj = ball[1]
 
         next_pos = get_bigger(bi, bj)
         if next_pos is not None:
-            new_balls.add(next_pos)
-    
-    # 중복되는 구슬 제거
-    counter = Counter(tuple(lst) for lst in new_balls)
-    balls = [list(lst) for lst, count in counter.items() if count == 1]
+            new_balls.append(next_pos)  # 새로운 위치를 리스트에 추가
+
+    # 위치별로 구슬 개수 카운팅
+    counter = Counter(new_balls)
+
+    # 1개만 있는 위치의 구슬들만 다시 리스트에 저장
+    balls = [list(pos) for pos, count in counter.items() if count == 1]
 
 print(len(balls))
