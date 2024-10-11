@@ -38,8 +38,8 @@ for time in range(1, m+1):
             if grid[i][j] == 1:
                 bombs.append([i, j])
     
-    for i, j in bombs:
-        make_bomb(time, i, j)
+    for ii, jj in bombs:
+        make_bomb(time, ii, jj)
 
     # print()
     # for elem in grid:
