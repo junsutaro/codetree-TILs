@@ -40,6 +40,10 @@ dir = 0 # 초기 방향
 dir_cnt = 0
 while True:
 
+    if visited[start_i][start_j] >= 4:
+        ans = -1
+        break
+
     if dir_cnt == 4:
         ans = -1
         # print('4번바꿈!')
@@ -66,12 +70,9 @@ while True:
     # 그 둘다 아니면? 간 후에 방문체크
     ni = i + di[dir]
     nj = j + dj[dir]
-    if visited[ni][nj] == 0:
-        visited[ni][nj] = 1
-        time += 1
-    else:
-        ans = -1
-        break
+    visited[ni][nj] += 1
+    time += 1
+
     
     # 간 후에 오른쪽에 벽이 있나 체크
     # 그 오른쪽 : 가서 오른쪽으로 한칸 더 간 위치.
@@ -81,22 +82,14 @@ while True:
     
     # 벽이 없으면?
     if arr[ni_right][nj_right] == '.':
-        # visited 체크하고 안간곳이면
-        if visited[ni_right][nj_right] == 0:
-            # 가고 방문체크 후 dir도 바꿔
-            ni = ni_right
-            nj = nj_right
+        # 가고 방문체크 후 dir도 바꿔
+        ni = ni_right
+        nj = nj_right
 
-            time += 1
-            visited[ni][nj] = 1
-            dir = (dir + 3) % 4
-            dir_cnt += 1
-
-
-        # 갔던곳이면? 탈출못하는거지?
-        else:
-            ans = -1
-            break
+        time += 1
+        visited[ni][nj] = +1
+        dir = (dir + 3) % 4
+        dir_cnt += 1
 
     # 벽이 있으면? 그대로니까 넘어감
     # else: pass
@@ -104,6 +97,7 @@ while True:
     # while 돌기전에 i, j 최신화
     i = ni
     j = nj
+
 # for elem in arr:
 #     print(*elem)
 # print()
