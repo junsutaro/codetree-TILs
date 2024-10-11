@@ -1,13 +1,8 @@
 n, m, r, c = map(int, input().split())
 dirs = input().split()
 
-# [n, m, r, c] = [4, 4, 2, 3]
-# dirs = ['L', 'L', 'L', 'L']
-
 r -= 1
 c -= 1
-
-# m번 굴림
 
 # 주사위 펼치기
 #      위 북 서 남 동 아래
@@ -20,7 +15,6 @@ transforms = {
     'D': [1, 5, 2, 0, 4, 3],
 }
 
-
 def rolling(direction):
     global dice
     dice = [dice[i] for i in transforms[direction]]
@@ -28,33 +22,26 @@ def rolling(direction):
 grid = [[0] * n for _ in range(n)]
 grid[r][c] = 6
 
+moves = {'L': (0, -1), 'R': (0, 1), 'U': (-1, 0), 'D': (1, 0)}
+
 i = r
-j = c 
+j = c
 
 for direction in dirs:
-    if direction == 'L':
-        if j - 1 < 0:
-            continue
-        j -= 1
-    elif direction == 'R':
-        if j + 1 >= n:
-            continue
-        j += 1
-    elif direction == 'D':
-        if i + 1 >= n:
-            continue
-        i += 1
-    else:
-        if i - 1 < 0:
-            continue
-        i -= 1
+    di, dj = moves[direction]
+    ni = i + di
+    nj = j + dj
+
+    if not ( 0 <= ni < n and 0 <= nj < n ):
+        continue
+    
+    i, j = ni, nj
 
     rolling(direction)
     grid[i][j] = dice[5]
 
 
-# for elem in grid:
-#     print(*elem)
 
 ans = sum(sum(elem) for elem in grid)
+
 print(ans)
