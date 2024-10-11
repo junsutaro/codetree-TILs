@@ -86,7 +86,7 @@ while True:
         nj = nj_right
 
         time += 1
-        visited[ni][nj] =+ 1
+        visited[ni][nj] += 1
         dir = (dir + 3) % 4
         dir_cnt += 1
 
