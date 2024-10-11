@@ -42,7 +42,7 @@ while True:
 
     if dir_cnt == 4:
         ans = -1
-        print('4번바꿈!')
+        # print('4번바꿈!')
         break
 
     next = arr[i+di[dir]][j+dj[dir]]
