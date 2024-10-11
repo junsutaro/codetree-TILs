@@ -1,9 +1,43 @@
-n, m, k = map(int, input().split())
-apples = [map(int, input().split()) for _ in range(m)]
-moves = [input().split() for _ in range(k)]
+# n, m, k = map(int, input().split())
+# apples = [map(int, input().split()) for _ in range(m)]
+# moves = [input().split() for _ in range(k)]
+
+n, m, k = 4, 7, 19
+
+apples = [
+    [2, 2],
+    [2, 3],
+    [2, 4],
+    [3, 1],
+    [3, 2],
+    [3, 3],
+    [4, 3]
+]
+
+moves = [
+    ['D', 3],
+    ['R', 3],
+    ['U', 3],
+    ['L', 2],
+    ['D', 2],
+    ['R', 1],
+    ['U', 1],
+    ['R', 1],
+    ['D', 2],
+    ['L', 3],
+    ['U', 1],
+    ['R', 3],
+    ['D', 1],
+    ['L', 3],
+    ['U', 3],
+    ['R', 1],
+    ['D', 1],
+    ['L', 1],
+    ['R', 100]
+]
 
 
-# 9 - 사과, 3 - 벽, 1 - 뱀 
+# 9 - 사과, 3 - 벽 
 
 grid = [[0] * (n+2) for _ in range(n+2)]
 for ai, aj in apples:
@@ -57,6 +91,9 @@ for elem in moves:
                 if [ni, nj] != snakes[0]:
                     game_end = True
                     break
+                else:
+                    snakes.append([ni, nj])
+                    snakes.pop(0)
 
         i = ni
         j = nj
