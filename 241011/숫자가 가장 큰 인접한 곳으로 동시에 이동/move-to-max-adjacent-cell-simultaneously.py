@@ -1,6 +1,6 @@
 n, m, t = map(int, input().split())
 grid = [list(map(int, input().split())) for _ in range(n)]
-balls = [list(map(int, input().split())) for _ in range(m)]
+balls = [tuple(map(lambda x: int(x) - 1, input().split())) for _ in range(m)]  # 0 기반으로 변환
 
 # 위 아래 좌 우
 di = [-1, 1, 0, 0]
@@ -18,22 +18,18 @@ def get_bigger(i, j):
                 temp_max = grid[ni][nj]
                 temp_pos = (ni, nj)
             elif grid[ni][nj] == temp_max:
-                # 우선순위 방향 적용
                 if temp_pos is None or (ni, nj) < temp_pos:
                     temp_pos = (ni, nj)
 
     return temp_pos
 
-
-
 for _ in range(t):
-    new_balls = set()
+    new_positions = set() 
     for ball in balls:
-        bi = ball[0]
-        bj = ball[1]
+        bi, bj = ball
+        new_pos = get_bigger(bi, bj)
+        new_positions.add(new_pos)
 
-        new_balls.add(get_bigger(bi, bj))
-    
-    balls = new_balls
+    balls = list(new_positions)
 
 print(len(balls))
