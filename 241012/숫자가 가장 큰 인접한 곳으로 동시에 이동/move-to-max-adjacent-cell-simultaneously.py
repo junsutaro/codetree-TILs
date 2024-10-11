@@ -10,23 +10,24 @@ balls = new_balls
 di = [-1, 1, 0, 0]
 dj = [0, 0, -1, 1]
 
+from collections import Counter
+
 def get_bigger(i, j):
-    temp_max = 0
+    temp_max = -1
     temp_pos = None
     for k in range(4):
         ni = i + di[k]
         nj = j + dj[k]
 
-        if not ( 0 <= ni < n and 0 <= nj < n ):
+        if not (0 <= ni < n and 0 <= nj < n):
             continue
 
         if grid[ni][nj] > temp_max:
             temp_max = grid[ni][nj]
-            temp_pos = [ni, nj]
+            temp_pos = (ni, nj)
     
     return temp_pos
 
-from collections import Counter
 
 for _ in range(t):
     new_balls = []  # 리스트로 새로운 위치를 저장
