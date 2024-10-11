@@ -69,6 +69,7 @@ while True:
     ni = i + di[dir]
     nj = j + dj[dir]
     visited[ni][nj] += 1
+    dir_cnt = 0
     time += 1
 
     
@@ -87,7 +88,7 @@ while True:
         time += 1
         visited[ni][nj] =+ 1
         dir = (dir + 3) % 4
-        dir_cnt = 0
+        dir_cnt += 1
 
     # 벽이 있으면? 그대로니까 넘어감
     # else: pass
