@@ -28,15 +28,23 @@ j = c
 
 for direction in dirs:
     if direction == 'L':
-        j -= 1
-    elif direction == 'R':
-        j += 1
-    elif direction == 'D':
-        i += 1
-    else:
-        i -= 1
+        if j - 1 >= 0:
+            rolling(direction)
 
-    rolling(direction)
+            j -= 1
+    elif direction == 'R':
+        if j + 1 < n:
+            rolling(direction)
+            j += 1
+    elif direction == 'D':
+        if i + 1 < n:
+            rolling(direction)
+            i += 1
+    else:
+        if i - 1 >= 0:
+            rolling(direction)
+            i -= 1
+
     grid[i][j] = dice[5]
 
 
