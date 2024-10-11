@@ -17,6 +17,7 @@ def get_bigger(i, j):
             continue
 
         if grid[ni][nj] > temp_max:
+            temp_max = grid[ni][nj]
             temp_pos = (ni, nj)
     
     return temp_pos
