@@ -7,19 +7,24 @@ di = [-1, 1, 0, 0]
 dj = [0, 0, -1, 1]
 
 def get_bigger(i, j):
-    temp_max = 0
-    temp_pos = None
+    temp_max = -1  # 가장 큰 값을 추적 (-1로 초기화)
+    temp_pos = None  # 이동할 위치를 추적
+    
     for k in range(4):
         ni = i + di[k]
         nj = j + dj[k]
 
-        if not ( 0 <= ni < n and 0 <= nj < n ):
+        # 격자 범위 안에 있는지 확인
+        if not (0 <= ni < n and 0 <= nj < n):
             continue
 
+        # 더 큰 값을 찾거나, 값이 같으면서 우선순위가 높은 경우
         if grid[ni][nj] > temp_max:
+            temp_max = grid[ni][nj]
             temp_pos = (ni, nj)
     
     return temp_pos
+
 
 
 from collections import Counter
