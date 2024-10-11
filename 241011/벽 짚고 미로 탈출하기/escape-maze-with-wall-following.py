@@ -2,14 +2,14 @@ n = int(input())
 start_i, start_j = map(int, input().split())
 temp = [list(input()) for _ in range(n)]
 
-n = 3
-start_i = 1
-start_j = 1
-temp = [
-    ['.', '.', '.'],
-    ['#', '.', '#'],
-    ['.', '#', '.']
-]
+# n = 3
+# start_i = 1
+# start_j = 1
+# temp = [
+#     ['.', '.', '.'],
+#     ['#', '.', '#'],
+#     ['.', '#', '.']
+# ]
 
 
 arr = [[0] * (n+2) for _ in range(n+2)]
