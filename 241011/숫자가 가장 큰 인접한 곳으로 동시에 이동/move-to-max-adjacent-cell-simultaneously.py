@@ -18,18 +18,24 @@ def get_bigger(i, j):
                 temp_max = grid[ni][nj]
                 temp_pos = (ni, nj)
             elif grid[ni][nj] == temp_max:
+                # 우선순위 방향 적용
                 if temp_pos is None or (ni, nj) < temp_pos:
                     temp_pos = (ni, nj)
 
     return temp_pos
 
 for _ in range(t):
-    new_positions = set() 
+    new_positions = {}
     for ball in balls:
         bi, bj = ball
         new_pos = get_bigger(bi, bj)
-        new_positions.add(new_pos)
 
-    balls = list(new_positions)
+        if new_pos in new_positions:
+            new_positions[new_pos] += 1
+        else:
+            new_positions[new_pos] = 1
+
+    # 남아있는 구슬 위치 업데이트 (중복된 위치는 제거)
+    balls = [pos for pos, count in new_positions.items() if count == 1]
 
 print(len(balls))
