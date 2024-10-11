@@ -2,16 +2,14 @@ n = int(input())
 start_i, start_j = map(int, input().split())
 temp = [list(input()) for _ in range(n)]
 
-# n = 5
-# start_i = 2
-# start_j = 2
-# temp = [
-#     ['#', '#', '#', '#', '#'],
-#     ['.', '.', '.', '.', '.'],
-#     ['#', '#', '.', '.', '.'],
-#     ['#', '#', '.', '.', '.'],
-#     ['.', '.', '.', '.', '.']
-# ]
+n = 3
+start_i = 1
+start_j = 1
+temp = [
+    ['.', '.', '.'],
+    ['#', '.', '#'],
+    ['.', '#', '.']
+]
 
 
 arr = [[0] * (n+2) for _ in range(n+2)]
@@ -87,9 +85,9 @@ while True:
         nj = nj_right
 
         time += 1
-        visited[ni][nj] = +1
+        visited[ni][nj] =+ 1
         dir = (dir + 3) % 4
-        dir_cnt += 1
+        dir_cnt = 0
 
     # 벽이 있으면? 그대로니까 넘어감
     # else: pass
