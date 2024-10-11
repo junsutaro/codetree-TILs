@@ -27,10 +27,6 @@ i, j = 1, 1
 
 time = 0
 
-tail_i = 1
-tail_j = 1
-tail_dir = moves[0]
-
 for elem in moves:
     # 탈출조건?
     game_end = False
