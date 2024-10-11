@@ -1,5 +1,7 @@
 n, m, r, c = map(int, input().split())
 
+
+
 # m += 1
 # 인덱스화
 r -= 1
@@ -38,8 +40,8 @@ for time in range(1, m+1):
             if grid[i][j] == 1:
                 bombs.append([i, j])
     
-    for ii, jj in bombs:
-        make_bomb(time, ii, jj)
+    for i, j in bombs:
+        make_bomb(time, i, j)
 
     # print()
     # for elem in grid:
