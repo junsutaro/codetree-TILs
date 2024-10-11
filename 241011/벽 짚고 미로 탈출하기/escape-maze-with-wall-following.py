@@ -1,14 +1,7 @@
-# n = int(input())
-# start_i, start_j = map(int, input().split())
-# temp = [list(input()) for _ in range(n)]
-n = 5
-start_i = 1
-start_j = 1
-temp = [['.', '.', '.', '.', '.'], 
-        ['#', '#', '#', '#', '#'], 
-        ['.', '.', '.', '.', '.'], 
-        ['.', '.', '.', '.', '.'], 
-        ['.', '.', '.', '.', '.']]
+n = int(input())
+start_i, start_j = map(int, input().split())
+temp = [list(input()) for _ in range(n)]
+
 
 arr = [[0] * (n+2) for _ in range(n+2)]
 visited = [[0] * (n+2) for _ in range(n+2)]
