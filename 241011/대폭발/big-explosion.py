@@ -23,7 +23,7 @@ def make_bomb(time, i, j):
         ni = i + di * time
         nj = j + dj * time
 
-        if not ( 0 <= ni < n and 0 <= nj < n ):
+        if not ( 0 <= ni < n and 0 <= nj < n ) or grid[ni][nj] == 1:
             continue
         
         grid[ni][nj] = 1
