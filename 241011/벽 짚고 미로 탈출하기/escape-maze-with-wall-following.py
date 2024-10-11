@@ -1,17 +1,17 @@
-# n = int(input())
-# start_i, start_j = map(int, input().split())
-# temp = [list(input()) for _ in range(n)]
+n = int(input())
+start_i, start_j = map(int, input().split())
+temp = [list(input()) for _ in range(n)]
 
-n = 5
-start_i = 2
-start_j = 2
-temp = [
-    ['#', '#', '#', '#', '#'],
-    ['.', '.', '.', '.', '.'],
-    ['#', '#', '.', '.', '.'],
-    ['#', '#', '.', '.', '.'],
-    ['.', '.', '.', '.', '.']
-]
+# n = 5
+# start_i = 2
+# start_j = 2
+# temp = [
+#     ['#', '#', '#', '#', '#'],
+#     ['.', '.', '.', '.', '.'],
+#     ['#', '#', '.', '.', '.'],
+#     ['#', '#', '.', '.', '.'],
+#     ['.', '.', '.', '.', '.']
+# ]
 
 
 arr = [[0] * (n+2) for _ in range(n+2)]
