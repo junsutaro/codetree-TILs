@@ -1,3 +1,11 @@
+n, m, t = map(int, input().split())
+grid = [list(map(int, input().split())) for _ in range(n)]
+balls = [list(map(int, input().split())) for _ in range(m)]
+
+# 위 아래 좌 우
+di = [-1, 1, 0, 0]
+dj = [0, 0, -1, 1]
+
 from collections import Counter
 
 def get_bigger(i, j):
