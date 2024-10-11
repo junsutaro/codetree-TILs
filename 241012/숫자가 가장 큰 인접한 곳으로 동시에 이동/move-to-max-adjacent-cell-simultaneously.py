@@ -26,6 +26,7 @@ def get_bigger(i, j):
     
     return temp_pos
 
+from collections import Counter
 
 for _ in range(t):
     new_balls = []  # 리스트로 새로운 위치를 저장
