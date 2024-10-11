@@ -1,5 +1,6 @@
 n, m, r, c = map(int, input().split())
 
+# m += 1
 # 인덱스화
 r -= 1
 c -= 1
@@ -13,11 +14,12 @@ dirs = [(-1, 0), (0, -1), (1, 0), (0, 1)]
 
 def make_bomb(time, i, j):
     # grid에 대한 로직
-    
+    grid[i][j] = 1
+
     for k in range(4):
         di, dj = dirs[k]
-        ni = i + di*time
-        nj = j + dj*time
+        ni = i + di * time
+        nj = j + dj * time
 
         if not ( 0 <= ni < n and 0 <= nj < n ):
             continue
