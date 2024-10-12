@@ -2,14 +2,14 @@ tc = int(input())
 n, m = map(int, input().split())
 balls = [list(input().split()) for _ in range(m)]
 
-# tc = 1
-# n, m = 4, 4
-# balls = [
-#     [1, 1, 'D'],
-#     [1, 2, 'D'],
-#     [1, 3, 'D'],
-#     [1, 4, 'D'],
-# ]
+tc = 1
+n, m = 4, 4
+balls = [
+    [1, 1, 'D'],
+    [1, 2, 'D'],
+    [1, 3, 'D'],
+    [1, 4, 'D'],
+]
 
 for i in range(m):
     for j in range(2):
