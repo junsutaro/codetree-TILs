@@ -23,9 +23,9 @@ dis = [-1, -1, -1, 0, 1, 1, 1, 0]
 djs = [-1, 0, 1, 1, 1, 0, -1, -1]
 
 def find_target(pos):
-    temp_max = 0
+    temp_max = -1
     [i, j] = pos
-    mi, mj = i, j 
+    mi, mj = -1, -1
 
     for di, dj in zip(dis, djs):
         ni = i + di
@@ -38,7 +38,9 @@ def find_target(pos):
             if max(grid[ni][nj]) > temp_max:
                 mi, mj = ni, nj
                 temp_max = max(grid[ni][nj])
-    
+                
+    if mi == -1 and mj == -1:
+        return None  # 또는 적절히 처리
     return [mi, mj]
 
 
@@ -63,8 +65,8 @@ def move(pos, next_pos, move_num):
 for move_num in moves:
     pos = find_num(move_num)
     next_pos = find_target(pos)
-
-    move(pos, next_pos, move_num)
+    if pos != next_pos:
+        move(pos, next_pos, move_num)
 
 
 
