@@ -16,7 +16,7 @@ for _ in range(tc):
         for j in range(2):
             balls[i][j] = int(balls[i][j]) - 1
 
-    for _ in range(100):
+    for _ in range(2*n+1):
         for ball in balls:
             di, dj = moves[ball[2]]
 
