@@ -18,6 +18,7 @@ def find_num(num):
         for j in range(n):
             if num in grid[i][j]:
                 return [i, j]
+    return None  # num이 grid에 없을 때 None 반환
 
 dis = [-1, -1, -1, 0, 1, 1, 1, 0]
 djs = [-1, 0, 1, 1, 1, 0, -1, -1]
@@ -31,7 +32,7 @@ def find_target(pos):
         ni = i + di
         nj = j + dj
 
-        if not ( 0 <= ni < n and 0 <= nj < n ):
+        if not (0 <= ni < n and 0 <= nj < n):
             continue
         
         if grid[ni][nj]:  # 빈 리스트는 False로 간주됨
@@ -40,10 +41,8 @@ def find_target(pos):
                 temp_max = max(grid[ni][nj])
                 
     if mi == -1 and mj == -1:
-        return None  # 또는 적절히 처리
+        return None  # 이동할 위치가 없을 때 None 반환
     return [mi, mj]
-
-
 
 def move(pos, next_pos, move_num):
     [i, j] = pos
@@ -64,11 +63,11 @@ def move(pos, next_pos, move_num):
 
 for move_num in moves:
     pos = find_num(move_num)
+    if pos is None:
+        continue  # move_num이 grid에 없으면 다음으로 넘어감
     next_pos = find_target(pos)
-    if pos != next_pos:
+    if next_pos is not None and pos != next_pos:
         move(pos, next_pos, move_num)
-
-
 
 for row in grid:
     for elem in row:
