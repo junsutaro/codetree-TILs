@@ -1,11 +1,17 @@
 n, m = map(int, input().split())
-grid = [list(map(int, input().split())) for _ in range(n)]
+
+grid = [
+    [[] for _ in range(n)]
+    for _ in range(n)
+]
+
+for i in range(n):
+    given_row = list(map(int, input().split()))
+    for j, num in enumerate(given_row):
+        grid[i][j].append(num)
+
 moves = list(map(int, input().split()))
 
-grid = [[ [x] for x in row ] for row in grid]
-
-# for elem in grid:
-#     print(*elem)
 
 def find_num(num):
     for i in range(n):
