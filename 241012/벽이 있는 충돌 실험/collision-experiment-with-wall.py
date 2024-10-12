@@ -7,7 +7,6 @@ moves = {
     'D': (1, 0),
 }
 
-from collections import Counter
 for _ in range(tc):
     n, m = map(int, input().split())
     balls = [list(input().split()) for _ in range(m)]
@@ -16,7 +15,9 @@ for _ in range(tc):
         for j in range(2):
             balls[i][j] = int(balls[i][j]) - 1
 
-    for _ in range(n+1):
+    for _ in range(2*n+1):
+        positions = {}  # 공들의 좌표를 (x, y)로 관리하는 딕셔너리
+
         for ball in balls:
             di, dj = moves[ball[2]]
 
@@ -38,8 +39,16 @@ for _ in range(tc):
                 ball[2] = 'L'
                 ball[1] = n-1
 
-        ball_tuples = [(ball[0], ball[1]) for ball in balls]
-        counter = Counter(ball_tuples)
-        balls = [ball for ball in balls if counter[(ball[0], ball[1])] == 1]
+        # ball_tuples = [(ball[0], ball[1]) for ball in balls]
+        # counter = Counter(ball_tuples)
+        # balls = [ball for ball in balls if counter[(ball[0], ball[1])] == 1]
+
+            pos = (ball[0], ball[1])
+            if pos in positions:
+                positions[pos] += 1
+            else:
+                positions[pos] = 1
+        balls = [ball for ball in balls if positions[(ball[0], ball[1])] == 1]
+
 
     print(len(balls))
