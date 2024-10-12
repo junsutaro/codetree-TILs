@@ -1,8 +1,8 @@
 n, m = map(int, input().split())
 grid = [list(map(int, input().split())) for _ in range(n)]
+moves = list(map(int, input().split()))
 
 grid = [[ [x] for x in row ] for row in grid]
-moves = list(map(int, input().split()))
 
 # for elem in grid:
 #     print(*elem)
@@ -18,7 +18,7 @@ dj = [-1, 0, 1, 1, 1, 0, -1, -1]
 
 def find_target(i, j):
     temp_max = 0
-    mi, mj = 0, 0
+    mi, mj = i, j
     for k in range(8):
         ni = i + di[k]
         nj = j + dj[k]
@@ -26,7 +26,7 @@ def find_target(i, j):
         if not ( 0 <= ni < n and 0 <= nj < n ):
             continue
         
-        if grid[ni][nj]:
+        if grid[ni][nj]:  # 빈 리스트는 False로 간주됨
             if max(grid[ni][nj]) > temp_max:
                 mi, mj = ni, nj
                 temp_max = max(grid[ni][nj])
