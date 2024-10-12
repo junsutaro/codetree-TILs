@@ -11,17 +11,19 @@ def find_num(num):
     for i in range(n):
         for j in range(n):
             if num in grid[i][j]:
-                return i, j
+                return [i, j]
 
-di = [-1, -1, -1, 0, 1, 1, 1, 0]
-dj = [-1, 0, 1, 1, 1, 0, -1, -1]
+dis = [-1, -1, -1, 0, 1, 1, 1, 0]
+djs = [-1, 0, 1, 1, 1, 0, -1, -1]
 
-def find_target(i, j):
+def find_target(pos):
     temp_max = 0
-    mi, mj = i, j
-    for k in range(8):
-        ni = i + di[k]
-        nj = j + dj[k]
+    [i, j] = pos
+    mi, mj = i, j 
+
+    for di, dj in zip(dis, djs):
+        ni = i + di
+        nj = j + dj
 
         if not ( 0 <= ni < n and 0 <= nj < n ):
             continue
@@ -31,22 +33,33 @@ def find_target(i, j):
                 mi, mj = ni, nj
                 temp_max = max(grid[ni][nj])
     
-    return mi, mj
+    return [mi, mj]
 
-        
-for num in moves:
-    i, j = find_num(num)
-    ni, nj = find_target(i, j)
 
-    now_index = grid[i][j].index(num)
+
+def move(pos, next_pos, move_num):
+    [i, j] = pos
+    [ni, nj] = next_pos
+
+    to_move = False
+
+    for num in grid[i][j]:
+        if num == move_num:
+            to_move = True
+        if to_move:
+            grid[ni][nj].append(num)
+
+    while grid[i][j][-1] != move_num:
+        grid[i][j].pop()
     
+    grid[i][j].pop()
 
-    now = [x for idx, x in enumerate(grid[i][j]) if idx >= now_index]
-    
-    grid[ni][nj].extend(now)
+for move_num in moves:
+    pos = find_num(move_num)
+    next_pos = find_target(pos)
 
-    for number in now:
-        grid[i][j].remove(number)
+    move(pos, next_pos, move_num)
+
 
 
 for row in grid:
