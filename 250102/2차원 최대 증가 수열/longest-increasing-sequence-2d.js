@@ -1,68 +1,39 @@
-// 시간복잡도 테스트용
-
-const fs = require("fs");
+const fs = require('fs');
 const input = fs.readFileSync(0).toString().trim().split('\n');
 
-const INT_MIN = Number.MIN_SAFE_INTEGER;
-
-// 변수 선언 및 입력
+// 1) 입력 파싱
 const [n, m] = input[0].split(' ').map(Number);
-const grid = input.slice(1, n + 1).map(row => row.trim().split(' ').map(Number));
-const dp = Array.from(Array(n), () => Array(m).fill(0));
+const grid = input.slice(1).map(line => line.split(' ').map(Number));
 
-function initialize() {
-    // 최대를 구해야 하므로
-    // 전부 INT_MIN으로 초기화를 합니다.
-    for (let i = 0; i < n; i++) {
-        for (let j = 0; j < m; j++) {
-            dp[i][j] = INT_MIN;
-        }
+// 2) dp 배열(메모이제이션용) 초기화
+// dp[r][c] = (r,c)에서 시작했을 때 밟을 수 있는 최대 칸 수
+const dp = Array.from({ length: n }, () => Array(m).fill(0));
+
+// 3) DFS 함수 정의
+function dfs(r, c) {
+  // 이미 계산된 값이 있으면 재활용
+  if (dp[r][c] !== 0) {
+    return dp[r][c];
+  }
+
+  // 자기 자신 칸부터 시작이므로 기본값 1
+  dp[r][c] = 1;
+
+  // 점프 가능한 모든 칸 탐색
+  for (let nr = r + 1; nr < n; nr++) {
+    for (let nc = c + 1; nc < m; nc++) {
+      // 점프 조건: 더 큰 수이고, 아래쪽·오른쪽으로 이동
+      if (grid[nr][nc] > grid[r][c]) {
+        // nr,nc에서 시작했을 때 최대 칸 수 + 1(현재 칸)
+        dp[r][c] = Math.max(dp[r][c], 1 + dfs(nr, nc));
+      }
     }
-
-    // 초기조건으로는
-    // 시작 위치에 대한 처리가 필요합니다.
-    // 시작 위치에서는 정확히 1칸을 밟게 되는 것이므로
-    // dp[0][0] = 1이 됩니다.
-    dp[0][0] = 1;
+  }
+  return dp[r][c];
 }
 
-// 초기값을 설정합니다.
-initialize();
+// 4) (0,0)에서 시작한 최대 경로 길이 구하기
+const answer = dfs(0, 0);
 
-// 점화식에 따라
-// 위에서 아래, 왼쪽에서 오른쪽 방향으로 진행하며
-// 값을 채워줍니다.
-for (let i = 0; i < n; i++) {
-    for (let j = 0; j < m; j++) {
-        // 바로 직전 위치를 (k, l)이라 했을 때
-        // 조건을 만족하는 경우에 대해
-        // 값을 갱신해줍니다.
-        for (let k = 0; k < i; k++) {
-            for (let l = 0; l < j; l++) {
-                // (k, l)에 도달하는 것이 불가하다면
-                // 패스합니다.
-                if (dp[k][l] === INT_MIN) {
-                    continue;
-                }
-
-                // 값이 증가하는 경우에만
-                // 갱신을 진행합니다.
-                if (grid[k][l] < grid[i][j]) {
-                    dp[i][j] = Math.max(dp[i][j], dp[k][l] + 1);
-                }
-            }
-        }
-    }
-}
-
-// 어디에 도착하던 상관없이
-// 최대로 밟을 수 있는 것이 중요하므로
-// 전체 중 최댓값이 답이 됩니다.
-let ans = INT_MIN;
-for (let i = 0; i < n; i++) {
-    for (let j = 0; j < m; j++) {
-        ans = Math.max(ans, dp[i][j]);
-    }
-}
-
-console.log(ans);
+// 5) 결과 출력
+console.log(answer);
