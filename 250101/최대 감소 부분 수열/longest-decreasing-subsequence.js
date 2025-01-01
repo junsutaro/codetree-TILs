@@ -7,8 +7,7 @@ const arr = input[1].split(' ').map(Number);
 // console.log(arr);
 
 // initialize dp array
-const dp = Array(n).fill(0);
-dp[0] = 1;
+const dp = Array(n).fill(1);
 
 // console.log(dp);
 
