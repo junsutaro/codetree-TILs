@@ -11,8 +11,8 @@ const dp = Array.from( {length : n }, () => Array(m).fill(MIN) )
 
 dp[0][0] = 1; // 시작 지점 포함
 
-for (let i = 1; i < n; i++) {
-    for (let j = 1; j < m; j++) {
+for (let i = 0; i < n; i++) {
+    for (let j = 0; j < m; j++) {
         for (let k = 0; k < i; k++) {
             for (let l = 0; l < j; l++) {
                 if (grid[k][l] < grid[i][j]) {
