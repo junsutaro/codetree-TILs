@@ -14,7 +14,7 @@ for ( let i = 3 ; i <= n ; i ++ ) {
 
     let plus = 1;
     for ( let j = 1 ; j <= i - 2 ; j ++ ) {
-        plus * j;
+        plus *= j;
     }
 
     dp[i] = dp[i-1] * 2 + plus;
