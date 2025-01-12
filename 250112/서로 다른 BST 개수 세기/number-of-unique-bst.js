@@ -11,7 +11,7 @@ dp[2] = 2;
 dp[3] = 5;
 
 for ( let i = 4 ; i <= n ; i ++ ) {
-    dp[i] = dp[i-1] * 2 + 10 * (i-3) + 4;
+    dp[i] = dp[i-1] * 2 + 10 * (i-4) + 4;
 }
 
 console.log(dp[n])
