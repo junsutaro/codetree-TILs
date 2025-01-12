@@ -5,7 +5,7 @@ const n = Number(input);
 
 let plus = 1;
 
-const dp = Array(n+1).fill(0);
+const dp = Array(20).fill(0);
 
 dp[1] = 1;
 dp[2] = 2;
