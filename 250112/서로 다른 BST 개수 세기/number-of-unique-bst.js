@@ -3,22 +3,28 @@ const input = fs.readFileSync(0).toString().trim();
 
 const n = Number(input);
 
-let plus = 1;
+// const n = 5;
 
-const dp = Array(20).fill(0);
+const dp1 = Array(20).fill(0);
+const dp2 = Array(20).fill(0);
 
-dp[1] = 1;
-dp[2] = 2;
+dp1[1] = 1;
+dp1[2] = 2;
+dp2[1] = 0;
+dp2[2] = 1;
 
-for ( let i = 3 ; i <= n ; i ++ ) {
-
+for ( let i = 3 ; i < n ; i ++ ) {
     let plus = 1;
-    for ( let j = 1 ; j <= i - 2 ; j ++ ) {
+    for ( j = 1 ; j <= i - 2 ; j ++ ) {
         plus *= j;
     }
+    dp2[i] = dp2[i-1] * 3 + plus;
+}
 
-    dp[i] = dp[i-1] * 2 + plus;
+
+for ( let i = 3 ; i <= n ; i ++ ) {
+    dp1[i] = dp1[i-1] * 2 + dp2[i-1];
     
 }
 
-console.log(dp[n])
+console.log(dp1[n]);
