@@ -5,10 +5,7 @@ const n = Number(input[0]);
 const inputs = input.slice(1).map(elem => elem.split(' ').map(Number));
 
 inputs.sort((a, b) => {
-    if (a[0] === b[0]) {
-        return a[1] - b[1];
-    }
-    return a[0] - b[0];
+    return a[1] - b[1];
 })
 
 const dp = Array(n).fill(1);
