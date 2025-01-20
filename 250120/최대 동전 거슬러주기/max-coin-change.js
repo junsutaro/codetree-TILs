@@ -15,4 +15,4 @@ for ( let i = 1 ; i <= m ; i ++ ) {
     }}
 }
 
-console.log(dp[m]);
+console.log(dp[m] !== -Infinity ? dp[m] : -1);
