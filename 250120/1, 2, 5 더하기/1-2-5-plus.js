@@ -11,7 +11,7 @@ for ( let i = 1 ; i <= n ; i ++ ) {
     for ( const num of nums ) {
         if ( i - num < 0 ) continue ;
         // if ( dp[i - num] === 0 ) continue;
-        dp[i] = dp[i] + dp[i-num];
+        dp[i] = (dp[i] + dp[i-num]) % 10007;
     }
 }
 
