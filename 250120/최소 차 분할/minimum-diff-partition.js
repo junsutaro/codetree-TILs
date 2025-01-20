@@ -18,7 +18,7 @@ for ( const num of nums ) {
 
 
 let minVal = Infinity;
-for ( let i = 1 ; i < total ; i ++ ) {
+for ( let i = 1 ; i <= Math.floor(total / 2) ; i ++ ) {
     if ( dp[i] ) {
         const diff = Math.abs(total - 2 * i);
         minVal = Math.min(diff, minVal);
