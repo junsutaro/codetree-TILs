@@ -6,24 +6,23 @@ const nums = input[1].trim().split(' ').map(Number);
 
 let total = nums.reduce((acc, num) => acc + num , 0);
 
-let minVal = Infinity;
-const dp = Array(n).fill(0);
-dp[0] = 0;
+const dp = Array(total + 1).fill(false);
+dp[0] = true;
 
-let ans = Infinity;
 for ( const num of nums ) {
-    for ( let i = n-1 ; i > 0 ; i -- ) {
-        let sumVal = dp[i-1] + num; // first, adapt now num
-        let temp = Math.abs(sumVal * 2 - total)
-
-        if ( temp <= minVal ) {
-            // console.log('num, sumVal, temp, minVal')
-            minVal = temp;
-            dp[i] = sumVal;
-            // console.log(num, sumVal, temp, minVal)
-        }
+    for ( let i = total ; i >= num ; i -- ) {
+        if ( dp[i-num] === false ) continue;
+        dp[i] = dp[i] || dp[i-num]; // 하나라도 true => true 
     }
 }
 
-// console.log(dp);
+
+let minVal = Infinity;
+for ( let i = 1 ; i <= total ; i ++ ) {
+    if ( dp[i] ) {
+        const diff = Math.abs(total - 2 * i);
+        minVal = Math.min(diff, minVal);
+    }
+}
+
 console.log(minVal);
