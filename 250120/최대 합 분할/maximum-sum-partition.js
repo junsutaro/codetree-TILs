@@ -28,7 +28,7 @@ for (let x = 0; x <= maxHalf; x++) {
     if (!dp1[x]) continue;
 
     // 첫 번째 그룹에 포함된 숫자 확인
-    const usedNums = new Set(group1Nums[x] || []);
+    const usedNums = group1Nums[x] || [];
 
     // 두 번째 DP 배열 생성
     let dp2 = Array(maxHalf + 1).fill(false);
