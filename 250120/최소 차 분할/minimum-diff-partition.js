@@ -23,5 +23,5 @@ for ( const num of nums ) {
     }
 }
 
-console.log(dp);
+// console.log(dp);
 console.log(minVal);
