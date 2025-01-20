@@ -13,15 +13,15 @@ dp[0] = 0;
 let ans = Infinity;
 for ( const num of nums ) {
     for ( let i = 1 ; i <= n ; i ++ ) {
-        let nextNum = dp[i-1] + num;
-        let temp = Math.abs(nextNum * 2 - total)
+        let sumVal = dp[i-1] + num; // first, adapt now num
+        let temp = Math.abs(sumVal * 2 - total)
+
         if ( temp < minVal ) {
             minVal = temp;
-            dp[i] = nextNum;
-            ans = Math.min(minVal, ans);
+            dp[i] = sumVal;
         }
     }
 }
 
-// console.log(dp);
-console.log(ans);
+console.log(dp);
+console.log(minVal);
