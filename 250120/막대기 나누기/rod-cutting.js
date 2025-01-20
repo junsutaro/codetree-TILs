@@ -8,12 +8,12 @@ const dp = Array(n+1).fill(-Infinity);
 dp[0] = 0;
 
 for ( let i = 1 ; i <= n ; i ++ ) {
-    costs.forEach((cost, idx) => {
+    for ( const [idx, cost] of costs.entries()) {
         const num = idx + 1;
-        if ( i - num < 0 ) return;
-        if ( dp[i-num] === -Infinity ) return;
+        if ( i - num < 0 ) continue;
+        if ( dp[i-num] === -Infinity ) continue;
         dp[i] = Math.max(dp[i], dp[i-num] + cost);
-    })
+    }
 }
 
 console.log(dp[n]);
