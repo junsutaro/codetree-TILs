@@ -12,7 +12,7 @@ dp[0] = 0;
 
 let ans = Infinity;
 for ( const num of nums ) {
-    for ( let i = 1 ; i < n ; i ++ ) {
+    for ( let i = n-1 ; i > 0 ; i -- ) {
         let sumVal = dp[i-1] + num; // first, adapt now num
         let temp = Math.abs(sumVal * 2 - total)
 
