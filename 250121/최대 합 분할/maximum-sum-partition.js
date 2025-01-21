@@ -1,51 +1,56 @@
-const fs = require('fs');
-const input = fs.readFileSync(0).toString().trim().split('\n');
+"use strict";
 
+const fs = require("fs");
+const input = fs.readFileSync(0).toString().trim().split("\n");
+
+// 입력 처리
 const n = Number(input[0]);
-const nums = input[1].trim().split(' ').map(Number);
+const nums = input[1].split(" ").map(Number);
 
-// const n = 6
-// const nums = [4, 1, 1, 2, 4, 5];
+const total = nums.reduce((acc, x) => acc + x, 0);
 
-nums.sort((a, b) => b - a);
+// dp[s] = 합이 s가 되는 어떤 부분집합의 비트마스크 (BigInt)
+//         없으면 null
+const dp = Array(total + 1).fill(null);
 
-const total = nums.reduce((acc, num) => acc + num, 0);
+// 합 0을 만드는 부분집합 = {} (빈 집합) → 비트마스크 = 0n
+dp[0] = 0n;
 
-const dp = Array.from({length : total + 1}, () => false);
-dp[0] = [];
+let ans = 0; // sum(A)=sum(B) 중 최댓값 추적
 
-for ( const num of nums ) {
-    for ( let i = total ; i >= num ; i -- ) {
-        if ( dp[i-num] === false ) continue
-        dp[i] = [...dp[i-num]];
-        dp[i].push(num);    
-    }
-}
-let ans = 0;
+// 모든 원소를 순회
+for (let i = 0; i < n; i++) {
+  const x = nums[i];
 
-for ( const lst of dp ) {
-    if ( lst === false ) continue
-    const lstTotal = lst.reduce((acc, num) => acc + num, 0);
-    // 여기 lst 에서 true 체크  dp 사용 후 , total - lstTotal 값(A lst의 총합)이 나오면 Okay~
-    const aTotal = total - lstTotal;
-    const dp2 = Array(lstTotal+1).fill(false);
-    dp2[0] = true;
-    
+  // 뒤에서부터 업데이트 (중복 사용 방지)
+  for (let s = total - x; s >= 0; s--) {
+    // dp[s]가 존재한다면 (= 어떤 부분집합으로 s를 만들 수 있다면)
+    if (dp[s] !== null) {
+      const oldMask = dp[s];
+      const newSum = s + x;
 
+      // 새로 만든 부분집합의 비트마스크
+      // oldMask에 i번째 원소 사용 표시 추가
+      const newMask = oldMask | (1n << BigInt(i));
 
-    for ( const num of lst ) {
-        for ( let i = lstTotal ; i >= num ; i -- ) {
-            dp2[i] = dp2[i-num] || dp2[i];
+      // 아직 dp[newSum]이 비어있다면(= null), 처음 세팅
+      if (dp[newSum] === null) {
+        dp[newSum] = newMask;
+      } else {
+        // dp[newSum]도 이미 부분집합 하나가 있었음
+        const otherMask = dp[newSum];
+
+        // 두 부분집합이 겹치지 않는지 확인 (AND == 0)
+        if ((otherMask & newMask) === 0n) {
+          // 겹치지 않으므로, 서로 다른 두 부분집합이 newSum을 만든다!
+          // sum(A) = sum(B) = newSum 인 상태
+          // 문제 요구: sum(A)=sum(B)의 최댓값
+          ans = Math.max(ans, newSum);
         }
+      }
     }
-
-    // console.log(lst);
-    // console.log(dp2);
-    // console.log(aTotal)
-
-    if ( dp2[aTotal] ) {
-        ans = Math.max(aTotal, ans);
-    }
+  }
 }
 
+// 결과 출력
 console.log(ans);
