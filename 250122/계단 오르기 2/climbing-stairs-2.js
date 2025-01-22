@@ -22,4 +22,12 @@ for ( let i = 3 ; i <= n ; i ++ ) {
 }
 
 // console.log(ans);
-console.log(dp[n][3]);
+// console.log(dp[n][3]);
+
+let ans = -Infinity;
+
+for ( let j = 1 ; j <= 3 ; j ++ ) {
+    ans = Math.max(ans, dp[n][j]);
+}
+
+console.log(ans);
