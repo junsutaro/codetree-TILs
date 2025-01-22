@@ -5,8 +5,8 @@ const n = Number(input[0]);
 const coins = input[1].trim().split(' ').map(Number);
 
 // ans = Math.max(dp[n][end1], dp[n][end2])
-const end1 = Math.floor(n / 2);
-const end2 = Math.floor(n / 2) + 1;
+const end1 = Math.floor((n+1) / 2);
+const end2 = Math.floor((n+1) / 2) + 1;
 
 const dp = Array.from({length: n+1}, () => Array(end2+1).fill(-Infinity));
 dp[0][0] = 0;
@@ -21,11 +21,13 @@ for ( let i = 3 ; i <= n ; i ++ ) {
     }
 }
 
-let ans = -Infinity;
+// let ans = -Infinity;
 
-for ( let j = 1 ; j <= end2 ; j ++ ) {
-    ans = Math.max(ans, dp[n][j]);
-}
+// for ( let j = 1 ; j < end2 ; j ++ ) {
+//     ans = Math.max(ans, dp[n][j]);
+// }
 
 // console.log(dp);
+// console.log(ans);
+const ans = Math.max(dp[n][end1], dp[n][end2]);
 console.log(ans);
