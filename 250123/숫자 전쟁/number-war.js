@@ -52,13 +52,9 @@ for ( let i = 1 ; i < 2 * n - 1 ; i ++ ) {
         const [ni2, nj2, addScore2] = game(li, lj);
 
         if ( leftScore > upScore + addScore1 ) {
-            if ( isRange(ni2, nj2) ) {
-                dp[i][j] = [ni2, nj2, leftScore];
-            }
+            dp[i][j] = [ni2, nj2, leftScore];
         } else {
-            if ( isRange(ni1, nj1) ) {
-                dp[i][j] = [ni1, nj1, upScore + addScore1];
-            }
+            dp[i][j] = [ni1, nj1, upScore + addScore1];
         }
         ans = Math.max(ans, dp[i][j][2] )
     }
