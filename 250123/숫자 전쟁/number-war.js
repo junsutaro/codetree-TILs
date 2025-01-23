@@ -6,7 +6,7 @@ const you = input[1].trim().split(' ').map(Number);
 const me = input[2].trim().split(' ').map(Number);
 
 const p1Max = Math.max(...you);
-const dp = Array.from({length: 2 * n - 1}, () => Array(n+1).fill([0, 0, 0]));
+const dp = Array.from({length: 2 * n}, () => Array(2 * n).fill([0, 0, 0]));
 
 function isRange(i, j) {
     return 0 <= i && i <= n && 0 <= j && j <= n;
@@ -61,5 +61,6 @@ for ( let i = 1 ; i < 2 * n - 1 ; i ++ ) {
 }
 
 console.log(ans);
+
 
 
