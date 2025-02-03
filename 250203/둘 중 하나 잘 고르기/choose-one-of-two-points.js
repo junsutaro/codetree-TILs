@@ -6,21 +6,26 @@ const cards = input.slice(1).map(elem => elem.split(' ').map(Number));
 
 // console.log(cards);
 
-const dp = Array.from({length : 2 * n}, () => Array(n + 1).fill(0));
-dp[0][0] = cards[0][0];
-dp[0][1] = cards[0][1];
+const dp = Array.from({length : 2 * n}, () => Array(n + 1).fill(-1));
 
-for ( let i = 1 ; i < 2 * n ; i ++ ) {
-    dp[i][0] = dp[i-1][0] + cards[i][0]
+function dpIng(i, j) {
+
+    // 다 고르면 ~
+    if ( i === n * 2 ) return j === n ? 0 : -Infinity;
+
+    // 이미 값 나왔으면 ~
+    if ( dp[i][j] !== -1 ) return dp[i][j];
+
+    let takeFirst = j < n ? dpIng(i + 1, j + 1) + cards[i][0] : -Infinity;
+    let takeSecond = dpIng(i + 1, j) + cards[i][1];
+    return dp[i][j] = Math.max(takeFirst, takeSecond);
+
 }
 
-for ( let i = 1 ; i < 2 * n ; i ++ ) {
-    for ( let j = 1 ; j < n + 1 ; j ++ ) {
-        dp[i][j] = Math.max(dp[i-1][j] + cards[i][0], dp[i-1][j-1] + cards[i][1], dp[i][j])
-    }
-}
-
-// dp.map(elem => console.log(elem));
+dpIng(0, 0)
 
 
-console.log(dp[n*2-1][n]);
+
+
+
+console.log(dp[0][0]);
