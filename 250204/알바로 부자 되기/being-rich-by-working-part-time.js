@@ -22,4 +22,5 @@ for ( let i = 0 ; i < n ; i ++ ) {
     }
 }
 
-console.log(Math.max(...dp));
+const ans = dp.reduce((max, num) => Math.max(max, num), -Infinity);
+console.log(ans)
