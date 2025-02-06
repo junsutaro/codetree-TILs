@@ -31,4 +31,4 @@ for ( let i = 1 ; i <= n ; i ++ ) {
     }
 }
 
-console.log(ans & ( 10 ** 9 + 7))
+console.log(ans % (10 ** 9 + 7))
