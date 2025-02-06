@@ -1,34 +1,33 @@
 const fs = require('fs');
 const input = fs.readFileSync(0).toString().trim();
-
 const n = Number(input);
 
-function find123(num) {
-    while (num > 0) {
-        if (num % 10 === 3 || num % 10 === 6 || num % 10 === 9) {
-            return true
+function count369(n) {
+    let count = 0;
+    while (n > 0) {
+        let digit = n % 10;
+        if (digit === 3 || digit === 6 || digit === 9) {
+            count++;
         }
-        num = Math.floor(num / 10);
+        n = Math.floor(n / 10);
     }
+    return count;
 }
 
-
-function judge(num) {
-    
-    if ( find123(num) ) {
-        return true;
+function isMultipleOf3(n) {
+    let sum = 0;
+    while (n > 0) {
+        sum += n % 10;
+        n = Math.floor(n / 10);
     }
-    else if ( num % 3 === 0 ) {
-        return true;
-    }
-
+    return sum % 3 === 0;
 }
 
 let ans = 0;
-for ( let i = 1 ; i <= n ; i ++ ) {
-    if (judge(i)) {
-        ans += 1;
+for (let i = 1; i <= n; i++) {
+    if (count369(i) > 0 || isMultipleOf3(i)) {
+        ans++;
     }
 }
 
-console.log(ans % (10 ** 9 + 7))
+console.log(ans);
