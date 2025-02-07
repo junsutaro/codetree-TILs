@@ -8,8 +8,8 @@ const OFFSET = 20;
 const MAX_RANGE = 40;
 
 const dp = Array.from({length : n} , () => Array(MAX_RANGE + 1).fill(0));
-dp[0][OFFSET - nums[0]] = 1;
-dp[0][OFFSET + nums[0]] = 1;
+dp[0][OFFSET - nums[0]] += 1;
+dp[0][OFFSET + nums[0]] += 1;
 
 // i 는 선택 횟수, j는 dp 카운팅 배열임
 
