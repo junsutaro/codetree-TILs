@@ -21,10 +21,13 @@ for ( let i = 1 ; i <= n ; i ++ ) {
             const minusIdx = j - nums[i];
             if (plusIdx <= MAX_RANGE) { newDP[plusIdx] += dp[i - 1][j] };
             if (minusIdx >= 0) { newDP[minusIdx] += dp[i - 1][j] };
+            if (nums[i] === 0) newDP[j] += dp[i - 1][j];
+
         }
     }
 
     dp[i] = newDP; // 새로운 DP 배열로 갱신
 }
 
+// console.log(dp);
 console.log(dp[n - 1][m + OFFSET] || 0);
