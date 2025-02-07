@@ -8,26 +8,26 @@ const OFFSET = 20;
 const MAX_RANGE = 40;
 
 const dp = Array.from({length : n} , () => Array(MAX_RANGE + 1).fill(0));
+dp[0][OFFSET - nums[0]] = 1;
+dp[0][OFFSET + nums[0]] = 1;
 
-dp[0][nums[0] + OFFSET] = 1;
-dp[0][-nums[0] + OFFSET] += 1; // 중복 가능성 때문에 `+=`
+// i 는 선택 횟수, j는 dp 카운팅 배열임
 
-for ( let i = 1 ; i <= n ; i ++ ) {
-    const newDP = Array(MAX_RANGE + 1).fill(0);
+for ( let i = 1 ; i < n ; i ++ ) {
+    const newDp = Array(MAX_RANGE + 1).fill(0);
 
     for ( let j = 0 ; j <= MAX_RANGE ; j ++ ) {
-        if (dp[i - 1][j] > 0) {  // 이전 단계에서 유효한 값만 고려
-            const plusIdx = j + nums[i];
-            const minusIdx = j - nums[i];
-            if (plusIdx <= MAX_RANGE) { newDP[plusIdx] += dp[i - 1][j] };
-            if (minusIdx >= 0) { newDP[minusIdx] += dp[i - 1][j] };
-            if (nums[i] === 0) newDP[j] += dp[i - 1][j];
-
+        if ( dp[i-1][j] === 0 ) continue;
+        
+        if ( j + nums[i] <= MAX_RANGE ) {
+            newDp[j+nums[i]] += dp[i-1][j];
+        }
+        if ( j - nums[i] >= 0 ) {
+            newDp[j-nums[i]] += dp[i-1][j];
         }
     }
 
-    dp[i] = newDP; // 새로운 DP 배열로 갱신
+    dp[i] = newDp;
 }
 
-// console.log(dp);
-console.log(dp[n - 1][m + OFFSET] || 0);
+console.log(dp[n-1][m+OFFSET]);
