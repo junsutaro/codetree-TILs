@@ -10,7 +10,7 @@ const MAX_RANGE = 40;
 const dp = Array.from({length : n} , () => Array(MAX_RANGE + 1).fill(0));
 
 dp[0][nums[0] + OFFSET] = 1;
-dp[0][-nums[0] + OFFSET] = 1;
+dp[0][-nums[0] + OFFSET] += 1; // 중복 가능성 때문에 `+=`
 
 for ( let i = 1 ; i <= n ; i ++ ) {
     const newDP = Array(MAX_RANGE + 1).fill(0);
