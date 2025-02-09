@@ -12,8 +12,10 @@ const nums = [0].concat(input[1].trim().split(' ').map(Number));
 // const nums = [0, -5, -2, -3, -1, -6];
 
 const dp = Array.from({length: n+1}, () => Array(m+1).fill(-Infinity));
+for (let i = 0; i <= n; i++) {
+    dp[i][0] = 0;
+}
 
-dp[0][0] = 0;
 dp[1][1] = nums[1];
 
 for ( let i = 2 ; i <= n ; i ++ ) {
@@ -21,7 +23,7 @@ for ( let i = 2 ; i <= n ; i ++ ) {
 }
 
 for ( let i = 2 ; i <= n ; i ++ ) {
-    for ( let j = 2; j <= m ; j ++ ) {
+    for ( let j = 1; j <= m ; j ++ ) {
         if ( i >= j * 2 - 1 ) {
             dp[i][j] = Math.max(dp[i-2][j-1] + nums[i], dp[i][j]);
             dp[i][j] = Math.max(dp[i-1][j] + nums[i], dp[i][j]);
