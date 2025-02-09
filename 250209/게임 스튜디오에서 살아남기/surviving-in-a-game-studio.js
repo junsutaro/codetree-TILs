@@ -39,8 +39,8 @@ for ( let i = 2 ; i <= n ; i ++ ) {
 let ans = 0;
 for ( let i = 0 ; i < 3 ; i ++ ) {
     for ( let j = 0 ; j < 3 ; j ++ ) {
-        ans += dp[n][i][j] % MOD;
+        ans += dp[n][i][j];
     }
 }
 
-console.log(ans);
+console.log(ans % MOD);
