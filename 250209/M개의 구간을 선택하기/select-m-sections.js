@@ -21,11 +21,11 @@ for ( let i = 2 ; i <= n ; i ++ ) {
 }
 
 for ( let i = 2 ; i <= n ; i ++ ) {
-    for ( let j = 1; j <= m ; j ++ ) {
+    for ( let j = 2; j <= m ; j ++ ) {
         if ( i >= j * 2 - 1 ) {
             dp[i][j] = Math.max(dp[i-2][j-1] + nums[i], dp[i][j]);
+            dp[i][j] = Math.max(dp[i-1][j] + nums[i], dp[i][j]);
         }
-        dp[i][j] = Math.max(dp[i-1][j] + nums[i], dp[i][j]);
     }
 }
 
