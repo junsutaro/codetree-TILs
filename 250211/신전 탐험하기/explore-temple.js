@@ -19,7 +19,7 @@ for ( let i = 1 ; i < n ; i ++ ) {
 
 // console.log(dp);
 let ans = 0;
-for ( let i = 0 ; i < n ; i ++ ) {
+for ( let i = 0 ; i < 3 ; i ++ ) {
     ans = Math.max(ans, dp[n-1][i])
 }
 console.log(ans);
