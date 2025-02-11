@@ -2,6 +2,7 @@ const fs = require('fs');
 const input = fs.readFileSync(0).toString().trim().split('\n');
 const n = Number(input[0]);
 const golds = input.slice(1).map(elem => elem.trim().split(' ').map(Number));
+// console.log(golds);
 
 const dp = Array.from({length: n}, () => Array(3).fill(0));
 dp[0] = golds[0];
