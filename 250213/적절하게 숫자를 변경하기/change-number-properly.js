@@ -7,6 +7,8 @@ const nums = input[1].split(' ').map(Number);
 // dp[몇번째][바꾼횟수][숫자] = 유사도
 const dp = Array.from({length: n}, () => Array.from({length : m+1}, () => Array(5).fill(0)));
 
+let ans = 0;
+
 for ( let k = 1 ; k < 5 ; k ++ ) {
     if ( k === nums[0] ) {
         dp[0][0][k] = 1
@@ -19,10 +21,10 @@ for ( let i = 1 ; i < n ; i ++ ) {
         if ( k === nums[i] ) {
             dp[i][0][k] += 1
         }
+        ans = Math.max(dp[i][0][k], ans);
     }
 }
 
-let ans = 0;
 
 for ( let i = 1 ; i < n ; i ++ ) {
     for ( let j = 1 ; j <= m ; j ++ ) {
