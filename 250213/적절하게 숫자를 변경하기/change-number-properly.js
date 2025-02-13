@@ -4,10 +4,11 @@ const input = fs.readFileSync(0).toString().trim().split('\n');
 const [n, m] = input[0].split(' ').map(Number);
 const nums = input[1].split(' ').map(Number);
 
+
 // dp[몇번째][바꾼횟수][숫자] = 유사도
 const dp = Array.from({length: n}, () => Array.from({length : m+1}, () => Array(5).fill(0)));
 
-let ans = 0;
+let ans = 1;
 
 for ( let k = 1 ; k < 5 ; k ++ ) {
     if ( k === nums[0] ) {
