@@ -12,5 +12,5 @@ for ( const [val, key] of map ) {
         console.log(val);
         return;
     }
-    console.log('None');
 }
+console.log('None');
