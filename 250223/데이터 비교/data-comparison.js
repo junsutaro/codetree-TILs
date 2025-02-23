@@ -9,14 +9,4 @@ const arr2 = input[3].split(' ').map(Number)
 
 const set1 = new Set(arr1);
 
-
-let ans = '';
-for ( const num of arr2 ) {
-    if ( !set1.has(num)) {
-        ans += 0 + ' '
-    } else { 
-        ans += 1 + ' '
-    }
-}
-
-console.log(ans.trim())
+console.log(arr2.map(num => set1.has(num) ? 1 : 0).join(' '));
