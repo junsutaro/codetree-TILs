@@ -15,17 +15,6 @@ for ( let i = 1 ; i <= MAX_NUM ; i ++ ) {
 }
 
 input.slice(2).map(elem => {
-const prefixSum = Array(MAX_NUM + 1).fill(0);
-
-for ( let i = 1 ; i <= MAX_NUM ; i ++ ) {
-    prefixSum[i] = prefixSum[i-1] + dp[i];
-}
-
-input.slice(2).map(elem => {
-    [s, e] = elem.split(' ').map(Number);
-    console.log(prefixSum[e] - prefixSum[s-1]);
-})
-
     [s, e] = elem.split(' ').map(Number);
     console.log(prefixSum[e] - prefixSum[s-1]);
 })
