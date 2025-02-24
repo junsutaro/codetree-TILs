@@ -26,7 +26,6 @@ input.slice(2).map(elem => {
     console.log(prefixSum[e] - prefixSum[s-1]);
 })
 
-닫기
     [s, e] = elem.split(' ').map(Number);
     console.log(prefixSum[e] - prefixSum[s-1]);
 })
