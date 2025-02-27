@@ -1,24 +1,23 @@
 const fs = require('fs');
 const input = fs.readFileSync(0).toString().trim().split('\n');
 const n = Number(input[0]);
-const nums = [0, ...input[1].trim().split(' ').map(Number)];
-const dp = Array.from({length : n+1}, () => Array(4).fill(0));
+const nums = input[1].trim().split(' ').map(Number);
 
-dp[1][1] = nums[1];
-for ( let i = 2 ; i <= n ; i ++ ) {
-    dp[i][1] = Math.max(nums[i], dp[i-1][1]);
+const prefix = Array(n).fill(0);
+const suffix = Array(n).fill(0);
+prefix[0] = nums[0];
+suffix[n-1] = nums[n-1];
+
+
+for ( let i = 1 ; i < n ; i ++ ) {
+    prefix[i] = Math.max(prefix[i-1], nums[i])
+    suffix[n-1-i] = Math.max(suffix[n-i], nums[n-1-i] )
 }
-
 
 let ans = 0;
-
-for ( let i = 2 ; i <= n ; i ++ ) {
-    for ( let j = 2 ; j < 4 ; j ++ ) {
-        if ( i < j * 2 - 1 ) continue;
-        dp[i][j] = Math.max(dp[i-2][j-1] + nums[i], dp[i-1][j])
-        if ( j === 3 ) {
-            ans = Math.max(ans, dp[i][j])
-        }
-    }
+for ( let i = 2 ; i <= n - 3 ; i ++ ) {
+    const tempMax = prefix[i-2] + suffix[i+2] + nums[i];
+    ans = Math.max(tempMax, ans)
 }
+
 console.log(ans);
