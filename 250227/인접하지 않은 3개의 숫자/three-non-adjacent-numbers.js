@@ -14,6 +14,7 @@ let ans = 0;
 
 for ( let i = 2 ; i <= n ; i ++ ) {
     for ( let j = 2 ; j < 4 ; j ++ ) {
+        if ( i < j * 2 - 1 ) continue;
         dp[i][j] = Math.max(dp[i-2][j-1] + nums[i], dp[i-1][j])
         if ( j === 3 ) {
             ans = Math.max(ans, dp[i][j])
