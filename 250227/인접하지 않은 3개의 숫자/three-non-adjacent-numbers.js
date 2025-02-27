@@ -4,8 +4,9 @@ const n = Number(input[0]);
 const nums = [0, ...input[1].trim().split(' ').map(Number)];
 const dp = Array.from({length : n+1}, () => Array(4).fill(0));
 
-for ( let i = 1 ; i <= n ; i ++ ) {
-    dp[i][1] = nums[i];
+dp[1][1] = nums[1];
+for ( let i = 2 ; i <= n ; i ++ ) {
+    dp[i][1] = Math.max(nums[i], dp[i-1][1]);
 }
 
 
