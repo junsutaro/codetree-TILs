@@ -21,7 +21,7 @@ for ( let i = n-2 ; i >= 0 ; i -- ) {
 const goal = prefixSum[n-1] / 4;
 
 let ans = 0;
-for ( let i = 1 ; i <= n-4 ; i ++ ) {
+for ( let i = 0 ; i <= n-4 ; i ++ ) {
     if ( prefixSum[i] === goal ) {
         for ( let j = i + 1 ; j <= n - 3 ; j ++ ) {
             if ( prefixSum[j] === goal * 2 ) {
