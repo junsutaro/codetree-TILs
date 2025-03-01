@@ -9,26 +9,6 @@ for (let i = 1; i <= n; i++) {
     segments.push([x1, x2]);
 }
 
-const allA = segments.map(seg => seg[0]);
-const allB = segments.map(seg => seg[1]);
-
-const uniqueA = Array.from(new Set(allA)).sort((a, b) => a - b);
-const mapA = new Map();
-uniqueA.forEach((val, idx) => {
-    mapA.set(val, idx + 1);
-})
-
-const uniqueB = Array.from(new Set(allB)).sort((a, b) => a - b);
-const mapB = new Map();
-uniqueB.forEach((val, idx) => {
-    mapB.set(val, idx + 1);
-})
-
-for ( let seg of segments ) {
-    seg[0] = mapA.get(seg[0]); 
-    seg[1] = mapB.get(seg[1]);
-}
-
 segments.sort((a, b) => a[0] - b[0]);
 
 const B = segments.map(seg => seg[1])
