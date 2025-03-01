@@ -21,17 +21,21 @@ for ( let i = n-2 ; i >= 0 ; i -- ) {
 const goal = prefixSum[n-1] / 4;
 
 let ans = 0;
-for ( let i = 0 ; i <= n-4 ; i ++ ) {
-    if ( prefixSum[i] === goal ) {
-        for ( let j = i + 1 ; j <= n - 3 ; j ++ ) {
-            if ( prefixSum[j] === goal * 2 ) {
-                for ( let k = j + 1 ; k <= n - 2 ; k ++  ) { 
-                    if ( prefixSum[k] === goal * 3) {
-                        ans += 1;
-                    }
-                }
+for ( let j = 1 ; j <= n-2 ; j ++ ) {
+    if ( prefixSum[j] === goal * 2 ) {
+        let cntI = 0;
+        let cntK = 0;
+        for ( let i = 0 ; i < j ; i ++ ) {
+            if ( prefixSum[i] === goal ) {
+                cntI += 1;
             }
         }
+        for ( let k = n-1 ; k > j ; k -- ) {
+            if ( prefixSum[k] === goal * 3 ) {
+                cntK += 1
+            }
+        }
+        ans += (cntI * cntK)
     }
 }
 console.log(ans);
