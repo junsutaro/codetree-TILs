@@ -1,26 +1,28 @@
 const fs = require("fs");
 const input = fs.readFileSync(0).toString().trim().split('\n');
 const n = parseInt(input[0]);
-const segments = input.slice(1).map(elem => elem.split(' ').map(Number));
+const segments = [];
+input.slice(1).forEach(elem => {
+    const [x1, x2] = elem.split(' ').map(Number);
+    segments.push([x1, 1])
+    segments.push([x2, -1])
+})
 
 // Please Write your code here.
 
-segments.sort((a, b) => a[0] - b[0]);
+segments.sort((a, b) => a[0] - b[0] || a[1] - b[1]);
 
-let [start, temp] = segments[0];
+let maxLength = 0;
+let cnt = 0;
+let start = -1;
 
-let ans = 0;
-for ( let i = 1 ; i < n ; i ++ ) {
-    const [x1, x2] = segments[i];
-
-    if ( x1 > temp ) {
-        ans = Math.max(ans, (temp - start))
-        start = x1;
+for (const [x, delta] of segments) {
+    if (cnt === 0) {
+        start = x;
     }
+    maxLength = Math.max(maxLength, x - start);
 
-    temp = Math.max(x2, temp);
-    ans = Math.max(ans, (temp - start))
-
+    cnt += delta;
 }
 
-console.log(ans);
+console.log(maxLength);
