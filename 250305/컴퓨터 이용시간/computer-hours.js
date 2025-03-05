@@ -16,15 +16,16 @@ let nokori = [];
 for ( let i = n ; i >= 1; i -- ) {
      nokori.push(i);
 }
+nokori.sort((a, b) => a - b);
 
 const ans = Array(n+1).fill(0);
 for ( const [time, sign, num] of segments ) {
-    // console.log(time, sign, num);
     if ( sign === 1 ) {
-        let temp = nokori.pop();
+        let temp = nokori.shift();
         ans[num] = temp;
     } else {
         nokori.push(ans[num]);
+        nokori.sort((a, b) => a - b)
     }
 }
 
