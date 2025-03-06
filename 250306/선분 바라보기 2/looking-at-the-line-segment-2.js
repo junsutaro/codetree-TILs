@@ -17,17 +17,25 @@ segments.forEach((elem, index) => {
 })
 
 let ans = 0;
-const canvas = Array(max + 1).fill(0);
-segments.forEach((elem, index) => {
-    const [x1, x2] = elem;
-    let canDraw = false;
-
-    for ( let i = x1 ; i <= x2 ; i ++ ) {
-        if ( canvas[i] ) continue;
-        canDraw = true;
-        canvas[i] = 1;
+const canvas = [];
+canvas.push(segments[0])
+for ( let i = 1 ; i < n ; i ++ ) {
+    const [x1, x2] = segments[i];
+    let [nx1, nx2] = [x1, x2]
+    
+    for ( const line of canvas ) {
+        if ( line[0] < x1 && x1 < line[1] ) {
+            nx1 = line[1];
+        }
+        if ( line[0] < x2 && x2 < line[1]) {
+            nx2 = line[0];
+        }
     }
-    if ( canDraw ) { ans += 1 }
-})
+    
+    canvas.push([nx1, nx2])
+}
 
-console.log(ans);
+const uniqueSet = new Set(canvas.map(pair => JSON.stringify(pair)));
+const uniquecanvas = Array.from(uniqueSet, JSON.parse);
+
+console.log(uniquecanvas.length); 
