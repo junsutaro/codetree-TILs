@@ -30,9 +30,9 @@ for ( let i = 1 ; i < n ; i++ ) {
     ans.push([x1, x2]);
 }
 
-let asd = 0;
+let asd = 1;
 
-for ( let i = 1 ; i < ans.length ; i ++ ) {
+for ( let i = 2 ; i < ans.length ; i ++ ) {
     if ( ans[i] !== ans[i-1] ) {
         asd += 1;
     }
