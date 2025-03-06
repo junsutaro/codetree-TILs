@@ -9,33 +9,32 @@ let segments = input.slice(1, n + 1).map(line => {
 
 // Please Write your code here.
 
-let max = 0;
 segments.sort((a, b) => a.y - b.y || a.x1 - b.x1 || a.x2 - b.x2 );
 segments.forEach((elem, index) => {
     segments[index] = [elem.x1, elem.x2];
-    max = Math.max(max, elem.x2);
 })
 
-let ans = 0;
-const canvas = [];
-canvas.push(segments[0])
-for ( let i = 1 ; i < n ; i ++ ) {
-    const [x1, x2] = segments[i];
-    let [nx1, nx2] = [x1, x2]
+
+const ans = [];
+ans.push(segments[0]);
+
+for ( let i = 1 ; i < n ; i++ ) {
+    let [x1, x2] = segments[i];
     
-    for ( const line of canvas ) {
-        if ( line[0] < x1 && x1 < line[1] ) {
-            nx1 = line[1];
-        }
-        if ( line[0] < x2 && x2 < line[1]) {
-            nx2 = line[0];
-        }
+    for ( const line of ans ) {
+        if ( line[0] < x1 && x1 < line[1] ) { x1 = line[1] }
+        if ( line[0] < x2 && x2 < line[1] ) { x2 = line[0] }
     }
-    
-    canvas.push([nx1, nx2])
+
+    if ( x1 === x2 ) continue;
+    ans.push([x1, x2]);
 }
 
-const uniqueSet = new Set(canvas.map(pair => JSON.stringify(pair)));
-const uniquecanvas = Array.from(uniqueSet, JSON.parse);
+let asd = 0;
 
-console.log(uniquecanvas.length); 
+for ( let i = 1 ; i < ans.length ; i ++ ) {
+    if ( ans[i] !== ans[i-1] ) {
+        asd += 1;
+    }
+}
+console.log(asd);
