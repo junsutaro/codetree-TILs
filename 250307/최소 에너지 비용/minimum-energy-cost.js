@@ -14,8 +14,8 @@ for ( let i = n-2 ; i >= 0 ; i -- ) {
 const ansList = Array(n).fill(0);
 
 for ( let i = n - 2 ; i >= 0 ; i -- ) {
-    let chargeAll = suffix[i] * cost[i];
-    let fitted = (suffix[i] - suffix[i+1]) * cost[i] + ansList[i+1]
+    let chargeAll = suffix[i] * cost[i]; // 여기서 다 채우기
+    let fitted = dist[i] * cost[i] + ansList[i+1] // 앞에거 + 앞에까지만 가는 머시기
     ansList[i] = Math.min(chargeAll, fitted);
 }
 
