@@ -9,7 +9,7 @@ let ans = -1;
 
 const frontK = Array(1000001).fill(0);
 frontK[bombs[0]] = 1;
-for ( let i = 0 ; i < k ; i ++ ) {
+for ( let i = 1 ; i < k ; i ++ ) {
     const thisBomb = bombs[i]
     if ( frontK[thisBomb] ) { ans = Math.max(ans, thisBomb) }
     frontK[thisBomb] += 1;
