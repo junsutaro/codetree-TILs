@@ -19,7 +19,7 @@ for ( let i = k ; i < n ; i ++ ) {
     const thisBomb = bombs[i]
     const deleteBomb = bombs[i-k]
     if ( frontK[thisBomb] ) {
-        ans = Math.max(thisBomb)
+        ans = Math.max(ans, thisBomb)
     }
     frontK[thisBomb] += 1;
     frontK[deleteBomb] -= 1;
