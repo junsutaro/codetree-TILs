@@ -7,22 +7,28 @@ let bombs = input.slice(1, Number(n) + 1).map(Number);
 // Please Write your code here.
 let ans = -1;
 
-const frontK = Array(1000001).fill(0);
-frontK[bombs[0]] = 1;
-for ( let i = 1 ; i < k ; i ++ ) {
-    const thisBomb = bombs[i]
-    if ( frontK[thisBomb] ) { ans = Math.max(ans, thisBomb) }
-    frontK[thisBomb] += 1;
+const frontK = new Map();
+
+for ( let i = 0 ; i < n ; i ++ ) {
+    const thisBomb = bombs[i];
+    if ( frontK.has(thisBomb) ) {
+        ans = Math.max(ans, thisBomb);
+    }
+    frontK.set(thisBomb, (frontK.get(thisBomb) || 0) + 1 )
 }
 
 for ( let i = k ; i < n ; i ++ ) {
-    const thisBomb = bombs[i]
-    const deleteBomb = bombs[i-k]
-    if ( frontK[thisBomb] ) {
-        ans = Math.max(ans, thisBomb)
+    const thisBomb = bombs[i];
+    const deleteBomb = bombs[i-k];
+    if ( frontK.has(thisBomb) ) {
+        ans = Math.max(ans, thisBomb);
     }
-    frontK[thisBomb] += 1;
-    frontK[deleteBomb] -= 1;
+    frontK.set(thisBomb, (frontK.get(thisBomb) || 0 ) + 1)
+    if (frontK.get(deleteBomb) === 1) {
+        frontK.delete(deleteBomb);
+    } else {
+        frontK.set(deleteBomb, frontK.get(deleteBomb) - 1);
+    }
 }
 
 console.log(ans);
