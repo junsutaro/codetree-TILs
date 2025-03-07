@@ -5,14 +5,15 @@ let [n, k] = input[0].split(' ').map(Number);
 let bombs = input.slice(1, Number(n) + 1).map(Number);
 
 // Please Write your code here.
+let ans = -1;
 
 const frontK = Array(10).fill(0);
 for ( let i = 0 ; i < k ; i ++ ) {
     const thisBomb = bombs[i]
+    if ( frontK[thisBomb] ) { ans = Math.max(ans, thisBomb) }
     frontK[thisBomb] += 1;
 }
 
-let ans = -1;
 for ( let i = k ; i < n ; i ++ ) {
     const thisBomb = bombs[i]
     const deleteBomb = bombs[i-k]
