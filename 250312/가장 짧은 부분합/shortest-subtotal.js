@@ -21,4 +21,4 @@ for ( let i = 0 ; i < n ; i ++ ) {
     sum -= sequence[i];
 }
 
-console.log(ans);
+console.log(ans === Infinity ? -1 : ans);
