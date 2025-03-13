@@ -13,9 +13,9 @@ for ( let i = 0 ; i < n ; i ++ ) {
     while ( j < n && cntArr[arr[j]] !== 1 ) {
         cntArr[arr[j]] += 1;
         j += 1;
+        ans = Math.max(ans, j - i + 1)
     }
 
-    ans = Math.max(ans, j - i + 1)
     cntArr[i] -= 1
 }
 
