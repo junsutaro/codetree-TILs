@@ -9,7 +9,7 @@ for (let i = 1; i <= n; i++) {
     candies.push({ x, cnt });
 }
 
-const MAX = 15
+const MAX = 1000000
 // Please Write your code here.
 const candyArr = Array(MAX + 1).fill(0);
 const prefixSum = Array(MAX + 1).fill(0);
