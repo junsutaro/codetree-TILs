@@ -7,20 +7,22 @@ const numbers = input[1].split(' ').map(Number);
 
 numbers.sort((a, b) => a - b);
 
+let left = 0;
+let right = n - 1;
+let best = Infinity;  
 
-let j = n-1;
-let absSum = Math.abs(numbers[0] + numbers[j]);
-for ( let i = 0 ; i < n ; i ++ ) {
-  while ( j > i ) {
-    j -= 1;
-    if ( Math.abs(numbers[i] + numbers[j] < absSum )) {
-      break;
-    }
+while (left < right) {
+  const sum = numbers[left] + numbers[right];
+  // 더 좋은 해를 찾으면 갱신
+  if (Math.abs(sum) < Math.abs(best)) {
+    best = sum;
   }
 
-  absSum = Math.min(absSum, Math.abs(numbers[i] + numbers[j]));
-  j -= 1
-
-  if (i >= j) { break }
+  if (sum > 0) {
+    right--;
+  } else {
+    left++;
+  }
 }
-console.log(absSum);
+
+console.log(Math.abs(best));
