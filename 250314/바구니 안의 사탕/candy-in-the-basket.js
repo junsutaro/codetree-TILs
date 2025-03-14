@@ -9,26 +9,19 @@ for (let i = 1; i <= n; i++) {
     candies.push({ x, cnt });
 }
 
-const MAX = 1000001;
+const MAX = 1000000
+// Please Write your code here.
 const candyArr = Array(MAX + 1).fill(0);
 const prefixSum = Array(MAX + 1).fill(0);
 
-// 사탕 개수 배열에 반영
 candies.forEach(elem => {
-    candyArr[elem.x] += elem.cnt; // 같은 위치에 여러 바구니가 존재할 수 있음
-});
-
-// 누적합 계산
-for (let i = 1; i <= MAX; i++) {
-    prefixSum[i] = prefixSum[i - 1] + candyArr[i];
-}
-
-// 최대 사탕 개수 찾기 (슬라이딩 윈도우)
+    candyArr[elem.x]+= elem.cnt;
+})
+for ( let i = 1 ; i <= MAX ; i ++ ) {
+    prefixSum[i] = prefixSum[i-1] + candyArr[i]
+};
 let ans = 0;
-
-for (let i = 0; i <= MAX; i++) {
-    let leftBound = Math.max(0, i - 2 * k - 1); // 0 이하 방지
-    ans = Math.max(ans, prefixSum[i] - prefixSum[leftBound]);
+for ( let i = 2*k+1 ; i <= MAX ; i ++ ) {
+    ans = Math.max(ans, prefixSum[i] - prefixSum[i-2*k-1])
 }
-
 console.log(ans);
