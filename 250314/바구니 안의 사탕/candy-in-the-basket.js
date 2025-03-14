@@ -21,12 +21,13 @@ for ( let i = 1 ; i <= MAX ; i ++ ) {
     prefixSum[i] = prefixSum[i-1] + candyArr[i]
 };
 let ans = 0;
-for ( let i = 2*k+1 ; i <= MAX ; i ++ ) {
-    ans = Math.max(ans, prefixSum[i] - prefixSum[i-2*k-1])
-}
 
-if ( 2*k+1 > MAX ) {
-    ans = prefixSum[MAX]
+if (2 * k + 1 >= MAX) {
+    ans = prefixSum[MAX]; // 모든 사탕을 포함하는 경우
+} else {
+    for (let i = 2 * k + 1; i <= MAX; i++) {
+        ans = Math.max(ans, prefixSum[i] - prefixSum[i - 2 * k - 1]);
+    }
 }
 
 console.log(ans);
