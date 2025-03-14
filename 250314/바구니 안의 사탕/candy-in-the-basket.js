@@ -9,7 +9,7 @@ for (let i = 1; i <= n; i++) {
     candies.push({ x, cnt });
 }
 
-const MAX = 100000
+const MAX = 1000001
 // Please Write your code here.
 const candyArr = Array(MAX + 1).fill(0);
 const prefixSum = Array(MAX + 1).fill(0);
@@ -21,10 +21,12 @@ for ( let i = 1 ; i <= MAX ; i ++ ) {
     prefixSum[i] = prefixSum[i-1] + candyArr[i]
 };
 let ans = 0;
-
 for ( let i = 2*k+1 ; i <= MAX ; i ++ ) {
     ans = Math.max(ans, prefixSum[i] - prefixSum[i-2*k-1])
 }
 
+if ( 2*k+1 > MAX ) {
+    ans = prefixSum[MAX]
+}
 
 console.log(ans);
