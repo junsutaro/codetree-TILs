@@ -9,24 +9,25 @@ for (let i = 1; i <= n; i++) {
     candies.push({ x, cnt });
 }
 
-const MAX = 1000001;  // 바구니 위치는 0 ~ 1,000,000
-const candyArr = Array(MAX).fill(0);
-const prefixSum = Array(MAX).fill(0);
+const MAX = 1000001;  // 0부터 1,000,000까지 (총 1,000,001개)
+const candyArr = Array(MAX + 1).fill(0);    // 인덱스 0 ~ 1000001
+const prefixSum = Array(MAX + 1).fill(0);     // 인덱스 0 ~ 1000001
 
-// 같은 위치에 여러 바구니가 있을 수 있으므로 += 로 누적 처리
+// 같은 위치에 여러 바구니가 있을 수 있으므로 누적 처리
 candies.forEach(elem => {
     candyArr[elem.x] += elem.cnt;
 });
 
-// prefixSum 계산: prefixSum[i]는 0번부터 i번까지의 합 (prefixSum[0] = 0)
-for (let i = 1; i < MAX; i++) {
+// prefixSum[i]는 1부터 i까지의 사탕 합 (prefixSum[0]는 0)
+for (let i = 1; i <= MAX; i++) {
     prefixSum[i] = prefixSum[i - 1] + candyArr[i];
 }
 
 let ans = 0;
-// 윈도우 길이는 (2*k + 1)
-// 모든 인덱스에 대해, 윈도우의 왼쪽 경계를 i - (2*k + 1)로 설정 (음수이면 0으로 보정)
-for (let i = 0; i < MAX; i++) {
+// 슬라이딩 윈도우의 길이는 (2*k + 1)
+// i가 0부터 MAX까지 순회하면서, 
+// windowSum = prefixSum[i] - prefixSum[ max(0, i - (2*k + 1)) ] 로 계산합니다.
+for (let i = 0; i <= MAX; i++) {
     const leftBound = Math.max(0, i - (2 * k + 1));
     const windowSum = prefixSum[i] - prefixSum[leftBound];
     ans = Math.max(ans, windowSum);
