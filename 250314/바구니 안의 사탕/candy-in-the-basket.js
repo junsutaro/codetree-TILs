@@ -22,12 +22,12 @@ for ( let i = 1 ; i <= MAX ; i ++ ) {
 };
 let ans = 0;
 
-if ( 2 * k + 1 > MAX ) {
+for ( let i = 2*k+1 ; i <= MAX ; i ++ ) {
+    ans = Math.max(ans, prefixSum[i] - prefixSum[i-2*k-1])
+}
+
+if ( 2*k+1 > MAX ) {
     ans = prefixSum[MAX]
-} else {
-    for ( let i = 2*k+1 ; i <= MAX ; i ++ ) {
-        ans = Math.max(ans, prefixSum[i] - prefixSum[i-2*k-1])
-    }
 }
 
 console.log(ans);
