@@ -7,16 +7,20 @@ const numbers = input[1].split(' ').map(Number);
 
 numbers.sort((a, b) => a - b);
 
+
 let j = n-1;
-let absSum = Infinity;
+let absSum = Math.abs(numbers[0] + numbers[j]);
 for ( let i = 0 ; i < n ; i ++ ) {
-  while ( j > i && Math.abs(numbers[i] + numbers[j]) >= absSum ) {
+  while ( j > i ) {
     j -= 1;
+    if ( Math.abs(numbers[i] + numbers[j] < absSum )) {
+      break;
+    }
   }
 
-  if ( i < j ) {
-    absSum = Math.min(absSum, Math.abs(numbers[i] + numbers[j]));
-  }
+  absSum = Math.min(absSum, Math.abs(numbers[i] + numbers[j]));
+  j -= 1
 
+  if (i >= j) { break }
 }
 console.log(absSum);
