@@ -1,36 +1,31 @@
 const fs = require("fs");
-const input = fs.readFileSync(0).toString().trim().split('\n');
+const input = fs.readFileSync(0).toString().trim().split("\n");
 
-const [n, k] = input[0].split(' ').map(Number);
+const [n, k] = input[0].split(" ").map(Number);
 const candies = [];
-
 for (let i = 1; i <= n; i++) {
-    const [cnt, x] = input[i].split(' ').map(Number);
+    const [cnt, x] = input[i].split(" ").map(Number);
     candies.push({ x, cnt });
 }
 
-const MAX = 1000001;  // 0부터 1,000,000까지 (총 1,000,001개)
-const candyArr = Array(MAX + 1).fill(0);    // 인덱스 0 ~ 1000001
-const prefixSum = Array(MAX + 1).fill(0);     // 인덱스 0 ~ 1000001
+const MAX = 1000001; // 위치: 0 ~ 1000000
+const candyArr = Array(MAX).fill(0);  // 길이 1000001, 인덱스 0 ~ 1000000
+for (const { x, cnt } of candies) {
+    candyArr[x] += cnt; // 같은 위치에 여러 바구니가 있으면 누적
+}
 
-// 같은 위치에 여러 바구니가 있을 수 있으므로 누적 처리
-candies.forEach(elem => {
-    candyArr[elem.x] += elem.cnt;
-});
-
-prefixSum[0] = candyArr[0];
-// prefixSum[i]는 1부터 i까지의 사탕 합 (prefixSum[0]는 0)
-for (let i = 1; i <= MAX; i++) {
-    prefixSum[i] = prefixSum[i - 1] + candyArr[i];
+// prefixSum 배열: prefixSum[i]는 candyArr[0]부터 candyArr[i-1]까지의 합
+// 길이는 MAX+1
+const prefixSum = Array(MAX + 1).fill(0);
+for (let i = 0; i < MAX; i++) {
+    prefixSum[i+1] = prefixSum[i] + candyArr[i];
 }
 
 let ans = 0;
-// 슬라이딩 윈도우의 길이는 (2*k + 1)
-// i가 0부터 MAX까지 순회하면서, 
-// windowSum = prefixSum[i] - prefixSum[ max(0, i - (2*k + 1)) ] 로 계산합니다.
+const windowLen = 2 * k + 1;
 for (let i = 0; i <= MAX; i++) {
-    const leftBound = Math.max(0, i - (2 * k + 1));
-    const windowSum = prefixSum[i] - prefixSum[leftBound];
+    const left = Math.max(0, i - windowLen);
+    const windowSum = prefixSum[i] - prefixSum[left];
     ans = Math.max(ans, windowSum);
 }
 
