@@ -18,6 +18,7 @@ candies.forEach(elem => {
     candyArr[elem.x] += elem.cnt;
 });
 
+prefixSum[0] = candyArr[0];
 // prefixSum[i]는 1부터 i까지의 사탕 합 (prefixSum[0]는 0)
 for (let i = 1; i <= MAX; i++) {
     prefixSum[i] = prefixSum[i - 1] + candyArr[i];
