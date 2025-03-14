@@ -26,8 +26,5 @@ for ( let i = 2*k+1 ; i <= MAX ; i ++ ) {
     ans = Math.max(ans, prefixSum[i] - prefixSum[i-2*k-1])
 }
 
-if ( 2*k+1 > MAX ) {
-    ans = prefixSum[MAX]
-}
 
 console.log(ans);
