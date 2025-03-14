@@ -9,18 +9,19 @@ for (let i = 1; i <= n; i++) {
     candies.push({ x, cnt });
 }
 
-const MAX = 1000001
+const MAX = 15
 // Please Write your code here.
-const candyArr = Array(MAX).fill(0);
-const prefixSum = Array(MAX).fill(0);
-candies.forEach(elem => candyArr[elem.x] = elem.cnt)
-prefixSum[0] = candyArr[0];
-for ( let i = 1 ; i < MAX ; i ++ ) {
-    prefixSum[i] = prefixSum[i-1] + candyArr[i];
-}
+const candyArr = Array(MAX + 1).fill(0);
+const prefixSum = Array(MAX + 1).fill(0);
 
+candies.forEach(elem => {
+    candyArr[elem.x] = elem.cnt;
+})
+for ( let i = 1 ; i <= MAX ; i ++ ) {
+    prefixSum[i] = prefixSum[i-1] + candyArr[i]
+};
 let ans = 0;
-for ( let i = 2*k + 1 ; i < MAX ; i ++ ) {
-    ans = Math.max(ans, prefixSum[i] - prefixSum[i-2*k - 1])
+for ( let i = 2*k+1 ; i <= MAX ; i ++ ) {
+    ans = Math.max(ans, prefixSum[i] - prefixSum[i-2*k-1])
 }
 console.log(ans);
