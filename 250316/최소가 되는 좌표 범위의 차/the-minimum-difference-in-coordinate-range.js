@@ -119,7 +119,7 @@ for ( let i = 0 ; i < n ; i ++ ) {
         j += 1
     }
     // console.log(i, j);
-    if (getValidTop(maxHeap) - getValidTop(minHeap) >= d) {
+    if (j > i + 1 && getValidTop(maxHeap) - getValidTop(minHeap) >= d) {
         ans = Math.min(ans, points[j-1].x - points[i].x)
     }
     del(i)
