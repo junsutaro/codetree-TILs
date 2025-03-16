@@ -125,4 +125,4 @@ for ( let i = 0 ; i < n ; i ++ ) {
     del(i)
 }
 
-console.log(ans);
+console.log(ans === Infinity ? -1 : ans);
