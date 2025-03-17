@@ -10,23 +10,10 @@ for (let i = 1; i <= n; i++) {
 
 arr.sort((a, b) => a - b);
 // Please Write your code here.
-function findMax(start, end) {
-    let j = start;
-    let max = 0;
-    for ( let i = start ; i < end ; i ++ ) {
-        while ( j < end && arr[j] - arr[i] <= k ) {
-            j += 1;
-        }
-        max = Math.max(max, j - i);
-    }
 
-    return max;
+const prefix = Array(n).fill(0);
+for ( let i = 0 ; i < n ; i ++ ) {
+    
 }
-
-let ans = 0;
-
-for ( let mid = 1 ; mid < n - 1 ; mid ++ ) {
-    ans = Math.max(ans, findMax(0, mid) + findMax(mid, n))
-}   
 
 console.log(ans);
