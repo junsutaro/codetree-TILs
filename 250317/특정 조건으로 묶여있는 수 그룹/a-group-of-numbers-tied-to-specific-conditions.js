@@ -26,7 +26,7 @@ function findMax(start, end) {
 let ans = 0;
 
 for ( let mid = 1 ; mid < n - 1 ; mid ++ ) {
-    ans = Math.max(ans, findMax(0, mid) + findMax(mid, n-1))
+    ans = Math.max(ans, findMax(0, mid) + findMax(mid, n))
 }   
 
 console.log(ans);
