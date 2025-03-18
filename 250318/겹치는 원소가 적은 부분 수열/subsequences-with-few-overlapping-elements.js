@@ -22,7 +22,7 @@ let j = 0;
 let ans = 0;
 
 for ( let i = 0 ; i < n ; i ++ ) {
-    while ( j < n && (!map.has(arr[j]) || map.get(arr[j]) < k) ) {
+    while ( j < n && (!map.has(arr[j]) || map.get(arr[j]) !== k) ) {
         inc(arr[j])
         j += 1;
     }
