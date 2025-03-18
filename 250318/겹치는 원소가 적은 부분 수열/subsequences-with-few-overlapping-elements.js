@@ -15,7 +15,7 @@ function inc(val) {
 function dec(val) {
     if ( !map.has(val) ) return undefined;
     if ( map.get(val) === 1 ) { map.delete(val) }
-    map.set(val, map.get(val) - 1);
+    else {map.set(val, map.get(val) - 1)};
 }
 
 let j = 0;
