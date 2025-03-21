@@ -11,7 +11,7 @@ let j = 0;
 let ans = 0;
 for ( let i = 0 ; i < n ; i ++ ) {
     let temp = Math.abs(fires[i] - stations[j])
-    while ( j + 1 < m && Math.abs(fires[i] - fires[j]) < Math.abs(fires[i] - fires[j+1]) ) {
+    while ( j + 1 < m && Math.abs(fires[i] - stations[j]) < Math.abs(fires[i] - stations[j+1]) ) {
         j += 1; 
         temp = Math.min(temp, Math.abs(fires[i] - stations[j]))
     }
