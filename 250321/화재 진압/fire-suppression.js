@@ -10,12 +10,11 @@ const stations = input[2].split(" ").map(Number).sort((a, b) => a - b);
 let j = 0;
 let ans = 0;
 for ( let i = 0 ; i < n ; i ++ ) {
-    let temp = Math.abs(fires[i] - stations[j])
-    while ( j + 1 < m && fires[i] >= stations[j+1] ) {
-        j += 1;
-        temp = Math.min(temp, Math.abs(fires[i] - stations[j]))
+    const fire = fires[i];
+    while ( j + 1 < m && Math.abs(stations[j+1] - fire) < Math.abs(stations[j] - fire)) {
+        j += 1
     }
-    ans = Math.max(ans, temp);
+    ans = Math.max(ans, Math.abs(stations[j] - fire));
 }
 
 console.log(ans);
