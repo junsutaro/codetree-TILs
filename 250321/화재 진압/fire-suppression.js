@@ -13,7 +13,7 @@ for ( let i = 0 ; i < n ; i ++ ) {
     let temp = Math.abs(fires[i] - stations[j])
     while ( j + 1 < m ) {
         j += 1;
-        temp = Math.min(temp, fires[i] - stations[j])
+        temp = Math.min(temp, Math.abs(fires[i] - stations[j]))
     }
     ans = Math.max(ans, temp);
 }
