@@ -18,7 +18,7 @@ for ( let i = 0 ; i < n ; i ++ ) {
         j += 1
     }
 
-    if ( map.get(arr[j]) >= k ) {
+    if ( map.get(1) >= k ) {
         ans = Math.min(ans, j - i - 1)
     }
 
