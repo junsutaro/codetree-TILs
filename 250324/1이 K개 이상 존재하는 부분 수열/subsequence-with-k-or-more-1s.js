@@ -25,4 +25,4 @@ for ( let i = 0 ; i < n ; i ++ ) {
     map.set(arr[i], map.get(arr[i]) - 1)
 }
 
-console.log(ans);
+console.log(ans === Infinity ? -1 : ans);
