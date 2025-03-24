@@ -19,7 +19,7 @@ for ( let i = 0 ; i < n ; i ++ ) {
     }
 
     if ( map.get(1) >= k ) {
-        ans = Math.min(ans, j - i - 1)
+        ans = Math.min(ans, j - i)
     }
 
     map.set(arr[i], map.get(arr[i]) - 1)
