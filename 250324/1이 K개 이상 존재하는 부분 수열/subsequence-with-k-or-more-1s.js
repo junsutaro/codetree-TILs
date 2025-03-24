@@ -9,10 +9,11 @@ const arr = input[1].split(' ').map(Number);
 let j = 0;
 const map = new Map();
 let ans = Infinity;
+map.set(1, 0);
+map.set(2, 0);
 
 for ( let i = 0 ; i < n ; i ++ ) {
-    while ( j < n && map.get(1) !== k ) {
-        if ( !map.get(arr[j]) ) { map.set(arr[j], 0) }
+    while ( j < n && map.get(1) < k ) {
         map.set(arr[j], map.get(arr[j]) + 1)
         j += 1
     }
