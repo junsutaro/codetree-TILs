@@ -1,8 +1,8 @@
 const fs = require("fs");
 const input = fs.readFileSync(0).toString().trim().split('\n');
 
-const [n, m] = input[0].split(' ').map(Number);
-const numbers = input[1].split(' ').map(Number);
+const [n, m] = input[0].trim().split(' ').map(Number);
+const numbers = input[1].trim().split(' ').map(Number);
 const queries = input.slice(2).map(Number);
 
 function lowerBound(arr, target) {
