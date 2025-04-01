@@ -20,7 +20,7 @@ function canDevide(arr, maxVal) {
 }
 
 
-let left = 0;
+let left = 1;
 let right = 100000;
 
 while ( left < right ) {
